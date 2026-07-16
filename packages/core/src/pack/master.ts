@@ -38,6 +38,7 @@ export interface MasterPackMeta {
   minecraft: string;
   loaderVersion: string;
   recommendedRamMb: number;
+  serverAddress?: string;
 }
 
 /** Build a publishable PackManifest from the master entries. */
@@ -68,6 +69,7 @@ export function buildManifestFromMaster(
     recommendedRamMb: meta.recommendedRamMb,
     files,
     managedRoots: roots,
+    serverAddress: meta.serverAddress || undefined,
     generatedAt,
   };
 }

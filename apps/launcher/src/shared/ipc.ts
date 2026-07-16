@@ -39,8 +39,10 @@ export interface LauncherSettings {
   serverViewDistance: number;
   serverMaxPlayers: number;
   serverMotd: string;
-  /** Auto-start the Playit.gg tunnel when the server is running. */
+  /** Auto-start the Playit.gg agent when the server is running. */
   serverUseTunnel: boolean;
+  /** Static public address friends connect to (e.g. xxx.craft.playit.gg). */
+  serverPublicAddress: string;
 
   // --- admin / distribution (configured in-app, no code editing) ---
   /** Marks this machine as the pack admin (shows publish tools). */

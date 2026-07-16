@@ -14,6 +14,7 @@ export * from './install/minecraft.js';
 export * from './install/neoforge.js';
 export * from './launch/args.js';
 export * from './launch/launcher.js';
+export * from './launch/servers-dat.js';
 export * from './sync/manifest.js';
 export * from './sync/sync.js';
 export * from './sync/classify.js';

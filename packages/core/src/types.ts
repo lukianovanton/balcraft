@@ -43,6 +43,8 @@ export interface PackManifest {
    * Everything outside these dirs is left untouched (user configs, saves, etc.).
    */
   managedRoots: string[];
+  /** Static public server address for friends (auto-added to the in-game list). */
+  serverAddress?: string;
   /** ISO timestamp the manifest was generated (set by publisher, not in-launcher). */
   generatedAt: string;
 }

@@ -74,6 +74,10 @@ export class ServerManager extends EventEmitter {
     this.update({ status: 'starting', players: [] });
     try {
       const settings = this.store.getSettings();
+      // Show the static public address right away (from settings).
+      if (settings.serverPublicAddress) {
+        this.update({ publicAddress: settings.serverPublicAddress });
+      }
 
       this.log('[launcher] Проверка Java…');
       const java = await ensureJavaRuntime(this.paths, JAVA_MAJOR);
@@ -223,16 +227,19 @@ export class ServerManager extends EventEmitter {
       this.log('[tunnel] Запуск Playit.gg…');
       const p = spawn(exe, [], { cwd: this.paths.bin, stdio: ['ignore', 'pipe', 'pipe'] });
       this.playit = p;
+      const hasManualAddr = () => !!this.store.getSettings().serverPublicAddress;
       const scan = (d: Buffer) => {
         const s = d.toString();
         for (const line of s.split('\n')) {
+          // Only surface the claim link if the agent isn't set up yet.
           const claim = line.match(PLAYIT_CLAIM_RE);
-          if (claim && claim[0] !== this.state.tunnelClaimUrl) {
+          if (claim && !hasManualAddr() && claim[0] !== this.state.tunnelClaimUrl) {
             this.update({ tunnelClaimUrl: claim[0] });
             this.log(`[tunnel] Привяжи агент: ${claim[0]}`);
           }
+          // Scraped address is only a fallback when no static address is set.
           const addr = line.match(PLAYIT_ADDRESS_RE);
-          if (addr && addr[1] !== this.state.publicAddress) {
+          if (addr && !hasManualAddr() && addr[1] !== this.state.publicAddress) {
             this.update({ publicAddress: addr[1], tunnelClaimUrl: null });
             this.log(`[tunnel] Адрес для друзей: ${addr[1]}`);
           }

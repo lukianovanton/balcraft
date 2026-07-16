@@ -280,6 +280,7 @@ export class PackAdminService {
         minecraft: APP_CONFIG.minecraftVersion,
         loaderVersion: APP_CONFIG.neoforgeVersion,
         recommendedRamMb: APP_CONFIG.defaultRamMb,
+        serverAddress: s.serverPublicAddress || undefined,
       },
       master.entries,
       now.toISOString(),

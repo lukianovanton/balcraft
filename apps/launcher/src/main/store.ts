@@ -18,6 +18,7 @@ const DEFAULT_SETTINGS: LauncherSettings = {
   serverMaxPlayers: 10,
   serverMotd: 'BalumbaCraft — Create',
   serverUseTunnel: true,
+  serverPublicAddress: '',
   adminMode: false,
   githubOwner: '',
   githubRepo: '',

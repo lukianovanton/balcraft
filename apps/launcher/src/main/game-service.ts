@@ -6,6 +6,7 @@ import {
   installVanilla,
   installNeoForge,
   syncPack,
+  ensureServerInList,
   spawnGame,
   type Account,
   type LaunchOptions,
@@ -114,6 +115,13 @@ export class GameService {
           signal,
         });
         await recordInstalledPackVersion(this.paths, manifest.version);
+        // Auto-add the pack server to the in-game multiplayer list.
+        if (manifest.serverAddress) {
+          await ensureServerInList(instanceDir, {
+            name: manifest.name || 'BalumbaCraft',
+            ip: manifest.serverAddress,
+          }).catch(() => {});
+        }
         console.log(
           `[sync] обновлено: ${result.downloaded}, удалено: ${result.removed}, актуально: ${result.upToDate}`,
         );
@@ -123,6 +131,14 @@ export class GameService {
       }
     } else {
       console.warn('[sync] GitHub-репозиторий сборки не настроен — синхронизация пропущена.');
+    }
+
+    // For the admin (or offline), also honor a locally-set public address.
+    if (settings.serverPublicAddress) {
+      await ensureServerInList(instanceDir, {
+        name: 'BalumbaCraft',
+        ip: settings.serverPublicAddress,
+      }).catch(() => {});
     }
 
     if (signal.aborted) throw new Error('aborted');

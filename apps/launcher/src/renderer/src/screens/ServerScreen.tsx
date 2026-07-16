@@ -144,13 +144,23 @@ export function ServerScreen({ state }: { state: LauncherStateHook }): JSX.Eleme
                 onChange={(e) => state.saveSettings({ serverMaxPlayers: Number(e.target.value) })}
               />
             </label>
-            <label className="col-span-3 text-xs text-andesite-400">
+            <label className="col-span-2 text-xs text-andesite-400">
               Описание (MOTD)
               <input
                 className="input mt-1"
                 defaultValue={state.settings.serverMotd}
                 disabled={server.status !== 'stopped'}
                 onBlur={(e) => state.saveSettings({ serverMotd: e.target.value })}
+              />
+            </label>
+            <label className="col-span-2 text-xs text-andesite-400">
+              Публичный адрес (с дашборда Playit.gg)
+              <input
+                className="input mt-1 font-mono"
+                placeholder="например, balumba.craft.playit.gg"
+                defaultValue={state.settings.serverPublicAddress}
+                disabled={server.status !== 'stopped'}
+                onBlur={(e) => state.saveSettings({ serverPublicAddress: e.target.value.trim() })}
               />
             </label>
             <label className="flex items-end gap-2 text-xs text-andesite-300">
@@ -161,7 +171,7 @@ export function ServerScreen({ state }: { state: LauncherStateHook }): JSX.Eleme
                 disabled={server.status !== 'stopped'}
                 onChange={(e) => state.saveSettings({ serverUseTunnel: e.target.checked })}
               />
-              Туннель Playit.gg
+              Запускать агент Playit с сервером
             </label>
           </div>
           {server.status !== 'stopped' && (
