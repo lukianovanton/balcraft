@@ -17,13 +17,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Windows Defender on the runner can quarantine electron-builder's unsigned
+      # app-builder.exe, causing "spawn ... app-builder.exe ENOENT". Exclude the
+      # workspace so the binary survives.
+      - name: Exclude workspace from Defender
+        shell: pwsh
+        run: Add-MpPreference -ExclusionPath "${{ github.workspace }}"
+        continue-on-error: true
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install --no-audit --no-fund
 
       - name: Build core
         run: npm run core:build

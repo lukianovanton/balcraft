@@ -34,3 +34,6 @@ publish:
   provider: github
   owner: lukianovanton
   repo: balcraft
+  # Publish as a full (non-draft) release so friends can download it and
+  # electron-updater sees it as the latest.
+  releaseType: release
