@@ -64,37 +64,19 @@ export function ServerScreen({ state }: { state: LauncherStateHook }): JSX.Eleme
         </div>
       </div>
 
-      {/* Prominent tunnel / address card */}
-      {server.status !== 'stopped' && (
+      {/* Address card (server running) */}
+      {server.status !== 'stopped' && server.publicAddress && (
         <div className="panel flex items-center gap-4 p-4">
-          {server.publicAddress ? (
-            <>
-              <div className="text-xs uppercase tracking-wide text-andesite-400">Адрес для друзей</div>
-              <div className="selectable flex-1 font-mono text-lg text-brass-100">
-                {server.publicAddress}
-              </div>
-              <button
-                className="btn-primary"
-                onClick={() => navigator.clipboard.writeText(server.publicAddress!)}
-              >
-                Копировать
-              </button>
-            </>
-          ) : server.tunnelClaimUrl ? (
-            <>
-              <div className="flex-1 text-sm text-copper-400">
-                Первый запуск: привяжи туннель Playit.gg к аккаунту, чтобы получить адрес.
-              </div>
-              <a className="btn-primary" href={server.tunnelClaimUrl} target="_blank" rel="noreferrer">
-                Привязать туннель
-              </a>
-            </>
-          ) : (
-            <div className="flex items-center gap-2 text-sm text-andesite-300">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-yellow-400" />
-              {server.status === 'running' ? 'Туннель запускается, адрес появится через пару секунд…' : 'Запуск сервера…'}
-            </div>
-          )}
+          <div className="text-xs uppercase tracking-wide text-andesite-400">Адрес сервера</div>
+          <div className="selectable flex-1 font-mono text-lg text-brass-100">
+            {server.publicAddress}
+          </div>
+          <button
+            className="btn-primary"
+            onClick={() => navigator.clipboard.writeText(server.publicAddress!)}
+          >
+            Копировать
+          </button>
         </div>
       )}
 
@@ -144,7 +126,7 @@ export function ServerScreen({ state }: { state: LauncherStateHook }): JSX.Eleme
                 onChange={(e) => state.saveSettings({ serverMaxPlayers: Number(e.target.value) })}
               />
             </label>
-            <label className="col-span-2 text-xs text-andesite-400">
+            <label className="col-span-4 text-xs text-andesite-400">
               Описание (MOTD)
               <input
                 className="input mt-1"
@@ -152,30 +134,6 @@ export function ServerScreen({ state }: { state: LauncherStateHook }): JSX.Eleme
                 disabled={server.status !== 'stopped'}
                 onBlur={(e) => state.saveSettings({ serverMotd: e.target.value })}
               />
-            </label>
-            <label className="col-span-4 text-xs text-andesite-400">
-              Публичный адрес для друзей (с дашборда Playit.gg) — вводит только админ
-              <input
-                className="input mt-1 font-mono"
-                placeholder="например, balumba.craft.playit.gg"
-                defaultValue={state.settings.serverPublicAddress}
-                disabled={server.status !== 'stopped'}
-                onBlur={(e) => state.saveSettings({ serverPublicAddress: e.target.value.trim() })}
-              />
-              <span className="mt-1 block text-[11px] text-andesite-500">
-                После ввода нажми «Сборка → Опубликовать» — адрес разошлётся всем, и сервер сам
-                появится в списке «Сетевая игра» у каждого. Друзьям вводить ничего не нужно.
-              </span>
-            </label>
-            <label className="flex items-end gap-2 text-xs text-andesite-300">
-              <input
-                type="checkbox"
-                className="h-4 w-4 accent-brass-500"
-                checked={state.settings.serverUseTunnel}
-                disabled={server.status !== 'stopped'}
-                onChange={(e) => state.saveSettings({ serverUseTunnel: e.target.checked })}
-              />
-              Запускать агент Playit с сервером
             </label>
           </div>
           {server.status !== 'stopped' && (

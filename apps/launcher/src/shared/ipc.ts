@@ -39,9 +39,7 @@ export interface LauncherSettings {
   serverViewDistance: number;
   serverMaxPlayers: number;
   serverMotd: string;
-  /** Auto-start the Playit.gg agent when the server is running. */
-  serverUseTunnel: boolean;
-  /** Static public address friends connect to (e.g. xxx.craft.playit.gg). */
+  /** Public server address friends connect to (your white IP or domain). */
   serverPublicAddress: string;
 
   // --- admin / distribution (configured in-app, no code editing) ---
@@ -103,10 +101,8 @@ export type ServerStatus = 'stopped' | 'starting' | 'running' | 'stopping';
 
 export interface ServerState {
   status: ServerStatus;
-  /** Public tunnel address for friends, if a tunnel is up. */
+  /** Public server address for friends (from settings), for display/copy. */
   publicAddress: string | null;
-  /** Playit.gg claim URL shown on first run (link the agent to an account). */
-  tunnelClaimUrl: string | null;
   players: string[];
   /** Whitelisted usernames. */
   whitelist: string[];

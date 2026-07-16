@@ -28,7 +28,6 @@ export function useLauncherState() {
   const [server, setServer] = useState<ServerState>({
     status: 'stopped',
     publicAddress: null,
-    tunnelClaimUrl: null,
     players: [],
     whitelist: [],
   });

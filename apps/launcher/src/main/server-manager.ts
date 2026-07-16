@@ -12,9 +12,6 @@ import {
   readWhitelist,
   writeWhitelist,
   syncPack,
-  ensurePlayitAgent,
-  PLAYIT_ADDRESS_RE,
-  PLAYIT_CLAIM_RE,
 } from '@balumba/core';
 import type { ServerState, ServerStatus } from '../shared/ipc.js';
 import { APP_CONFIG, isGithubConfigured } from './config.js';
@@ -25,16 +22,14 @@ const JAVA_MAJOR = 21;
 
 /**
  * Owns the NeoForge dedicated-server lifecycle: install, config, process,
- * console I/O, whitelist, online players, and the Playit.gg tunnel.
+ * console I/O, whitelist, and online players.
  */
 export class ServerManager extends EventEmitter {
   private paths: LauncherPaths;
   private proc: ChildProcess | null = null;
-  private playit: ChildProcess | null = null;
   private state: ServerState = {
     status: 'stopped',
     publicAddress: null,
-    tunnelClaimUrl: null,
     players: [],
     whitelist: [],
   };
@@ -151,8 +146,7 @@ export class ServerManager extends EventEmitter {
   private onExit(code: number | null): void {
     this.log(`[launcher] Сервер остановлен (код ${code ?? 0}).`);
     this.proc = null;
-    this.stopTunnel();
-    this.update({ status: 'stopped', players: [], publicAddress: null, tunnelClaimUrl: null });
+    this.update({ status: 'stopped', players: [], publicAddress: null });
   }
 
   async sendCommand(command: string): Promise<void> {
@@ -175,7 +169,6 @@ export class ServerManager extends EventEmitter {
 
       if (/Done \([\d.]+s\)! For help/.test(l)) {
         this.update({ status: 'running' });
-        if (this.store.getSettings().serverUseTunnel) void this.startTunnel();
       }
       const joined = l.match(/: ([A-Za-z0-9_]{1,16}) joined the game/);
       if (joined) this.addPlayer(joined[1]);
@@ -216,48 +209,6 @@ export class ServerManager extends EventEmitter {
       this.sendRaw(`whitelist remove ${username}`);
       this.sendRaw('whitelist reload');
     }
-  }
-
-  // --- Playit.gg tunnel ---
-
-  private async startTunnel(): Promise<void> {
-    if (this.playit) return;
-    try {
-      const exe = await ensurePlayitAgent(this.paths);
-      this.log('[tunnel] Запуск Playit.gg…');
-      const p = spawn(exe, [], { cwd: this.paths.bin, stdio: ['ignore', 'pipe', 'pipe'] });
-      this.playit = p;
-      const hasManualAddr = () => !!this.store.getSettings().serverPublicAddress;
-      const scan = (d: Buffer) => {
-        const s = d.toString();
-        for (const line of s.split('\n')) {
-          // Only surface the claim link if the agent isn't set up yet.
-          const claim = line.match(PLAYIT_CLAIM_RE);
-          if (claim && !hasManualAddr() && claim[0] !== this.state.tunnelClaimUrl) {
-            this.update({ tunnelClaimUrl: claim[0] });
-            this.log(`[tunnel] Привяжи агент: ${claim[0]}`);
-          }
-          // Scraped address is only a fallback when no static address is set.
-          const addr = line.match(PLAYIT_ADDRESS_RE);
-          if (addr && !hasManualAddr() && addr[1] !== this.state.publicAddress) {
-            this.update({ publicAddress: addr[1], tunnelClaimUrl: null });
-            this.log(`[tunnel] Адрес для друзей: ${addr[1]}`);
-          }
-        }
-      };
-      p.stdout?.on('data', scan);
-      p.stderr?.on('data', scan);
-      p.on('close', () => {
-        this.playit = null;
-      });
-    } catch (err) {
-      this.log(`[tunnel] Не удалось запустить туннель: ${err instanceof Error ? err.message : err}`);
-    }
-  }
-
-  private stopTunnel(): void {
-    this.playit?.kill();
-    this.playit = null;
   }
 }
 

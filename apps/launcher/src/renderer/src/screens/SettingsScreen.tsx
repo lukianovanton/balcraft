@@ -139,6 +139,22 @@ export function SettingsScreen({ state }: { state: LauncherStateHook }): JSX.Ele
 
             <div className="border-t border-andesite-700 pt-3">
               <label className="text-xs text-andesite-400">
+                Адрес сервера для друзей (твой IP или домен)
+              </label>
+              <input
+                className="input mt-1 font-mono"
+                placeholder="например, 134.249.137.220"
+                defaultValue={settings.serverPublicAddress}
+                onBlur={(e) => saveSettings({ serverPublicAddress: e.target.value.trim() })}
+              />
+              <span className="mt-1 block text-[11px] text-andesite-500">
+                Вводишь один раз. После «Сборка → Опубликовать» сервер сам появится в списке
+                «Сетевая игра» у всех друзей — им ничего вводить не нужно.
+              </span>
+            </div>
+
+            <div className="border-t border-andesite-700 pt-3">
+              <label className="text-xs text-andesite-400">
                 Azure Client ID (для входа Microsoft, необязательно)
               </label>
               <input

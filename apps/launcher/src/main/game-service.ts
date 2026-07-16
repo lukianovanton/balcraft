@@ -103,10 +103,12 @@ export class GameService {
     // 4) Pack sync (mods) from GitHub. Soft-fails if the repo isn't configured
     //    yet or the manifest is unreachable, so local testing still works.
     const instanceDir = this.paths.instanceDir(APP_CONFIG.instanceId);
+    let manifestServerAddress: string | undefined;
     if (isGithubConfigured(settings)) {
       try {
         this.report(report, 'syncing-pack');
         const manifest = await fetchLatestManifest(settings, signal);
+        manifestServerAddress = manifest.serverAddress;
         const result = await syncPack({
           manifest,
           instanceDir,
@@ -115,13 +117,6 @@ export class GameService {
           signal,
         });
         await recordInstalledPackVersion(this.paths, manifest.version);
-        // Auto-add the pack server to the in-game multiplayer list.
-        if (manifest.serverAddress) {
-          await ensureServerInList(instanceDir, {
-            name: manifest.name || 'BalumbaCraft',
-            ip: manifest.serverAddress,
-          }).catch(() => {});
-        }
         console.log(
           `[sync] обновлено: ${result.downloaded}, удалено: ${result.removed}, актуально: ${result.upToDate}`,
         );
@@ -133,13 +128,12 @@ export class GameService {
       console.warn('[sync] GitHub-репозиторий сборки не настроен — синхронизация пропущена.');
     }
 
-    // The host (this machine runs the server) should join locally to avoid the
-    // tunnel round-trip latency — add a localhost entry for them.
-    if (settings.serverPublicAddress) {
-      await ensureServerInList(instanceDir, {
-        name: 'BalumbaCraft (локальный)',
-        ip: 'localhost',
-      }).catch(() => {});
+    // Auto-add the server to the in-game list (one clean "BalumbaCraft" entry).
+    // The host (this machine runs the server) connects locally to avoid a NAT
+    // hairpin/round-trip; friends use the published public address.
+    const serverIp = settings.serverPublicAddress ? 'localhost' : manifestServerAddress;
+    if (serverIp) {
+      await ensureServerInList(instanceDir, { name: 'BalumbaCraft', ip: serverIp }).catch(() => {});
     }
 
     if (signal.aborted) throw new Error('aborted');
