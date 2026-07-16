@@ -16,7 +16,7 @@ const DEFAULT_SETTINGS: LauncherSettings = {
   serverRamMb: 4096,
   serverViewDistance: 10,
   serverMaxPlayers: 10,
-  serverMotd: 'BalumbaCraft — Create',
+  serverMotd: 'Gearhaven — Create',
   serverPublicAddress: '',
   adminMode: false,
   githubOwner: '',

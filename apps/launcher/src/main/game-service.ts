@@ -133,7 +133,7 @@ export class GameService {
     // hairpin/round-trip; friends use the published public address.
     const serverIp = settings.serverPublicAddress ? 'localhost' : manifestServerAddress;
     if (serverIp) {
-      await ensureServerInList(instanceDir, { name: 'BalumbaCraft', ip: serverIp }).catch(() => {});
+      await ensureServerInList(instanceDir, { name: 'Gearhaven', ip: serverIp }).catch(() => {});
     }
 
     if (signal.aborted) throw new Error('aborted');

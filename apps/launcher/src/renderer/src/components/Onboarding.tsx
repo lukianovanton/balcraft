@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import logo from '../assets/logo.png';
 
 interface Props {
   onDone: () => void;
@@ -40,11 +41,9 @@ export function Onboarding({ onDone, microsoftEnabled }: Props): JSX.Element {
   return (
     <div className="fixed inset-0 z-40 grid place-items-center bg-andesite-900 bg-gears p-8">
       <div className="panel w-full max-w-lg space-y-6 p-8 text-center">
-        <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-brass-500 text-3xl font-black text-andesite-900 shadow-glow">
-          B
-        </div>
+        <img src={logo} alt="" className="mx-auto h-16 w-16 rounded-2xl shadow-glow" />
         <div>
-          <h1 className="text-2xl font-black text-brass-50">Добро пожаловать в BalumbaCraft</h1>
+          <h1 className="text-2xl font-black text-brass-50">Добро пожаловать в Gearhaven</h1>
           <p className="mt-2 text-sm text-andesite-300">
             Приватная Create-сборка на NeoForge 1.21.1. Лаунчер сам поставит Java, Minecraft, моды
             и будет держать сборку в актуальном состоянии. Осталось выбрать имя.

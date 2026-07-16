@@ -28,11 +28,11 @@ export function PlayScreen({ state }: { state: LauncherStateHook }): JSX.Element
       <div className="relative flex-1 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-andesite-900/30 to-andesite-900/70" />
         <div className="relative flex h-full flex-col justify-end p-10">
-          <div className="mb-1 text-xs font-semibold uppercase tracking-[0.2em] text-copper-400">
+          <div className="mb-1 text-xs font-semibold uppercase tracking-[0.2em] text-brass-400">
             Приватная сборка
           </div>
-          <h1 className="text-5xl font-black tracking-tight text-brass-50 drop-shadow">
-            BalumbaCraft
+          <h1 className="text-6xl font-black tracking-tight text-brass-50 drop-shadow">
+            Gearhaven
           </h1>
           <p className="mt-2 max-w-lg text-sm text-andesite-400">
             Create-сборка на NeoForge 1.21.1. Лаунчер сам обновит моды до актуальной версии перед

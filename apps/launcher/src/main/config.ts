@@ -5,7 +5,7 @@
 export const APP_CONFIG = {
   /** Instance id used on disk. */
   instanceId: 'balumbacraft',
-  displayName: 'BalumbaCraft',
+  displayName: 'Gearhaven',
 
   minecraftVersion: '1.21.1',
   loader: 'neoforge' as const,

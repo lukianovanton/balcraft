@@ -1,6 +1,6 @@
-appId: com.balumbacraft.launcher
-productName: BalumbaCraft
-copyright: BalumbaCraft
+appId: com.gearhaven.launcher
+productName: Gearhaven
+copyright: Gearhaven
 # Pinned so electron-builder can resolve the version under npm workspaces
 # (electron is hoisted to the repo-root node_modules).
 electronVersion: 33.4.11
@@ -27,7 +27,7 @@ nsis:
   allowToChangeInstallationDirectory: true
   createDesktopShortcut: true
   createStartMenuShortcut: true
-  shortcutName: BalumbaCraft
+  shortcutName: Gearhaven
 # Self-update feed: GitHub Releases of the launcher repo. electron-updater in the
 # app reads this to auto-download launcher updates.
 publish:

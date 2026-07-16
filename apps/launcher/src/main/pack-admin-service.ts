@@ -275,7 +275,7 @@ export class PackAdminService {
 
     const manifest = buildManifestFromMaster(
       {
-        name: 'BalumbaCraft',
+        name: 'Gearhaven',
         version,
         minecraft: APP_CONFIG.minecraftVersion,
         loaderVersion: APP_CONFIG.neoforgeVersion,

@@ -1,4 +1,5 @@
 import type { ComponentType, SVGProps } from 'react';
+import logo from '../assets/logo.png';
 import type { Account } from '@balumba/core';
 import type { ServerStatus } from '../../../shared/ipc';
 import {
@@ -51,11 +52,9 @@ export function Sidebar({
   return (
     <aside className="flex w-60 flex-col border-r border-white/5 bg-andesite-900/70 backdrop-blur-md">
       <div className="flex items-center gap-3 px-5 pb-4 pt-6">
-        <div className="grid h-10 w-10 place-items-center rounded-xl bg-brass-500 text-xl font-black text-andesite-900 shadow-glow">
-          B
-        </div>
+        <img src={logo} alt="" className="h-10 w-10 rounded-xl" />
         <div className="leading-tight">
-          <div className="text-[15px] font-bold tracking-tight text-brass-50">BalumbaCraft</div>
+          <div className="text-[15px] font-bold tracking-tight text-brass-50">Gearhaven</div>
           <div className="text-[11px] text-andesite-400">Create · NeoForge 1.21.1</div>
         </div>
       </div>
