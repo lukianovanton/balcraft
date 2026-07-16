@@ -153,8 +153,8 @@ export function ServerScreen({ state }: { state: LauncherStateHook }): JSX.Eleme
                 onBlur={(e) => state.saveSettings({ serverMotd: e.target.value })}
               />
             </label>
-            <label className="col-span-2 text-xs text-andesite-400">
-              Публичный адрес (с дашборда Playit.gg)
+            <label className="col-span-4 text-xs text-andesite-400">
+              Публичный адрес для друзей (с дашборда Playit.gg) — вводит только админ
               <input
                 className="input mt-1 font-mono"
                 placeholder="например, balumba.craft.playit.gg"
@@ -162,6 +162,10 @@ export function ServerScreen({ state }: { state: LauncherStateHook }): JSX.Eleme
                 disabled={server.status !== 'stopped'}
                 onBlur={(e) => state.saveSettings({ serverPublicAddress: e.target.value.trim() })}
               />
+              <span className="mt-1 block text-[11px] text-andesite-500">
+                После ввода нажми «Сборка → Опубликовать» — адрес разошлётся всем, и сервер сам
+                появится в списке «Сетевая игра» у каждого. Друзьям вводить ничего не нужно.
+              </span>
             </label>
             <label className="flex items-end gap-2 text-xs text-andesite-300">
               <input
