@@ -103,6 +103,8 @@ export interface ServerState {
   status: ServerStatus;
   /** Public tunnel address for friends, if a tunnel is up. */
   publicAddress: string | null;
+  /** Playit.gg claim URL shown on first run (link the agent to an account). */
+  tunnelClaimUrl: string | null;
   players: string[];
   /** Whitelisted usernames. */
   whitelist: string[];

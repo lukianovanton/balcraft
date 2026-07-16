@@ -64,6 +64,40 @@ export function ServerScreen({ state }: { state: LauncherStateHook }): JSX.Eleme
         </div>
       </div>
 
+      {/* Prominent tunnel / address card */}
+      {server.status !== 'stopped' && (
+        <div className="panel flex items-center gap-4 p-4">
+          {server.publicAddress ? (
+            <>
+              <div className="text-xs uppercase tracking-wide text-andesite-400">Адрес для друзей</div>
+              <div className="selectable flex-1 font-mono text-lg text-brass-100">
+                {server.publicAddress}
+              </div>
+              <button
+                className="btn-primary"
+                onClick={() => navigator.clipboard.writeText(server.publicAddress!)}
+              >
+                Копировать
+              </button>
+            </>
+          ) : server.tunnelClaimUrl ? (
+            <>
+              <div className="flex-1 text-sm text-copper-400">
+                Первый запуск: привяжи туннель Playit.gg к аккаунту, чтобы получить адрес.
+              </div>
+              <a className="btn-primary" href={server.tunnelClaimUrl} target="_blank" rel="noreferrer">
+                Привязать туннель
+              </a>
+            </>
+          ) : (
+            <div className="flex items-center gap-2 text-sm text-andesite-300">
+              <span className="h-2 w-2 animate-pulse rounded-full bg-yellow-400" />
+              {server.status === 'running' ? 'Туннель запускается, адрес появится через пару секунд…' : 'Запуск сервера…'}
+            </div>
+          )}
+        </div>
+      )}
+
       {state.settings && (
         <details className="panel px-4 py-2 text-sm" open={server.status === 'stopped'}>
           <summary className="cursor-pointer select-none text-xs font-semibold uppercase tracking-wide text-andesite-400">

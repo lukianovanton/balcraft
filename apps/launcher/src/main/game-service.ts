@@ -5,7 +5,6 @@ import {
   ensureJavaRuntime,
   installVanilla,
   installNeoForge,
-  fetchManifest,
   syncPack,
   spawnGame,
   type Account,
@@ -14,8 +13,13 @@ import {
   type RunningGame,
   type VersionJson,
 } from '@balumba/core';
-import { APP_CONFIG, manifestUrl, isGithubConfigured } from './config.js';
-import { recordInstalledPackVersion, getPackStatus, type PackStatus } from './pack-status.js';
+import { APP_CONFIG, isGithubConfigured } from './config.js';
+import {
+  recordInstalledPackVersion,
+  getPackStatus,
+  fetchLatestManifest,
+  type PackStatus,
+} from './pack-status.js';
 import type { LaunchStage } from '../shared/ipc.js';
 import type { Store } from './store.js';
 import type { AuthService } from './auth-service.js';
@@ -101,7 +105,7 @@ export class GameService {
     if (isGithubConfigured(settings)) {
       try {
         this.report(report, 'syncing-pack');
-        const manifest = await fetchManifest(manifestUrl(settings), signal);
+        const manifest = await fetchLatestManifest(settings, signal);
         const result = await syncPack({
           manifest,
           instanceDir,

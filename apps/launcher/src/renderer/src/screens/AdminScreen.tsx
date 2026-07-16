@@ -16,6 +16,7 @@ export function AdminScreen({ state }: { state: LauncherStateHook }): JSX.Elemen
   const [busy, setBusy] = useState<string | null>(null);
   const [msg, setMsg] = useState<string | null>(null);
   const [publishing, setPublishing] = useState(false);
+  const [packFilter, setPackFilter] = useState('');
 
   const entryIds = new Set(entries.map((e) => e.projectId));
 
@@ -96,7 +97,9 @@ export function AdminScreen({ state }: { state: LauncherStateHook }): JSX.Elemen
     }
   }
 
-  const tabEntries = entries.filter((e) => e.type === tab);
+  const tabEntries = entries
+    .filter((e) => e.type === tab)
+    .filter((e) => e.title.toLowerCase().includes(packFilter.toLowerCase()));
 
   return (
     <div className="flex h-full flex-col p-6">
@@ -182,8 +185,16 @@ export function AdminScreen({ state }: { state: LauncherStateHook }): JSX.Elemen
 
         {/* Current pack */}
         <div className="panel flex flex-col overflow-hidden">
-          <div className="border-b border-andesite-700 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-andesite-400">
-            В сборке · {TABS.find((t) => t.key === tab)?.label} ({tabEntries.length})
+          <div className="flex items-center gap-2 border-b border-andesite-700 px-4 py-2">
+            <span className="text-xs font-semibold uppercase tracking-wide text-andesite-400">
+              В сборке ({tabEntries.length})
+            </span>
+            <input
+              className="input ml-auto h-7 max-w-[55%] py-1 text-xs"
+              placeholder="Фильтр установленных…"
+              value={packFilter}
+              onChange={(e) => setPackFilter(e.target.value)}
+            />
           </div>
           <div className="flex-1 space-y-1 overflow-y-auto p-2">
             {tabEntries.length === 0 ? (

@@ -1,8 +1,33 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { LauncherPaths, ensureParent, fetchManifest } from '@balumba/core';
-import { APP_CONFIG, isGithubConfigured, manifestUrl } from './config.js';
+import { LauncherPaths, ensureParent, fetchManifest, type PackManifest } from '@balumba/core';
+import { APP_CONFIG, effectiveRepo, isGithubConfigured, manifestUrl } from './config.js';
 import type { LauncherSettings } from '../shared/ipc.js';
+
+/**
+ * Read the latest pack manifest, avoiding the raw.githubusercontent CDN cache
+ * (which can serve a stale manifest for minutes after a publish). Uses the
+ * GitHub API contents endpoint for a fresh read; falls back to raw + cache-bust.
+ */
+export async function fetchLatestManifest(
+  settings: LauncherSettings,
+  signal?: AbortSignal,
+): Promise<PackManifest> {
+  const { owner, repo } = effectiveRepo(settings);
+  const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${APP_CONFIG.manifestFile}?ref=main`;
+  const headers: Record<string, string> = {
+    Accept: 'application/vnd.github.raw',
+    'User-Agent': 'BalumbaCraft-Launcher',
+  };
+  if (settings.githubToken) headers.Authorization = `Bearer ${settings.githubToken}`;
+  try {
+    const res = await fetch(apiUrl, { headers, signal });
+    if (res.ok) return JSON.parse(await res.text()) as PackManifest;
+  } catch {
+    /* fall through to raw */
+  }
+  return fetchManifest(`${manifestUrl(settings)}?t=${Date.now()}`, signal);
+}
 
 export interface PackStatus {
   /** Whether the pack repo is configured (else sync/updates are inert). */
@@ -48,7 +73,7 @@ export async function getPackStatus(
   }
   let latestVersion: string | null = null;
   try {
-    latestVersion = (await fetchManifest(manifestUrl(settings))).version;
+    latestVersion = (await fetchLatestManifest(settings)).version;
   } catch {
     latestVersion = null;
   }

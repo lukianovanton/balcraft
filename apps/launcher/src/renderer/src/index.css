@@ -13,8 +13,15 @@
   body {
     @apply bg-andesite-900 text-brass-50 antialiased;
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    user-select: none;
+    /* Text is selectable by default; only chrome (nav/buttons) opts out. */
+    user-select: text;
     overflow: hidden;
+  }
+
+  button,
+  nav,
+  summary {
+    user-select: none;
   }
 
   ::-webkit-scrollbar {

@@ -11,14 +11,14 @@ import {
   writeServerProperties,
   readWhitelist,
   writeWhitelist,
-  fetchManifest,
   syncPack,
   ensurePlayitAgent,
   PLAYIT_ADDRESS_RE,
   PLAYIT_CLAIM_RE,
 } from '@balumba/core';
 import type { ServerState, ServerStatus } from '../shared/ipc.js';
-import { APP_CONFIG, isGithubConfigured, manifestUrl } from './config.js';
+import { APP_CONFIG, isGithubConfigured } from './config.js';
+import { fetchLatestManifest } from './pack-status.js';
 import type { Store } from './store.js';
 
 const JAVA_MAJOR = 21;
@@ -34,6 +34,7 @@ export class ServerManager extends EventEmitter {
   private state: ServerState = {
     status: 'stopped',
     publicAddress: null,
+    tunnelClaimUrl: null,
     players: [],
     whitelist: [],
   };
@@ -101,7 +102,7 @@ export class ServerManager extends EventEmitter {
       if (isGithubConfigured(settings)) {
         this.log('[launcher] Синхронизация серверных модов…');
         try {
-          const manifest = await fetchManifest(manifestUrl(settings));
+          const manifest = await fetchLatestManifest(settings);
           const r = await syncPack({ manifest, instanceDir: this.serverDir, side: 'server' });
           this.log(`[sync] обновлено ${r.downloaded}, удалено ${r.removed}, актуально ${r.upToDate}`);
         } catch (err) {
@@ -147,7 +148,7 @@ export class ServerManager extends EventEmitter {
     this.log(`[launcher] Сервер остановлен (код ${code ?? 0}).`);
     this.proc = null;
     this.stopTunnel();
-    this.update({ status: 'stopped', players: [], publicAddress: null });
+    this.update({ status: 'stopped', players: [], publicAddress: null, tunnelClaimUrl: null });
   }
 
   async sendCommand(command: string): Promise<void> {
@@ -226,10 +227,13 @@ export class ServerManager extends EventEmitter {
         const s = d.toString();
         for (const line of s.split('\n')) {
           const claim = line.match(PLAYIT_CLAIM_RE);
-          if (claim) this.log(`[tunnel] Привяжи агент: ${claim[0]}`);
+          if (claim && claim[0] !== this.state.tunnelClaimUrl) {
+            this.update({ tunnelClaimUrl: claim[0] });
+            this.log(`[tunnel] Привяжи агент: ${claim[0]}`);
+          }
           const addr = line.match(PLAYIT_ADDRESS_RE);
           if (addr && addr[1] !== this.state.publicAddress) {
-            this.update({ publicAddress: addr[1] });
+            this.update({ publicAddress: addr[1], tunnelClaimUrl: null });
             this.log(`[tunnel] Адрес для друзей: ${addr[1]}`);
           }
         }
