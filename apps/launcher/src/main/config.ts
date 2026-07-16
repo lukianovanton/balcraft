@@ -21,7 +21,7 @@ export const APP_CONFIG = {
    * these. Create this PUBLIC repo before publishing.
    */
   defaultGithubOwner: 'lukianovanton',
-  defaultGithubRepo: 'balcraft-pack',
+  defaultGithubRepo: 'balcraft',
 
   /** Default Azure AD application id (can be overridden in settings). */
   defaultAzureClientId: '',
