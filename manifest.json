@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "name": "Gearhaven",
-  "version": "2026.07.16-11",
+  "version": "2026.07.16-12",
   "minecraft": "1.21.1",
   "loader": "neoforge",
   "loaderVersion": "21.1.232",
@@ -837,10 +837,10 @@
     },
     {
       "path": "mods/gearhaven-chicken-0.1.0.jar",
-      "sha1": "f08f8d236e12d2349beb33cfe3b753922ab86dfa",
-      "size": 23555,
+      "sha1": "4f111433cadd7a81f045c790d338d0717db29eb2",
+      "size": 23838,
       "url": [
-        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/f08f8d236e12d2349beb33cfe3b753922ab86dfa.jar"
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/4f111433cadd7a81f045c790d338d0717db29eb2.jar"
       ],
       "side": "both"
     },
@@ -1597,5 +1597,5 @@
     "shaderpacks"
   ],
   "serverAddress": "134.249.137.220",
-  "generatedAt": "2026-07-16T13:38:20.857Z"
+  "generatedAt": "2026-07-16T13:53:44.146Z"
 }
