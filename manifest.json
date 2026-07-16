@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "name": "BalumbaCraft",
-  "version": "2026.07.16-1",
+  "version": "2026.07.16-2",
   "minecraft": "1.21.1",
   "loader": "neoforge",
   "loaderVersion": "21.1.232",
@@ -58,6 +58,15 @@
       "size": 1143659,
       "url": [
         "https://cdn.modrinth.com/data/6iTJugQR/versions/8xf6Wpxs/amendments-1.21-2.0.15-neoforge.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/appliedenergistics2-19.2.17.jar",
+      "sha1": "49c18d6a4af487957d7e5a6ad5dcbf71090b8e14",
+      "size": 8230896,
+      "url": [
+        "https://cdn.modrinth.com/data/XxWD5pD3/versions/kfyIqgJ6/appliedenergistics2-19.2.17.jar"
       ],
       "side": "both"
     },
@@ -701,6 +710,15 @@
       "side": "both"
     },
     {
+      "path": "mods/easy-villagers-neoforge-1.21.1-1.1.42.jar",
+      "sha1": "5aed99e98bd9cb5a4d3e1ab84b0aa7f590b3a17f",
+      "size": 456699,
+      "url": [
+        "https://cdn.modrinth.com/data/Kaov2qgi/versions/uXQvvtUt/easy-villagers-neoforge-1.21.1-1.1.42.jar"
+      ],
+      "side": "both"
+    },
+    {
       "path": "mods/enchdesc-neoforge-1.21.1-21.1.9.jar",
       "sha1": "e4fa515c5deab3165f250f2a1297ac836d496064",
       "size": 81847,
@@ -1057,6 +1075,15 @@
       "size": 174972,
       "url": [
         "https://cdn.modrinth.com/data/tagwiZkJ/versions/VEburL70/polymorph-neoforge-1.1.0%2B1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/poopsky-1.21.1-2.0.1-hotfix.jar",
+      "sha1": "4361fbb43852f7d510a6404626752fabca7b58a0",
+      "size": 7613892,
+      "url": [
+        "https://cdn.modrinth.com/data/78EYx2mh/versions/COJL1EXj/poopsky-1.21.1-2.0.1-hotfix.jar"
       ],
       "side": "both"
     },
@@ -1487,5 +1514,5 @@
   "managedRoots": [
     "mods"
   ],
-  "generatedAt": "2026-07-16T06:55:51.095Z"
+  "generatedAt": "2026-07-16T07:20:29.400Z"
 }
