@@ -133,11 +133,12 @@ export class GameService {
       console.warn('[sync] GitHub-репозиторий сборки не настроен — синхронизация пропущена.');
     }
 
-    // For the admin (or offline), also honor a locally-set public address.
+    // The host (this machine runs the server) should join locally to avoid the
+    // tunnel round-trip latency — add a localhost entry for them.
     if (settings.serverPublicAddress) {
       await ensureServerInList(instanceDir, {
-        name: 'BalumbaCraft',
-        ip: settings.serverPublicAddress,
+        name: 'BalumbaCraft (локальный)',
+        ip: 'localhost',
       }).catch(() => {});
     }
 
