@@ -1,0 +1,1491 @@
+{
+  "formatVersion": 1,
+  "name": "BalumbaCraft",
+  "version": "2026.07.16-1",
+  "minecraft": "1.21.1",
+  "loader": "neoforge",
+  "loaderVersion": "21.1.232",
+  "recommendedRamMb": 6144,
+  "files": [
+    {
+      "path": "mods/addictives-3.1.1.jar",
+      "sha1": "a39c18f5a3154b6dfe7a606cb7f1093e5e5528c3",
+      "size": 1321822,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/a39c18f5a3154b6dfe7a606cb7f1093e5e5528c3.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/AdvancementPlaques-1.21.1-neoforge-1.6.8.jar",
+      "sha1": "829d33e71b30e9158d772f5963bb6020f6026d78",
+      "size": 195730,
+      "url": [
+        "https://cdn.modrinth.com/data/9NM0dXub/versions/OWylG33I/AdvancementPlaques-1.21.1-neoforge-1.6.8.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/aerocopycats-1.1.1.jar",
+      "sha1": "3a93862421d0a8cdae1e3a3d7f0d4bd01e049007",
+      "size": 14702,
+      "url": [
+        "https://cdn.modrinth.com/data/wjpmYU1u/versions/wsXjRa7l/aerocopycats-1.1.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/alltheleaks-1.1.8+1.21.1-neoforge.jar",
+      "sha1": "f91b11a1cfa718b9291fbe7b80356f17a572577e",
+      "size": 536828,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/f91b11a1cfa718b9291fbe7b80356f17a572577e.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/AmbientSounds_NEOFORGE_v6.3.7_mc1.21.1.jar",
+      "sha1": "aeb8c151f30ea96a660c96366fe9c2972adaeb1b",
+      "size": 84811434,
+      "url": [
+        "https://cdn.modrinth.com/data/fM515JnW/versions/TtdB6dJZ/AmbientSounds_NEOFORGE_v6.3.7_mc1.21.1.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/amendments-1.21-2.0.15-neoforge.jar",
+      "sha1": "00056f29646f3bf86116b281c2362c0dabdb4533",
+      "size": 1143659,
+      "url": [
+        "https://cdn.modrinth.com/data/6iTJugQR/versions/8xf6Wpxs/amendments-1.21-2.0.15-neoforge.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/architectury-13.0.8-neoforge.jar",
+      "sha1": "6ca11d3cc136bf69bb8f4d56982481eb85b5100b",
+      "size": 584004,
+      "url": [
+        "https://cdn.modrinth.com/data/lhGA9TYQ/versions/ZxYGwlk0/architectury-13.0.8-neoforge.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/attributefix-neoforge-1.21.1-21.1.3.jar",
+      "sha1": "7aae849f6d2a6cb1368227407ea5deb552e100ba",
+      "size": 19809,
+      "url": [
+        "https://cdn.modrinth.com/data/lOOpEntO/versions/TyNITLDY/attributefix-neoforge-1.21.1-21.1.3.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/baguettelib-1.21.1-NeoForge-2.0.3.jar",
+      "sha1": "e01709c880b0602b7a306201a25866e76c44f5c0",
+      "size": 74380,
+      "url": [
+        "https://cdn.modrinth.com/data/OfKzpbRU/versions/guIAbyuH/baguettelib-1.21.1-NeoForge-2.0.3.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/bellsandwhistles-0.4.7-1.21.1.jar",
+      "sha1": "85944080f8bd47dad64a8193a70662cd9ddbb200",
+      "size": 193619,
+      "url": [
+        "https://cdn.modrinth.com/data/gJ5afkVv/versions/w0mifib8/bellsandwhistles-0.4.7-1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/BetterAdvancements-NeoForge-1.21.1-0.4.3.21.jar",
+      "sha1": "870521cfaa1a4cb6c830e2409e8b9e4cf179aff2",
+      "size": 98641,
+      "url": [
+        "https://cdn.modrinth.com/data/Q2OqKxDG/versions/FjTYILOi/BetterAdvancements-NeoForge-1.21.1-0.4.3.21.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/betterfpsdist-1.21-6.0.jar",
+      "sha1": "5377aae3a0f0eb65aa5dceca4985f53480a73db5",
+      "size": 22742,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/5377aae3a0f0eb65aa5dceca4985f53480a73db5.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/BiomesOPlenty-neoforge-1.21.1-21.1.0.13.jar",
+      "sha1": "a0dec78a9c1bb7e0167e5326aaf3c58a94f3aa86",
+      "size": 22338081,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/a0dec78a9c1bb7e0167e5326aaf3c58a94f3aa86.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/bits_n_bobs-0.0.44.jar",
+      "sha1": "2d577eb7e47b860fc32e4ebd33405715252c5072",
+      "size": 1613264,
+      "url": [
+        "https://cdn.modrinth.com/data/T8bvmqVZ/versions/XKDQlGJW/bits_n_bobs-0.0.44.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/bobberdetector-neoforge1.21.1-1.0.3.jar",
+      "sha1": "71b642ba5551839eb0fe33a88f0edaa77649f3a4",
+      "size": 239300,
+      "url": [
+        "https://cdn.modrinth.com/data/GRznXwf3/versions/wZOzsLr6/bobberdetector-neoforge1.21.1-1.0.3.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/bookshelf-neoforge-1.21.1-21.1.81.jar",
+      "sha1": "efc4cda6da4dd879f24d057ed0a6413764c9ba40",
+      "size": 328813,
+      "url": [
+        "https://cdn.modrinth.com/data/uy4Cnpcm/versions/1sdJl7J1/bookshelf-neoforge-1.21.1-21.1.81.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/caelus-neoforge-7.0.1+1.21.1.jar",
+      "sha1": "e4c2e1af4e3082d68f7df75f7c8ce30116d71515",
+      "size": 50235,
+      "url": [
+        "https://cdn.modrinth.com/data/40FYwb4z/versions/KsfI4QsR/caelus-neoforge-7.0.1%2B1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/cfwinfo-1.6.0.jar",
+      "sha1": "fbb4322dfadc690939e5192ca3a9f6c140827cdb",
+      "size": 29922,
+      "url": [
+        "https://cdn.modrinth.com/data/csA0cpEX/versions/YAxh0D9R/cfwinfo-1.6.0.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/chunksending-1.21-2.9.jar",
+      "sha1": "636a121a3252028bb0ec14a3f39f9bbf723ddacd",
+      "size": 12100,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/636a121a3252028bb0ec14a3f39f9bbf723ddacd.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/cloth-config-15.0.140-neoforge.jar",
+      "sha1": "c3e5733ba4503b102589a026000fd5ce0212f6f2",
+      "size": 1163890,
+      "url": [
+        "https://cdn.modrinth.com/data/9s6osm5g/versions/izKINKFg/cloth-config-15.0.140-neoforge.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/Clumps-neoforge-1.21.1-19.0.0.1.jar",
+      "sha1": "fa2576297c7bd12b28aa7070e8141792bd66da4c",
+      "size": 18382,
+      "url": [
+        "https://cdn.modrinth.com/data/Wnxd13zP/versions/jo7lDoK4/Clumps-neoforge-1.21.1-19.0.0.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/cmpackagecouriers-neoforge-2.2.4.jar",
+      "sha1": "5ef2d240c8fdc329f2b911b9c847dfd33a18e28b",
+      "size": 282177,
+      "url": [
+        "https://cdn.modrinth.com/data/GRqrodjM/versions/9TvwOjDb/cmpackagecouriers-neoforge-2.2.4.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/cmparallelpipes-neoforge-2.0.2.jar",
+      "sha1": "8d6c6653ef9a3b373132fb4e42a7b007111c2998",
+      "size": 28606,
+      "url": [
+        "https://cdn.modrinth.com/data/5jfUeix5/versions/aYrPugrv/cmparallelpipes-neoforge-2.0.2.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/connectivity-1.21.1-7.6.jar",
+      "sha1": "6adebe84f745dec8fa33bc3982383bc1cc24d49e",
+      "size": 114165,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/6adebe84f745dec8fa33bc3982383bc1cc24d49e.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/copycats-3.0.4+mc.1.21.1-neoforge.jar",
+      "sha1": "6a11d5806bcf521e08faba1ee6ef5f31af55ca0f",
+      "size": 1791747,
+      "url": [
+        "https://cdn.modrinth.com/data/UT2M39wf/versions/kecZ0sl7/copycats-3.0.4%2Bmc.1.21.1-neoforge.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/coroutil-neoforge-1.21.0-1.3.9.jar",
+      "sha1": "0f5a6309ce8394721b97740e6f3e45665f13b8de",
+      "size": 65716,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/0f5a6309ce8394721b97740e6f3e45665f13b8de.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/corpse-neoforge-1.21.1-1.1.13.jar",
+      "sha1": "4f42091ef36e98e99c2f28a273ded960c0ac08bd",
+      "size": 253695,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/4f42091ef36e98e99c2f28a273ded960c0ac08bd.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/corpsecurioscompat-1.21.1-NeoForge-4.0.1.jar",
+      "sha1": "821d83bb4414e93721563e9ed7670976bc2afab1",
+      "size": 23659,
+      "url": [
+        "https://cdn.modrinth.com/data/pJGcKPh1/versions/Ix4uAd2i/corpsecurioscompat-1.21.1-NeoForge-4.0.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/Create Encased-1.21.1-1.8.1.jar",
+      "sha1": "690642ed6b4d185a742055ffb6279e58b4b3ad48",
+      "size": 2574821,
+      "url": [
+        "https://cdn.modrinth.com/data/hSSqdyU1/versions/5ZrKxCun/Create%20Encased-1.21.1-1.8.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create_aquatic_ambitions-1.21.1-2.0.2.jar",
+      "sha1": "39945d25188f3cb8feb74d09b78d7f7f7a74aaa7",
+      "size": 1041906,
+      "url": [
+        "https://cdn.modrinth.com/data/9SyaPzp7/versions/cgOQIktB/create_aquatic_ambitions-1.21.1-2.0.2.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create_bb-1.0.7-1.21.1-Neoforge.jar",
+      "sha1": "7a6eae4bc851786c6519c8cac956b406cb71a8eb",
+      "size": 2613213,
+      "url": [
+        "https://cdn.modrinth.com/data/j4ARnQwY/versions/rUu97B0K/create_bb-1.0.7-1.21.1-Neoforge.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create_connected-1.1.16-mc1.21.1.jar",
+      "sha1": "11fafde06b25b872f8d5c4e927516188b831cf1a",
+      "size": 6608605,
+      "url": [
+        "https://cdn.modrinth.com/data/Vg5TIO6d/versions/EHyCRpCV/create_connected-1.1.16-mc1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create_easy_structures-0.2a-neoforge-1.21.1.jar",
+      "sha1": "5878bdf8facd954cce7da3a55ab1d5274fe4ef6d",
+      "size": 469490,
+      "url": [
+        "https://cdn.modrinth.com/data/z69Pxatv/versions/ECkmsrG4/create_easy_structures-0.2a-neoforge-1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create_furnitures-1.1.2-neoforge-1.21.1.jar",
+      "sha1": "0c10c3a0aac7b095b295d89aca6f76399d9e035f",
+      "size": 514394,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/0c10c3a0aac7b095b295d89aca6f76399d9e035f.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create_hypertube-0.4.0-COMPAT-NEOFORGE.jar",
+      "sha1": "adbd8f617928af37b286cadf7b45707e2498f25a",
+      "size": 423111,
+      "url": [
+        "https://cdn.modrinth.com/data/ATDdrG1y/versions/SdEofplJ/create_hypertube-0.4.0-COMPAT-NEOFORGE.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create_jetpack_curios-1.2.0-neoforge-1.21.1.jar",
+      "sha1": "5146fc22a9385de8103b5ca0151f80dcd0f03978",
+      "size": 421892,
+      "url": [
+        "https://cdn.modrinth.com/data/BBhCMftF/versions/JEmLrfe6/create_jetpack_curios-1.2.0-neoforge-1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create_jetpack-forge-5.1.2.jar",
+      "sha1": "70b9f0f5464abea074416f10ab7745a6e732f9ba",
+      "size": 481239,
+      "url": [
+        "https://cdn.modrinth.com/data/UbFnAd4l/versions/4Ndp4d21/create_jetpack-forge-5.1.2.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create_mob_spawners-1.0.0.jar",
+      "sha1": "43f6627a7670c0053f76127eac51d0ff2985ce9e",
+      "size": 252732,
+      "url": [
+        "https://cdn.modrinth.com/data/bklciXlt/versions/vC9TW2kX/create_mob_spawners-1.0.0.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create_mobile_packages-1.21.1-0.7.6.jar",
+      "sha1": "69f0fa17e88b0b9f6a372df478811c71c9b3ef2f",
+      "size": 546326,
+      "url": [
+        "https://cdn.modrinth.com/data/1vXRfEHZ/versions/2rAbaFXC/create_mobile_packages-1.21.1-0.7.6.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create_oxidized-0.1.3.jar",
+      "sha1": "fe93a9575174b4993cf3fb5f2aed4dd4431096ee",
+      "size": 121297,
+      "url": [
+        "https://cdn.modrinth.com/data/X9kjRZeX/versions/z8PFRVBs/create_oxidized-0.1.3.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create_power_loader-2.0.4-mc1.21.1.jar",
+      "sha1": "05d56062e6998a2897b10a0ea5e66685860f336e",
+      "size": 439565,
+      "url": [
+        "https://cdn.modrinth.com/data/wPQ6GgFE/versions/MX6Eqw1t/create_power_loader-2.0.4-mc1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create_structures_arise NeoForge 1.21.1 -175.48.47.jar",
+      "sha1": "3947caefe10538f70475e15af80425787498c322",
+      "size": 1852594,
+      "url": [
+        "https://cdn.modrinth.com/data/9enMEvoc/versions/UjUbuTq1/create_structures_arise%20NeoForge%201.21.1%20-175.48.47.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create_things_and_misc-4.1.0-neoforge-1.21.1.jar",
+      "sha1": "4b6d2bef5a99cf15667c0b19dcb5dc514b5f6d90",
+      "size": 1032486,
+      "url": [
+        "https://cdn.modrinth.com/data/uWrs8XlB/versions/ldIAxQ6C/create_things_and_misc-4.1.0-neoforge-1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create_train_parts-0.4.0-1.21.1-6.0.9-216.jar",
+      "sha1": "545cffbaf747fe9da8429df19560a3dde408d572",
+      "size": 3505210,
+      "url": [
+        "https://cdn.modrinth.com/data/h0bu4oDk/versions/UwPDQjGx/create_train_parts-0.4.0-1.21.1-6.0.9-216.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create_ultimate_factory-2.2.4-neoforge-1.21.1.jar",
+      "sha1": "ed0ff71df9bfe3b66b97c51a2834031084300a65",
+      "size": 235239,
+      "url": [
+        "https://cdn.modrinth.com/data/N9QToVpw/versions/AEMRNsNS/create_ultimate_factory-2.2.4-neoforge-1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create_winery-2.0.2-neoforge-1.21.1.jar",
+      "sha1": "f6c40e927550c68c3091376d7279aa97c23cd2c2",
+      "size": 513007,
+      "url": [
+        "https://cdn.modrinth.com/data/zBuk6egG/versions/vTUNDdDM/create_winery-2.0.2-neoforge-1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create-1.21.1-6.0.10.jar",
+      "sha1": "0e97e49837bed766e6f28a4c95b04885d6acc353",
+      "size": 19123767,
+      "url": [
+        "https://cdn.modrinth.com/data/LNytGWDc/versions/UjX6dr61/create-1.21.1-6.0.10.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create-aeronautics-bundled-1.21.1-1.2.1.jar",
+      "sha1": "fdf1ae69e8b6437e0196b3a35dd2325aa904aba9",
+      "size": 33030286,
+      "url": [
+        "https://cdn.modrinth.com/data/oWaK0Q19/versions/YhZLrAFC/create-aeronautics-bundled-1.21.1-1.2.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create-central-kitchen-2.4.0.jar",
+      "sha1": "6a91f304a1e023e8b9b34ccf95f19dd74c3edd55",
+      "size": 342464,
+      "url": [
+        "https://cdn.modrinth.com/data/btq68HMO/versions/TUJIHmUh/create-central-kitchen-2.4.0.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create-enchantment-industry-2.3.1.jar",
+      "sha1": "e9a57b322459bda9905e4287d2582ad600909b11",
+      "size": 684729,
+      "url": [
+        "https://cdn.modrinth.com/data/JWGBpFUP/versions/zjSKnkVT/create-enchantment-industry-2.3.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create-integrated-farming-1.2.2.jar",
+      "sha1": "e6fb605b92f59fd91f57016d5666f618db740b1a",
+      "size": 408059,
+      "url": [
+        "https://cdn.modrinth.com/data/9k1pAsfR/versions/DKe4Owf4/create-integrated-farming-1.2.2.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create-new-age-1.1.7c+neoforge-mc1.21.1.jar",
+      "sha1": "ee352726afeaf935098471f12102da4b2a6fe18e",
+      "size": 1590363,
+      "url": [
+        "https://cdn.modrinth.com/data/FTeXqI9v/versions/eQ9rbApE/create-new-age-1.1.7c%2Bneoforge-mc1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create-stuff-additions1.21.1_v2.1.3.jar",
+      "sha1": "d0af683c92f8c1e9f5f3fb0249fa91ec76982b44",
+      "size": 1325365,
+      "url": [
+        "https://cdn.modrinth.com/data/aq9qUUQG/versions/2RuRqjfk/create-stuff-additions1.21.1_v2.1.3.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/createaddition-1.5.11.jar",
+      "sha1": "455dc8907be32193a89a34b98a1e24a08e8b65a1",
+      "size": 1623047,
+      "url": [
+        "https://cdn.modrinth.com/data/kU1G12Nn/versions/3ptU8Nq9/createaddition-1.5.11.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/createbetterfps-1.21.1-1.1.4.jar",
+      "sha1": "c594e20659b73a67bd0b0c2de45b29b78a2eb160",
+      "size": 26547,
+      "url": [
+        "https://cdn.modrinth.com/data/lMYIHZNH/versions/QWqEdWHy/createbetterfps-1.21.1-1.1.4.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/createbigcannons-5.11.3+mc.1.21.1.jar",
+      "sha1": "8b61fa850e260bdeb5d360576123f98c260afa50",
+      "size": 3715787,
+      "url": [
+        "https://cdn.modrinth.com/data/GWp4jCJj/versions/bsGaXKEd/createbigcannons-5.11.3%2Bmc.1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/createcobblestone-1.4.9+neoforge-1.21.1-130.jar",
+      "sha1": "81e7ce19674f53d1649c3ddf5aa7039c902beece",
+      "size": 572645,
+      "url": [
+        "https://cdn.modrinth.com/data/ihpnEd80/versions/LEOroMJx/createcobblestone-1.4.9%2Bneoforge-1.21.1-130.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/createdeco-2.1.3.jar",
+      "sha1": "93d9eff58b46c6953e907d071e6be4e3ce07be38",
+      "size": 3328498,
+      "url": [
+        "https://cdn.modrinth.com/data/sMvUb4Rb/versions/qrcMVoBD/createdeco-2.1.3.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/CreateDragonsPlus-1.10.1.jar",
+      "sha1": "0759898cc7ca22ece49e7d7a210db8becfd79cdf",
+      "size": 759631,
+      "url": [
+        "https://cdn.modrinth.com/data/dzb1a5WV/versions/r0TIh2nX/CreateDragonsPlus-1.10.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/createendergateway-1.1.1.jar",
+      "sha1": "c631169b2e5fb67324d58d96601b749e84eb7187",
+      "size": 409078,
+      "url": [
+        "https://cdn.modrinth.com/data/ztTgIHAc/versions/VfxSTFHt/createendergateway-1.1.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/createfood-neoforge-1.21.1-2.4.0.jar",
+      "sha1": "ac5a9dd4c698342347d2ecffb3052df69bc53185",
+      "size": 8431301,
+      "url": [
+        "https://cdn.modrinth.com/data/4HnO3el1/versions/9kslwM0m/createfood-neoforge-1.21.1-2.4.0.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/createframed-1.21.1-1.7.3.jar",
+      "sha1": "fc4081b062cdbd84f89cefdaa7cdf0806001630a",
+      "size": 1661342,
+      "url": [
+        "https://cdn.modrinth.com/data/15fFZ3f4/versions/1BtGyIVR/createframed-1.21.1-1.7.3.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/creategoggles-1.21.1-6.1.1-[NEOFORGE].jar",
+      "sha1": "e0285c31a2d2501439264c33c965409c422cd5b1",
+      "size": 180932,
+      "url": [
+        "https://cdn.modrinth.com/data/L1RT5SJc/versions/Co24W2FL/creategoggles-1.21.1-6.1.1-%5BNEOFORGE%5D.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/CreateOPlenty-NeoForge-Create+6.0.7-3.0.jar",
+      "sha1": "9c636f52e9354fdccc0b53201c22dfb5887f0589",
+      "size": 45837,
+      "url": [
+        "https://cdn.modrinth.com/data/HgWaxodv/versions/k7AAVyW3/CreateOPlenty-NeoForge-Create%2B6.0.7-3.0.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/createoreexcavation-1.21-1.6.8.jar",
+      "sha1": "9a76b86ec7470d4bd7332f22d6e50a3693098c10",
+      "size": 476990,
+      "url": [
+        "https://cdn.modrinth.com/data/ResbpANg/versions/tivxiPTo/createoreexcavation-1.21-1.6.8.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/createornithopterglider-1.0.3-1.21.1.jar",
+      "sha1": "d28f2eeeb3399606d89f0c45409497f770dd5be5",
+      "size": 724735,
+      "url": [
+        "https://cdn.modrinth.com/data/A30Sq5Gt/versions/6XWxygAb/createornithopterglider-1.0.3-1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/createpropulsion-1.1.4.jar",
+      "sha1": "ab3a032dc6d3ccddeb9b5423ae01c3e34b2ee26e",
+      "size": 1196735,
+      "url": [
+        "https://cdn.modrinth.com/data/ApkoHNO9/versions/hTnJ29I0/createpropulsion-1.1.4.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/CreativeCore_NEOFORGE_v2.13.38_mc1.21.1.jar",
+      "sha1": "c3f1aa493ce0d3d60ba76e2b2d6b1dd65f60bde6",
+      "size": 1216443,
+      "url": [
+        "https://cdn.modrinth.com/data/OsZiaDHq/versions/ObUu8hxJ/CreativeCore_NEOFORGE_v2.13.38_mc1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/cristellib-neoforge-1.21.1-3.0.3.jar",
+      "sha1": "8e61459df2c76caa19d3f1e218522389ad812f6c",
+      "size": 539899,
+      "url": [
+        "https://cdn.modrinth.com/data/cl223EMc/versions/JiCAbUWP/cristellib-neoforge-1.21.1-3.0.3.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/cupboard-1.21-3.5.jar",
+      "sha1": "e5f55c8f9d172048fe6f8b919cda1dbe3cbfbc70",
+      "size": 26659,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/e5f55c8f9d172048fe6f8b919cda1dbe3cbfbc70.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/curios-neoforge-9.5.1+1.21.1.jar",
+      "sha1": "418fcd42e3a7844c9bdc71c9b6401fdb3894e0c4",
+      "size": 410690,
+      "url": [
+        "https://cdn.modrinth.com/data/vvuO3ImH/versions/yohfFbgD/curios-neoforge-9.5.1%2B1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/Design-n-Decor-1.21.1-2.1.0.jar",
+      "sha1": "6ff962a9c2e9cc9abdc6de0b01f834839ce7fed1",
+      "size": 3264862,
+      "url": [
+        "https://cdn.modrinth.com/data/x49wilh8/versions/m6PCLHcp/Design-n-Decor-1.21.1-2.1.0.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/DistantHorizons-3.0.3-b-1.21.1-fabric-neoforge.jar",
+      "sha1": "bc865b11c94581949384b6d5820b58aee8b7273c",
+      "size": 30113661,
+      "url": [
+        "https://cdn.modrinth.com/data/uCdwusMi/versions/oYXIfeus/DistantHorizons-3.0.3-b-1.21.1-fabric-neoforge.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/DnDesires-1.21.1-2.3a-BETA.jar",
+      "sha1": "72635119b4bcc49b050c50d6cbb1abb02bb3982a",
+      "size": 1249099,
+      "url": [
+        "https://cdn.modrinth.com/data/JmybsfWs/versions/bqMxf6Ua/DnDesires-1.21.1-2.3a-BETA.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/do_a_barrel_roll-neoforge-3.7.3+1.21.jar",
+      "sha1": "6a3cc7dc17fb701087a9705b06d75d9bb5f09065",
+      "size": 465787,
+      "url": [
+        "https://cdn.modrinth.com/data/6FtRfnLg/versions/Zj604q5O/do_a_barrel_roll-neoforge-3.7.3%2B1.21.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/dragonlib-neoforge-1.21.1-beta-3.0.26.jar",
+      "sha1": "df416137bae1b7205965c1a47b7f466da4564fd6",
+      "size": 2098083,
+      "url": [
+        "https://cdn.modrinth.com/data/sbIsGaOV/versions/6bSNB0Np/dragonlib-neoforge-1.21.1-beta-3.0.26.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/drill_drain-1.0.13.jar",
+      "sha1": "1a3ce81fde7b02072bdbb1b965ff14e82017ceb2",
+      "size": 143244,
+      "url": [
+        "https://cdn.modrinth.com/data/DRKSn9G8/versions/HCsWT6mL/drill_drain-1.0.13.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/enchdesc-neoforge-1.21.1-21.1.9.jar",
+      "sha1": "e4fa515c5deab3165f250f2a1297ac836d496064",
+      "size": 81847,
+      "url": [
+        "https://cdn.modrinth.com/data/UVtY3ZAC/versions/zfAkJn0r/enchdesc-neoforge-1.21.1-21.1.9.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/entityculling-neoforge-1.10.1-mc1.21.1.jar",
+      "sha1": "68759da313caf8990bcd5d961bc691fa85fa3f0e",
+      "size": 1578350,
+      "url": [
+        "https://cdn.modrinth.com/data/NNAgCjsB/versions/LrKSuU8e/entityculling-neoforge-1.10.1-mc1.21.1.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/Explorify v1.6.5.mod.jar",
+      "sha1": "5fb28be29200a41b034e423d87823eb19ad651cd",
+      "size": 767884,
+      "url": [
+        "https://cdn.modrinth.com/data/HSfsxuTo/versions/CuBdAr31/Explorify%20v1.6.5.mod.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/extra_create_recipes_1.21.1_v1.jar",
+      "sha1": "58552805ec6e6ab5ea1069fa7fba676d18006470",
+      "size": 2527,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/58552805ec6e6ab5ea1069fa7fba676d18006470.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/FarmersDelight-1.21.1-1.3.2.jar",
+      "sha1": "bf7e7dede99e832de20e191b1f6c11f7a9b9a622",
+      "size": 3163042,
+      "url": [
+        "https://cdn.modrinth.com/data/R2OftAxM/versions/GbNuOZ4S/FarmersDelight-1.21.1-1.3.2.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/fastasyncworldsave-1.21-2.6.jar",
+      "sha1": "87e019715314631f2c8288cf7c73a52a61b2d61b",
+      "size": 11050,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/87e019715314631f2c8288cf7c73a52a61b2d61b.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/ferritecore-7.0.3-neoforge.jar",
+      "sha1": "9563692efb708b6b568df27a01ec52f6311928ef",
+      "size": 121559,
+      "url": [
+        "https://cdn.modrinth.com/data/uXXizFIs/versions/x7kQWVju/ferritecore-7.0.3-neoforge.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/forgematica-0.4.1+mc1.21.1.jar",
+      "sha1": "5ef9d8fd67791217a10f3243ed66764e254cd470",
+      "size": 1383228,
+      "url": [
+        "https://cdn.modrinth.com/data/dCKRaeBC/versions/bNQ9lJbg/forgematica-0.4.1%2Bmc1.21.1.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/forgified-fabric-api-0.116.7+2.2.4+1.21.1.jar",
+      "sha1": "c0267082a59e166f47c3c64ba605faa778a29480",
+      "size": 5569717,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/c0267082a59e166f47c3c64ba605faa778a29480.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/fusion-1.2.12-neoforge-mc1.21.1.jar",
+      "sha1": "d86f641b67d4b01d99da8424ba2a3edc0e6690b6",
+      "size": 532912,
+      "url": [
+        "https://cdn.modrinth.com/data/p19vrgc2/versions/h2GrA0Ku/fusion-1.2.12-neoforge-mc1.21.1.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/geckolib-neoforge-1.21.1-4.8.4.jar",
+      "sha1": "eb854c8ec53ef922a5f3877a1aa4c1ce1352e0ce",
+      "size": 622582,
+      "url": [
+        "https://cdn.modrinth.com/data/8BmcQJ2H/versions/gFmrC8Ru/geckolib-neoforge-1.21.1-4.8.4.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/GlitchCore-neoforge-1.21.1-2.1.0.0.jar",
+      "sha1": "8bce11b0b5233146051bb7b7a227247e03fe88b2",
+      "size": 90918,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/8bce11b0b5233146051bb7b7a227247e03fe88b2.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/GnKinetics-1.21.1-1.0m.jar",
+      "sha1": "15cc60c8864ac8b5329723a55a97a548980611de",
+      "size": 560814,
+      "url": [
+        "https://cdn.modrinth.com/data/gEWECBVL/versions/qr9hMBnj/GnKinetics-1.21.1-1.0m.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/gpumemleakfix-1.21-1.8.jar",
+      "sha1": "1894d2f0dd0c275aea0f1a6265ebd5715569c208",
+      "size": 6574,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/1894d2f0dd0c275aea0f1a6265ebd5715569c208.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/handcrafted-neoforge-1.21.1-4.0.3.jar",
+      "sha1": "8ecd27f1d66f9b742cfae3c8ffa773765f574b52",
+      "size": 7132842,
+      "url": [
+        "https://cdn.modrinth.com/data/pJmCFF0p/versions/JfqnpP2Z/handcrafted-neoforge-1.21.1-4.0.3.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/i_architecture-0.1.1b.jar",
+      "sha1": "300de76d253d2491bcca584190003fc6c93327c0",
+      "size": 1350779,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/300de76d253d2491bcca584190003fc6c93327c0.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/Iceberg-1.21.1-neoforge-1.3.2.jar",
+      "sha1": "f6014d198be9503573cd9cb41cc789d282768ad8",
+      "size": 213853,
+      "url": [
+        "https://cdn.modrinth.com/data/5faXoLqX/versions/IMssx9du/Iceberg-1.21.1-neoforge-1.3.2.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/ImmediatelyFast-NeoForge-1.6.10+1.21.1.jar",
+      "sha1": "f1f5cccd7cb59d875f44566b2e557ccecc8c33fb",
+      "size": 368598,
+      "url": [
+        "https://cdn.modrinth.com/data/5ZwdcRci/versions/PhxY0iHw/ImmediatelyFast-NeoForge-1.6.10%2B1.21.1.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/immersive_optimization-neoforge-1.21-0.1.5.jar",
+      "sha1": "5320358135197f36f2c3b89cac9543b7a77f4300",
+      "size": 53741,
+      "url": [
+        "https://cdn.modrinth.com/data/vNZgQmjg/versions/MIODRRbM/immersive_optimization-neoforge-1.21-0.1.5.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/iris-flywheel-compat-NeoForge-2.4.0.jar",
+      "sha1": "b8630517b6017f4d075ce594e5ef333b38748029",
+      "size": 907133,
+      "url": [
+        "https://cdn.modrinth.com/data/ndHYMY2K/versions/6ZQz5Ow2/iris-flywheel-compat-NeoForge-2.4.0.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/iris-neoforge-1.8.12+mc1.21.1.jar",
+      "sha1": "a3e6355915c7d3b2bc392724795113e51d289378",
+      "size": 2438548,
+      "url": [
+        "https://cdn.modrinth.com/data/YL57xq9U/versions/t3ruzodq/iris-neoforge-1.8.12%2Bmc1.21.1.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/Jade-1.21.1-NeoForge-15.10.5.jar",
+      "sha1": "d5bf134b3dbde9f5258666823900e21341dc0a50",
+      "size": 725742,
+      "url": [
+        "https://cdn.modrinth.com/data/nvQzSEkH/versions/yd8FKCmx/Jade-1.21.1-NeoForge-15.10.5.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/JadeAddons-1.21.1-NeoForge-6.1.0.jar",
+      "sha1": "d0aef07e67f9e2dd7ae68f9f27d845511d8eaff3",
+      "size": 74419,
+      "url": [
+        "https://cdn.modrinth.com/data/xuDOzCLy/versions/Z9s9lM56/JadeAddons-1.21.1-NeoForge-6.1.0.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/jei-1.21.1-neoforge-19.27.0.340.jar",
+      "sha1": "27d0d85e7e32e926fc3664ab6815df5cdabb7941",
+      "size": 1529391,
+      "url": [
+        "https://cdn.modrinth.com/data/u6dRKJwZ/versions/YAcQ6elZ/jei-1.21.1-neoforge-19.27.0.340.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/jmi-neoforge-1.21.1-1.9.jar",
+      "sha1": "b49a9afa0685af95baf76931c05ce43979ce744a",
+      "size": 100241,
+      "url": [
+        "https://cdn.modrinth.com/data/M1ZKbfkJ/versions/x1p0RNwd/jmi-neoforge-1.21.1-1.9.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/journeymap-neoforge-1.21.1-6.0.0-beta.66.jar",
+      "sha1": "8f3a5d415e8d5548ec1d15695af4a125bd3860dc",
+      "size": 3666530,
+      "url": [
+        "https://cdn.modrinth.com/data/lfHFW1mp/versions/E44vwUJO/journeymap-neoforge-1.21.1-6.0.0-beta.66.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/justenoughbreeding-neoforge-1.21-1.21.1-1.6.2.jar",
+      "sha1": "4f47678f57e2cadebd42484897bf5417d7fa344a",
+      "size": 134388,
+      "url": [
+        "https://cdn.modrinth.com/data/9Pk89J3g/versions/t8zTu5aD/justenoughbreeding-neoforge-1.21-1.21.1-1.6.2.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/JustEnoughProfessions-neoforge-1.21.1-4.0.5.jar",
+      "sha1": "439ea1baa5e3065e36e0e57422f22403918bb59f",
+      "size": 24879,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/439ea1baa5e3065e36e0e57422f22403918bb59f.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/JustEnoughResources-NeoForge-1.21.1-1.6.0.17.jar",
+      "sha1": "e739d69b2de31ca8c0cb4691ab08e823f153bc44",
+      "size": 292088,
+      "url": [
+        "https://cdn.modrinth.com/data/uEfK2CXF/versions/TgNFki8j/JustEnoughResources-NeoForge-1.21.1-1.6.0.17.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/KineticGrip-1.21.1-1.0.0.jar",
+      "sha1": "07a3ff9cb277ec81762912fd6f8ce36df501d343",
+      "size": 194065,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/07a3ff9cb277ec81762912fd6f8ce36df501d343.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/kotlinforforge-5.11.0-all.jar",
+      "sha1": "a8b9f1233336ca9fe4702bc2cc5a6f97ad5e3b65",
+      "size": 6869790,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/a8b9f1233336ca9fe4702bc2cc5a6f97ad5e3b65.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/lithium-neoforge-0.15.3+mc1.21.1.jar",
+      "sha1": "9fd5fa9076044180ae7f51672de74669196ec72e",
+      "size": 774148,
+      "url": [
+        "https://cdn.modrinth.com/data/gvQqBUqZ/versions/RXHf27Wv/lithium-neoforge-0.15.3%2Bmc1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/mafglib-0.4.3+mc1.21.1.jar",
+      "sha1": "9f62df832b1d5c9fe1aead873bd65cb8defacac7",
+      "size": 1314767,
+      "url": [
+        "https://cdn.modrinth.com/data/SKI34J7B/versions/CgDQ0u0Q/mafglib-0.4.3%2Bmc1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/MemorySweep-1.21.1-neoforge-2.0.3-fix.jar",
+      "sha1": "95cd147b2cfadc3015d9ebd77f34a735b86fd806",
+      "size": 23561,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/95cd147b2cfadc3015d9ebd77f34a735b86fd806.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/modernfix-neoforge-5.27.8+mc1.21.1.jar",
+      "sha1": "2fbce2437be5a2ac69aa093a388ca43f44245237",
+      "size": 568759,
+      "url": [
+        "https://cdn.modrinth.com/data/nmDcB62a/versions/VGmSpV69/modernfix-neoforge-5.27.8%2Bmc1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/moonlight-neoforge-1.21.1-3.0.9.jar",
+      "sha1": "a2f27a3a18e548b32d7ec7bbd722bd443e43481f",
+      "size": 1574538,
+      "url": [
+        "https://cdn.modrinth.com/data/twkfQtEc/versions/sqbhVahR/moonlight-neoforge-1.21.1-3.0.9.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/MouseTweaks-neoforge-mc1.21-2.26.1.jar",
+      "sha1": "6dae57f4f50f7808d2ed9a18f6cd1c0d4640c6bc",
+      "size": 73938,
+      "url": [
+        "https://cdn.modrinth.com/data/aC3cM3Vq/versions/9I21YYxf/MouseTweaks-neoforge-mc1.21-2.26.1.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/notenoughanimations-neoforge-1.12.2-mc1.21.1.jar",
+      "sha1": "a7713e65d5c5bbda51ef396275869db3f5d675a6",
+      "size": 1933309,
+      "url": [
+        "https://cdn.modrinth.com/data/MPCX6s5C/versions/FqqXQToo/notenoughanimations-neoforge-1.12.2-mc1.21.1.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/pipeorgans-0.8.2+1.21.1.jar",
+      "sha1": "112adb2a6f8d9ff60ebd52602f1b01ea96a37920",
+      "size": 6593821,
+      "url": [
+        "https://cdn.modrinth.com/data/yGttHo06/versions/iFePoN10/pipeorgans-0.8.2%2B1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/polymorph-neoforge-1.1.0+1.21.1.jar",
+      "sha1": "84f8c539fa326dc723ae62b7a6916d6b01982d07",
+      "size": 174972,
+      "url": [
+        "https://cdn.modrinth.com/data/tagwiZkJ/versions/VEburL70/polymorph-neoforge-1.1.0%2B1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/portable_engine_liquid_fuel-2.0.0-neoforge-1.21.1.jar",
+      "sha1": "f9602c7f9a8268507a835bfa47db1512d356dae7",
+      "size": 133486,
+      "url": [
+        "https://cdn.modrinth.com/data/HLbPoouI/versions/L6KPVFxI/portable_engine_liquid_fuel-2.0.0-neoforge-1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/prickle-neoforge-1.21.1-21.1.11.jar",
+      "sha1": "5174059ecf97340a0de5ef211b938de26c4eaa36",
+      "size": 84812,
+      "url": [
+        "https://cdn.modrinth.com/data/aaRl8GiW/versions/EE1FHDyD/prickle-neoforge-1.21.1-21.1.11.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/railways-0.2.0+neoforge-mc1.21.1.jar",
+      "sha1": "9d52eef0772b81de397271b98c0201a59733f9c6",
+      "size": 12106875,
+      "url": [
+        "https://cdn.modrinth.com/data/L3Jv0QZI/versions/oQKsMKfj/railways-0.2.0%2Bneoforge-mc1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/recipeessentials-1.21-4.0.jar",
+      "sha1": "a1ea98e7ea194807201cc8618ac9e74da65716e5",
+      "size": 43950,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/a1ea98e7ea194807201cc8618ac9e74da65716e5.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/reeses-sodium-options-neoforge-1.8.3+mc1.21.4.jar",
+      "sha1": "b03d05495be28d8cef7a34872941bb8d703d60e6",
+      "size": 78451,
+      "url": [
+        "https://cdn.modrinth.com/data/Bh37bMuy/versions/xAiCe6w8/reeses-sodium-options-neoforge-1.8.3%2Bmc1.21.4.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/resourcefullib-neoforge-1.21-3.0.12.jar",
+      "sha1": "24389c8e48ff0e8594e4686b750c494c66a5f8df",
+      "size": 484332,
+      "url": [
+        "https://cdn.modrinth.com/data/G1hIVOrD/versions/x99nCLTm/resourcefullib-neoforge-1.21-3.0.12.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/ritchiesprojectilelib-2.1.2+mc.1.21.1-neoforge.jar",
+      "sha1": "ec2e4996f8bee8714173e603e379fef8a6901765",
+      "size": 76369,
+      "url": [
+        "https://cdn.modrinth.com/data/B3pb093D/versions/hZ6B2Z0x/ritchiesprojectilelib-2.1.2%2Bmc.1.21.1-neoforge.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/sable-neoforge-1.21.1-1.2.2.jar",
+      "sha1": "c5ecd3fcf60a31d84112c708abe29e341b2d1b73",
+      "size": 12719293,
+      "url": [
+        "https://cdn.modrinth.com/data/T9PomCSv/versions/3FMsUjO4/sable-neoforge-1.21.1-1.2.2.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/skinlayers3d-neoforge-1.11.1-mc1.21.1.jar",
+      "sha1": "8f25b0babc279ee9f5d07f20d9168a7a4ef93dac",
+      "size": 1974380,
+      "url": [
+        "https://cdn.modrinth.com/data/zV5r3pPn/versions/lWa5oHuK/skinlayers3d-neoforge-1.11.1-mc1.21.1.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/sliceanddice-forge-4.2.4.jar",
+      "sha1": "13d8835813b3851d4818c59ec8f7124e4a826c14",
+      "size": 406699,
+      "url": [
+        "https://cdn.modrinth.com/data/GmjmRQ0A/versions/tyVnEa75/sliceanddice-forge-4.2.4.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/smart_bounds-1.0.0.jar",
+      "sha1": "9d271d70b1d2870d5c232e71e2923abaac3a6767",
+      "size": 749901,
+      "url": [
+        "https://cdn.modrinth.com/data/kSok4DxT/versions/HXviiJ3I/smart_bounds-1.0.0.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/smoothchunk-1.21-4.1.jar",
+      "sha1": "f54d5d352e15560240f151a7d054096a33a58f4a",
+      "size": 12852,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/f54d5d352e15560240f151a7d054096a33a58f4a.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/sodium-neoforge-0.6.13+mc1.21.1.jar",
+      "sha1": "38af70fa4dc4b2aaac636e92fdba3bedd5a025e1",
+      "size": 1162994,
+      "url": [
+        "https://cdn.modrinth.com/data/AANobbMI/versions/Pb3OXVqC/sodium-neoforge-0.6.13%2Bmc1.21.1.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/sodiumextras-neoforge-1.0.8-1.21.1.jar",
+      "sha1": "d678f6eb28fec11f3e99bc7f17f5e385703bc44a",
+      "size": 276988,
+      "url": [
+        "https://cdn.modrinth.com/data/vqqx0QiE/versions/qDEGbszS/sodiumextras-neoforge-1.0.8-1.21.1.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/sodiumoptionsapi-neoforge-1.0.10-1.21.1.jar",
+      "sha1": "5d014d031fa77ab600e07835b032ef4dcb79b442",
+      "size": 309122,
+      "url": [
+        "https://cdn.modrinth.com/data/Es5v4eyq/versions/lrsX3TMS/sodiumoptionsapi-neoforge-1.0.10-1.21.1.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/someassemblyrequired-5.2.8.jar",
+      "sha1": "5e7fc02b85c7c6f128bdebd65b6133734fce7088",
+      "size": 451898,
+      "url": [
+        "https://cdn.modrinth.com/data/jZi8ogTA/versions/G8Lz8Txm/someassemblyrequired-5.2.8.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/sophisticatedbackpacks-1.21.1-3.25.42.1709.jar",
+      "sha1": "1ca84ebfc548d23ffff733e8f264c1b92d992c10",
+      "size": 1023170,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/1ca84ebfc548d23ffff733e8f264c1b92d992c10.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/sophisticatedbackpackscreateintegration-1.21.1-0.1.5.29.jar",
+      "sha1": "51851c61e8be5b799b5ad8aa109b3416509605b7",
+      "size": 82316,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/51851c61e8be5b799b5ad8aa109b3416509605b7.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/sophisticatedcore-1.21.1-1.4.33.1808.jar",
+      "sha1": "d7f68f39193abf557cd27c27507f20deb499b593",
+      "size": 1482610,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/d7f68f39193abf557cd27c27507f20deb499b593.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/sophisticatedstorage-1.21.1-1.5.45.1697.jar",
+      "sha1": "7313a7f93ad4d377a6efcaa28d9bf62d208072cc",
+      "size": 1666661,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/7313a7f93ad4d377a6efcaa28d9bf62d208072cc.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/sophisticatedstoragecreateintegration-1.21.1-0.1.17.132.jar",
+      "sha1": "45a0318e8e49e7f3aab213df5cc32b3e7e128b6c",
+      "size": 133451,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/45a0318e8e49e7f3aab213df5cc32b3e7e128b6c.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/sound-physics-remastered-neoforge-1.21.1-1.5.1.jar",
+      "sha1": "31cf754f9e5f62d1ca257f297e5dce394024696c",
+      "size": 202454,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/31cf754f9e5f62d1ca257f297e5dce394024696c.jar"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "mods/spark-1.10.124-neoforge.jar",
+      "sha1": "9430cc2ab64ff89d698be593769fb9f9ee4efae6",
+      "size": 3642581,
+      "url": [
+        "https://cdn.modrinth.com/data/l6YH9Als/versions/v5qtqRQi/spark-1.10.124-neoforge.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/sparsestructures-neoforge-1.21.1-3.0.jar",
+      "sha1": "daa7235c52c822524e9a4edd8b382a68ec78b1f8",
+      "size": 117743,
+      "url": [
+        "https://cdn.modrinth.com/data/qwvI41y9/versions/MoJZpi20/sparsestructures-neoforge-1.21.1-3.0.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/st_cdc-1.21.1-1.1.jar",
+      "sha1": "1dc83075c078f7b6c3f0f04b9a84722d359804fa",
+      "size": 38157,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/1dc83075c078f7b6c3f0f04b9a84722d359804fa.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/structureessentials-1.21.1-5.0.jar",
+      "sha1": "5c059c2cb2ad8c43e1384b0939bf258801aadfea",
+      "size": 60833,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/5c059c2cb2ad8c43e1384b0939bf258801aadfea.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/t_and_t-neoforge-fabric-1.13.7+1.21.1.jar",
+      "sha1": "eb7666961fb0b0d0ff8bc01ff62194952f6b6b8c",
+      "size": 3641681,
+      "url": [
+        "https://cdn.modrinth.com/data/DjLobEOy/versions/E4Wy3O8Y/t_and_t-neoforge-fabric-1.13.7%2B1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/TerraBlender-neoforge-1.21.1-4.1.0.8.jar",
+      "sha1": "2016eed89eac0eb0510d2190c3b0b80bf4346191",
+      "size": 120364,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/2016eed89eac0eb0510d2190c3b0b80bf4346191.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/tfmg-1.2.0.jar",
+      "sha1": "b520f3687f60a69eb265ff5b9a16759b9e124103",
+      "size": 4924243,
+      "url": [
+        "https://cdn.modrinth.com/data/USgVjXsk/versions/uDi14nbt/tfmg-1.2.0.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/tracks-neoforge-1.21.1-1.0.1.jar",
+      "sha1": "cccd208606d7ac33f483e1e8a237092712a1a2c0",
+      "size": 166455,
+      "url": [
+        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/cccd208606d7ac33f483e1e8a237092712a1a2c0.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/trading_floor-3.0.16.jar",
+      "sha1": "7be6d8b24f3120fa6a2520c32a2e6c8c4254322c",
+      "size": 214343,
+      "url": [
+        "https://cdn.modrinth.com/data/WROfLLvn/versions/K3nIvcWT/trading_floor-3.0.16.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/voicechat-neoforge-1.21.1-2.6.17.jar",
+      "sha1": "55fc0d529318620bd2ce7a635657014c5c98e189",
+      "size": 4902096,
+      "url": [
+        "https://cdn.modrinth.com/data/9eGKb6K1/versions/6rT2RWh6/voicechat-neoforge-1.21.1-2.6.17.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/watut-neoforge-1.21.0-1.2.7.jar",
+      "sha1": "07cfb8fb1269f1eae1056492912e3544be979f62",
+      "size": 432269,
+      "url": [
+        "https://cdn.modrinth.com/data/AtB5mHky/versions/uWr2aTW9/watut-neoforge-1.21.0-1.2.7.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/YungsApi-1.21.1-NeoForge-5.1.6.jar",
+      "sha1": "e1c394779fb9e038e4f7a1b4558d0432607d263b",
+      "size": 388678,
+      "url": [
+        "https://cdn.modrinth.com/data/Ua7DFN59/versions/ZB22DE9q/YungsApi-1.21.1-NeoForge-5.1.6.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/YungsBetterCaves-1.21.1-NeoForge-3.1.4.jar",
+      "sha1": "c7eaa25a8734525d7085e730728344242a177990",
+      "size": 392794,
+      "url": [
+        "https://cdn.modrinth.com/data/Dfu00ggU/versions/ygKiHadA/YungsBetterCaves-1.21.1-NeoForge-3.1.4.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar",
+      "sha1": "90529257dbd92558998c65178294bc7b2fd16a64",
+      "size": 905839,
+      "url": [
+        "https://cdn.modrinth.com/data/XNlO7sBv/versions/GQ9iNWkI/YungsBetterDesertTemples-1.21.1-NeoForge-4.1.5.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar",
+      "sha1": "73a660c13063450e555e5e2c015ae24d606b32b4",
+      "size": 782160,
+      "url": [
+        "https://cdn.modrinth.com/data/o1C1Dkj5/versions/D6aZn0Em/YungsBetterDungeons-1.21.1-NeoForge-5.1.4.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar",
+      "sha1": "832f2c17425debe74a9f267f4136f1a0f0221d19",
+      "size": 398130,
+      "url": [
+        "https://cdn.modrinth.com/data/2BwBOmBQ/versions/I52NZ1qK/YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/YungsBetterJungleTemples-1.21.1-NeoForge-3.1.2.jar",
+      "sha1": "d6b7ce6cf351b09cbd23147ff166c35cfdc572e8",
+      "size": 795839,
+      "url": [
+        "https://cdn.modrinth.com/data/z9Ve58Ih/versions/P00i2hJn/YungsBetterJungleTemples-1.21.1-NeoForge-3.1.2.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar",
+      "sha1": "6a14e1d8201f068ca87ef8333e471c5378955906",
+      "size": 493967,
+      "url": [
+        "https://cdn.modrinth.com/data/HjmxVlSr/versions/Go3nbneL/YungsBetterMineshafts-1.21.1-NeoForge-5.1.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar",
+      "sha1": "4061ece2141475227646649046fc14c2da505922",
+      "size": 609639,
+      "url": [
+        "https://cdn.modrinth.com/data/Z2mXHnxP/versions/iopJiJQp/YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.2.jar",
+      "sha1": "fba629defdb92ad99ec4f411895afb6e19555a18",
+      "size": 1025571,
+      "url": [
+        "https://cdn.modrinth.com/data/3dT9sgt4/versions/yFjEcj2g/YungsBetterOceanMonuments-1.21.1-NeoForge-4.1.2.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar",
+      "sha1": "5d06a5850af7c577612d4592706a8e156bbe1cbf",
+      "size": 461244,
+      "url": [
+        "https://cdn.modrinth.com/data/kidLKymU/versions/8U0dIfSM/YungsBetterStrongholds-1.21.1-NeoForge-5.1.3.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar",
+      "sha1": "bbf6c91f4a2829c58bc024eaaab821986bc93de6",
+      "size": 174789,
+      "url": [
+        "https://cdn.modrinth.com/data/t5FRdP87/versions/AvedwcIe/YungsBetterWitchHuts-1.21.1-NeoForge-4.1.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/YungsBridges-1.21.1-NeoForge-5.1.1.jar",
+      "sha1": "18099c2d54acd16bb8ab90a66f40fa16496d065e",
+      "size": 136820,
+      "url": [
+        "https://cdn.modrinth.com/data/Ht4BfYp6/versions/urkCzBf6/YungsBridges-1.21.1-NeoForge-5.1.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/YungsCaveBiomes-1.21.1-NeoForge-3.1.1.jar",
+      "sha1": "bcab81f578b3cb31e599ae327c6634b9fa8d0f04",
+      "size": 13006621,
+      "url": [
+        "https://cdn.modrinth.com/data/cs7iGVq1/versions/HYGqXWqQ/YungsCaveBiomes-1.21.1-NeoForge-3.1.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/YungsExtras-1.21.1-NeoForge-5.1.1.jar",
+      "sha1": "62833733aaf407f36bdacf648ed4b2ef9940662b",
+      "size": 198183,
+      "url": [
+        "https://cdn.modrinth.com/data/ZYgyPyfq/versions/N2EpMhR7/YungsExtras-1.21.1-NeoForge-5.1.1.jar"
+      ],
+      "side": "both"
+    }
+  ],
+  "managedRoots": [
+    "mods"
+  ],
+  "generatedAt": "2026-07-16T06:55:51.095Z"
+}
