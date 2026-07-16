@@ -83,7 +83,11 @@ export function AdminScreen({ state }: { state: LauncherStateHook }): JSX.Elemen
     setMsg(null);
     try {
       const r = await window.balumba.publishPack();
-      setMsg(`Опубликовано: версия ${r.version}, файлов ${r.fileCount}. У всех обновится при запуске.`);
+      setMsg(
+        `Опубликовано: версия ${r.version}, файлов ${r.fileCount}` +
+          (r.addedDeps ? `, авто-добавлено зависимостей: ${r.addedDeps}` : '') +
+          '. У всех обновится при запуске.',
+      );
       await state.refreshPackStatus();
     } catch (e) {
       setMsg(e instanceof Error ? e.message : String(e));

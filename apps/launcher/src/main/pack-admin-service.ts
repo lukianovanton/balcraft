@@ -9,6 +9,7 @@ import {
   getProject,
   getProjects,
   getProjectVersions,
+  getVersion,
   getVersionsByHashes,
   pickBestVersion,
   primaryFile,
@@ -36,6 +37,7 @@ interface MasterFile {
 export interface PublishResult {
   version: string;
   fileCount: number;
+  addedDeps: number;
 }
 
 export interface ImportResult {
@@ -199,11 +201,56 @@ export class PackAdminService {
     return { added, unresolved: selfHosted };
   }
 
+  /**
+   * Ensure every mod's required Modrinth dependencies are present in the pack
+   * (e.g. AE2 → guideme). Adds missing ones. Returns how many were added.
+   */
+  async resolveDependencies(): Promise<number> {
+    let added = 0;
+    for (let pass = 0; pass < 6; pass++) {
+      const master = await this.load();
+      const present = new Set(master.entries.map((e) => e.projectId));
+      const missing = new Set<string>();
+
+      for (const e of master.entries) {
+        if (e.type !== 'mod' || e.source !== 'modrinth') continue;
+        let version;
+        try {
+          version = await getVersion(e.versionId);
+        } catch {
+          continue;
+        }
+        for (const dep of version.dependencies) {
+          if (dep.dependency_type !== 'required') continue;
+          let pid = dep.project_id;
+          if (!pid && dep.version_id) {
+            pid = await getVersion(dep.version_id).then((v) => v.project_id).catch(() => null);
+          }
+          if (pid && !present.has(pid)) missing.add(pid);
+        }
+      }
+
+      if (missing.size === 0) break;
+      for (const pid of missing) {
+        try {
+          await this.addProject(pid, 'mod');
+          added++;
+        } catch {
+          /* skip deps with no 1.21.1 build */
+        }
+      }
+    }
+    return added;
+  }
+
   /** Build the manifest and publish it to GitHub (admin only). */
   async publish(): Promise<PublishResult> {
     const s = this.store.getSettings();
     if (!s.githubToken) throw new Error('Не задан GitHub-токен (Настройки → Режим админа).');
     const { owner, repo } = effectiveRepo(s);
+
+    // Pull in any missing required dependencies (e.g. AE2 -> guideme).
+    const addedDeps = await this.resolveDependencies();
 
     const master = await this.load();
     if (master.entries.length === 0) throw new Error('Сборка пуста — добавь моды.');
@@ -242,7 +289,7 @@ export class PackAdminService {
 
     master.version = version;
     await this.save(master);
-    return { version, fileCount: manifest.files.length };
+    return { version, fileCount: manifest.files.length, addedDeps };
   }
 
   /** Validate that the configured token can write to the repo. */

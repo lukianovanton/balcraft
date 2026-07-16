@@ -15,6 +15,7 @@ import type {
 export interface PublishResult {
   version: string;
   fileCount: number;
+  addedDeps: number;
 }
 export interface ImportResult {
   added: number;
