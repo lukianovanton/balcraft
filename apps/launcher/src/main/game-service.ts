@@ -15,6 +15,7 @@ import {
   type VersionJson,
 } from '@balumba/core';
 import { APP_CONFIG, manifestUrl, isGithubConfigured } from './config.js';
+import { recordInstalledPackVersion, getPackStatus, type PackStatus } from './pack-status.js';
 import type { LaunchStage } from '../shared/ipc.js';
 import type { Store } from './store.js';
 import type { AuthService } from './auth-service.js';
@@ -38,6 +39,11 @@ export class GameService {
   ) {
     this.paths = new LauncherPaths(join(app.getPath('userData'), 'minecraft'));
     controller.setRunner((signal, report) => this.run(signal, report));
+  }
+
+  /** Current pack update status for the UI. */
+  getPackStatus(): Promise<PackStatus> {
+    return getPackStatus(this.paths);
   }
 
   private report(
@@ -103,6 +109,7 @@ export class GameService {
           report: (e) => report({ stage: 'syncing-pack', progress: e }),
           signal,
         });
+        await recordInstalledPackVersion(this.paths, manifest.version);
         console.log(
           `[sync] обновлено: ${result.downloaded}, удалено: ${result.removed}, актуально: ${result.upToDate}`,
         );

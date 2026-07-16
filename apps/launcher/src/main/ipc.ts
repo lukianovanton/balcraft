@@ -8,6 +8,8 @@ import type { AuthService } from './auth-service.js';
 import type { LaunchController } from './launch-controller.js';
 import type { ServerManager } from './server-manager.js';
 import type { ContentService } from './content-service.js';
+import type { GameService } from './game-service.js';
+import { installLauncherUpdate } from './updater.js';
 
 export interface Services {
   store: Store;
@@ -15,11 +17,12 @@ export interface Services {
   launch: LaunchController;
   server: ServerManager;
   content: ContentService;
+  game: GameService;
   getWindow(): BrowserWindow | null;
 }
 
 export function registerIpc(services: Services): void {
-  const { store, auth, launch, server, content, getWindow } = services;
+  const { store, auth, launch, server, content, game, getWindow } = services;
 
   // Forward main-side events to the renderer.
   const send = (channel: string, payload: unknown) => {
@@ -54,6 +57,10 @@ export function registerIpc(services: Services): void {
   ipcMain.handle(IPC.play, () => launch.play());
   ipcMain.handle(IPC.cancelLaunch, () => launch.cancel());
   ipcMain.handle(IPC.getLaunchState, () => launch.getState());
+
+  // --- updates ---
+  ipcMain.handle(IPC.getPackStatus, () => game.getPackStatus());
+  ipcMain.handle(IPC.installLauncherUpdate, () => installLauncherUpdate());
 
   // --- content manager ---
   ipcMain.handle(IPC.searchContent, (_e, query: string, type) => content.search(query, type));

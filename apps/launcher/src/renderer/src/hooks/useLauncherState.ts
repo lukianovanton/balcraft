@@ -1,6 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
 import type { Account } from '@balumba/core';
-import type { LaunchState, LauncherSettings, ServerState } from '../../../shared/ipc';
+import type {
+  LaunchState,
+  LauncherSettings,
+  LauncherUpdateState,
+  PackStatus,
+  ServerState,
+} from '../../../shared/ipc';
 
 export interface SystemInfo {
   totalRamMb: number;
@@ -25,6 +31,16 @@ export function useLauncherState() {
     whitelist: [],
   });
   const [serverLog, setServerLog] = useState<string[]>([]);
+  const [packStatus, setPackStatus] = useState<PackStatus | null>(null);
+  const [launcherUpdate, setLauncherUpdate] = useState<LauncherUpdateState>({ phase: 'idle' });
+
+  const refreshPackStatus = useCallback(async () => {
+    try {
+      setPackStatus(await window.balumba.getPackStatus());
+    } catch {
+      /* ignore */
+    }
+  }, []);
 
   const refreshAccounts = useCallback(async () => {
     const [list, sel] = await Promise.all([
@@ -42,6 +58,7 @@ export function useLauncherState() {
       setSystemInfo(await window.balumba.getSystemInfo());
       setLaunch(await window.balumba.getLaunchState());
       setServer(await window.balumba.getServerState());
+      await refreshPackStatus();
     })();
 
     const offLaunch = window.balumba.onLaunchState(setLaunch);
@@ -52,13 +69,20 @@ export function useLauncherState() {
     const offMs = window.balumba.onMicrosoftLoginDone(() => {
       void refreshAccounts();
     });
+    const offUpd = window.balumba.onLauncherUpdate(setLauncherUpdate);
     return () => {
       offLaunch();
       offServer();
       offLog();
       offMs();
+      offUpd();
     };
-  }, [refreshAccounts]);
+  }, [refreshAccounts, refreshPackStatus]);
+
+  // Re-check pack status whenever a launch cycle finishes.
+  useEffect(() => {
+    if (launch.stage === 'idle' || launch.stage === 'running') void refreshPackStatus();
+  }, [launch.stage, refreshPackStatus]);
 
   const selectedAccount = accounts.find((a) => a.id === selectedAccountId) ?? null;
 
@@ -75,7 +99,10 @@ export function useLauncherState() {
     launch,
     server,
     serverLog,
+    packStatus,
+    launcherUpdate,
     refreshAccounts,
+    refreshPackStatus,
     saveSettings,
     setSelectedAccountId,
   };

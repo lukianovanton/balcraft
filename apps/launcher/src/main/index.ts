@@ -58,13 +58,13 @@ async function bootstrap(): Promise<void> {
   });
 
   // Wires the install/launch pipeline into the controller.
-  new GameService(store, auth, launch);
+  const game = new GameService(store, auth, launch);
   const content = new ContentService();
 
-  registerIpc({ store, auth, launch, server, content, getWindow: () => mainWindow });
+  registerIpc({ store, auth, launch, server, content, game, getWindow: () => mainWindow });
 
   createWindow();
-  initSelfUpdate();
+  initSelfUpdate((s) => mainWindow?.webContents.send(IPC.evtLauncherUpdate, s));
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();

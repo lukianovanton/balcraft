@@ -87,6 +87,29 @@ export function PlayScreen({ state }: { state: LauncherStateHook }): JSX.Element
             Сначала добавь аккаунт во вкладке «Аккаунты».
           </div>
         )}
+
+        {state.packStatus?.configured && (
+          <div className="mt-3 flex items-center gap-2 text-xs">
+            {state.packStatus.updateAvailable ? (
+              <>
+                <span className="inline-block h-2 w-2 rounded-full bg-copper-400" />
+                <span className="text-copper-400">
+                  Доступно обновление сборки
+                  {state.packStatus.latestVersion ? ` (${state.packStatus.latestVersion})` : ''} —
+                  применится при запуске.
+                </span>
+              </>
+            ) : (
+              <>
+                <span className="inline-block h-2 w-2 rounded-full bg-green-400" />
+                <span className="text-andesite-400">
+                  Сборка актуальна
+                  {state.packStatus.installedVersion ? ` · ${state.packStatus.installedVersion}` : ''}
+                </span>
+              </>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

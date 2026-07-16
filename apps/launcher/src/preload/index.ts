@@ -5,6 +5,7 @@ import {
   type BalumbaApi,
   type LaunchState,
   type LauncherSettings,
+  type LauncherUpdateState,
   type ServerState,
 } from '../shared/ipc.js';
 
@@ -32,6 +33,11 @@ const api: BalumbaApi = {
   play: () => ipcRenderer.invoke(IPC.play),
   cancelLaunch: () => ipcRenderer.invoke(IPC.cancelLaunch),
   getLaunchState: () => ipcRenderer.invoke(IPC.getLaunchState),
+
+  // updates
+  getPackStatus: () => ipcRenderer.invoke(IPC.getPackStatus),
+  installLauncherUpdate: () => ipcRenderer.invoke(IPC.installLauncherUpdate),
+  onLauncherUpdate: (cb) => subscribe<LauncherUpdateState>(IPC.evtLauncherUpdate, cb),
 
   // content manager
   searchContent: (query, type) => ipcRenderer.invoke(IPC.searchContent, query, type),

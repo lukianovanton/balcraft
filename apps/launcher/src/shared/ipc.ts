@@ -40,6 +40,27 @@ export interface LaunchState {
   error: string | null;
 }
 
+export interface PackStatus {
+  configured: boolean;
+  installedVersion: string | null;
+  latestVersion: string | null;
+  updateAvailable: boolean;
+}
+
+export type LauncherUpdatePhase =
+  | 'idle'
+  | 'checking'
+  | 'available'
+  | 'downloading'
+  | 'downloaded'
+  | 'error';
+
+export interface LauncherUpdateState {
+  phase: LauncherUpdatePhase;
+  percent?: number;
+  version?: string;
+}
+
 export type ServerStatus = 'stopped' | 'starting' | 'running' | 'stopping';
 
 export interface ServerState {
@@ -84,6 +105,11 @@ export interface BalumbaApi {
   addToWhitelist(username: string): Promise<void>;
   removeFromWhitelist(username: string): Promise<void>;
 
+  // --- updates ---
+  getPackStatus(): Promise<PackStatus>;
+  installLauncherUpdate(): Promise<void>;
+  onLauncherUpdate(cb: (s: LauncherUpdateState) => void): () => void;
+
   // --- content manager (Modrinth) ---
   searchContent(query: string, type: ModrinthProjectType): Promise<ModrinthHit[]>;
   listInstalledContent(): Promise<UserContentEntry[]>;
@@ -113,6 +139,10 @@ export const IPC = {
   play: 'play:start',
   cancelLaunch: 'play:cancel',
   getLaunchState: 'play:state',
+
+  getPackStatus: 'update:pack-status',
+  installLauncherUpdate: 'update:install-launcher',
+  evtLauncherUpdate: 'evt:launcher-update',
 
   searchContent: 'content:search',
   listInstalledContent: 'content:list',
