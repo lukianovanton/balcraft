@@ -118,7 +118,12 @@ public class ControlGoal extends Goal {
         chicken.getNavigation().moveTo(p, speed);
 
         if (type == Directive.Type.ATTACK && distSqr <= ATTACK_REACH * ATTACK_REACH) {
-            peck(p);
+            if (peck(p)) {
+                // count down the peck budget; stop once it's spent
+                if (--chicken.directive.attacksLeft <= 0) {
+                    chicken.directive.idle();
+                }
+            }
         }
         if (type == Directive.Type.COME && distSqr <= 4.0D) {
             chicken.getNavigation().stop();
@@ -223,12 +228,14 @@ public class ControlGoal extends Goal {
         chicken.teleportTo(tx, p.getY(), tz);
     }
 
-    private void peck(LivingEntity p) {
-        if (attackCd > 0) return;
+    /** Peck the target if off cooldown. Returns true if a hit actually landed. */
+    private boolean peck(LivingEntity p) {
+        if (attackCd > 0) return false;
         attackCd = ATTACK_COOLDOWN;
         chicken.swing(InteractionHand.MAIN_HAND);
         p.hurt(chicken.damageSources().mobAttack(chicken), PECK_DAMAGE);
         Vec3 push = new Vec3(p.getX() - chicken.getX(), 0, p.getZ() - chicken.getZ());
         p.knockback(0.4F, -push.x, -push.z);
+        return true;
     }
 }

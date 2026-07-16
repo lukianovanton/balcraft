@@ -18,10 +18,19 @@ public final class Directive {
     public volatile Type type = Type.IDLE;
     /** Target entity (player or mob) for COME/FOLLOW/GOTO/ATTACK/GUARD. */
     public volatile UUID target = null;
+    /** ATTACK only: pecks left before stopping. Very large = effectively "until dead". */
+    public volatile int attacksLeft = 0;
 
     public void set(Type t, UUID tgt) {
         this.type = t;
         this.target = tgt;
+    }
+
+    /** ATTACK with a peck budget. count <= 0 means "until the target dies". */
+    public void setAttack(UUID tgt, int count) {
+        this.type = Type.ATTACK;
+        this.target = tgt;
+        this.attacksLeft = count <= 0 ? Integer.MAX_VALUE : count;
     }
 
     public void idle() {

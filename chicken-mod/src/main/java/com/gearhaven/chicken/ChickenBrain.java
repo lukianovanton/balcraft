@@ -26,8 +26,9 @@ public final class ChickenBrain {
 
     public static final class Response {
         public String say = null;
-        public String action = "idle";       // idle|come|follow|goto|attack
-        public String target = null;         // player name, if any
+        public String action = "idle";       // idle|wander|come|follow|goto|attack|guard|dig
+        public String target = null;         // player name or mob type, if any
+        public int hits = 3;                 // attack: number of pecks; 0 = until target dies
     }
 
     public static CompletableFuture<Response> think(JsonObject payload) {

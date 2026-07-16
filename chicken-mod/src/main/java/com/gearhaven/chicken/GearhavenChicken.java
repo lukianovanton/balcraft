@@ -211,7 +211,7 @@ public class GearhavenChicken {
         String action = resp.action == null ? "idle" : resp.action.toLowerCase();
 
         switch (action) {
-            case "attack" -> chicken.directive.set(Directive.Type.ATTACK, targetUuid);
+            case "attack" -> chicken.directive.setAttack(targetUuid, resp.hits);
             case "guard" -> chicken.directive.set(Directive.Type.GUARD, targetUuid);
             case "goto" -> chicken.directive.set(Directive.Type.GOTO, targetUuid);
             case "follow" -> chicken.directive.set(Directive.Type.FOLLOW, targetUuid);
