@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "name": "Gearhaven",
-  "version": "2026.07.16-7",
+  "version": "2026.07.16-8",
   "minecraft": "1.21.1",
   "loader": "neoforge",
   "loaderVersion": "21.1.232",
@@ -1142,6 +1142,15 @@
       "side": "both"
     },
     {
+      "path": "mods/ragdoll_reactions-1.21.1-0.7.0.jar",
+      "sha1": "60fd4e9695b4cc3055ef728dc1023f0a335cfc32",
+      "size": 226506,
+      "url": [
+        "https://cdn.modrinth.com/data/6awFMFjR/versions/yx32Af0N/ragdoll_reactions-1.21.1-0.7.0.jar"
+      ],
+      "side": "both"
+    },
+    {
       "path": "mods/railways-0.2.0+neoforge-mc1.21.1.jar",
       "sha1": "9d52eef0772b81de397271b98c0201a59733f9c6",
       "size": 12106875,
@@ -1579,5 +1588,5 @@
     "shaderpacks"
   ],
   "serverAddress": "134.249.137.220",
-  "generatedAt": "2026-07-16T11:17:48.977Z"
+  "generatedAt": "2026-07-16T11:27:17.199Z"
 }
