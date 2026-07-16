@@ -17,6 +17,8 @@ export interface MasterEntry {
   sha1: string;
   size: number;
   side: Side;
+  /** Modrinth icon URL for display (optional). */
+  icon?: string | null;
 }
 
 /** Repo path a self-hosted pack file is uploaded to (content-addressed). */

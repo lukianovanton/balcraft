@@ -19,6 +19,8 @@ export function AdminScreen({ state }: { state: LauncherStateHook }): JSX.Elemen
 
   const entryIds = new Set(entries.map((e) => e.projectId));
 
+  const [searching, setSearching] = useState(false);
+
   const refresh = useCallback(async () => {
     setEntries(await window.balumba.listPackEntries());
   }, []);
@@ -26,9 +28,20 @@ export function AdminScreen({ state }: { state: LauncherStateHook }): JSX.Elemen
     void refresh();
   }, [refresh]);
 
-  async function search() {
-    setHits(await window.balumba.searchContent(query, tab));
-  }
+  const search = useCallback(async () => {
+    setSearching(true);
+    try {
+      setHits(await window.balumba.searchContent(query, tab));
+    } finally {
+      setSearching(false);
+    }
+  }, [query, tab]);
+
+  // Auto-load popular items when switching tabs so there's always a browsable list.
+  useEffect(() => {
+    void search();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tab]);
 
   async function add(hit: ModrinthHit) {
     setBusy(hit.project_id);
@@ -129,7 +142,9 @@ export function AdminScreen({ state }: { state: LauncherStateHook }): JSX.Elemen
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <button className="btn-ghost">Найти</button>
+          <button className="btn-ghost" disabled={searching}>
+            {searching ? '…' : 'Найти'}
+          </button>
         </form>
       </div>
 
@@ -171,7 +186,12 @@ export function AdminScreen({ state }: { state: LauncherStateHook }): JSX.Elemen
               <div className="p-3 text-sm text-andesite-500">Пусто.</div>
             ) : (
               tabEntries.map((e) => (
-                <div key={e.projectId} className="flex items-center gap-2 rounded px-2 py-1.5 hover:bg-andesite-700/40">
+                <div key={e.projectId} className="row">
+                  {e.icon ? (
+                    <img src={e.icon} alt="" className="h-7 w-7 rounded object-cover" />
+                  ) : (
+                    <div className="grid h-7 w-7 place-items-center rounded bg-andesite-700 text-xs">🧩</div>
+                  )}
                   <span className="min-w-0 flex-1 truncate text-sm text-brass-100" title={e.filename}>
                     {e.title}
                   </span>

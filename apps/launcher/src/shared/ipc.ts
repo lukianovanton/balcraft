@@ -33,6 +33,14 @@ export interface LauncherSettings {
   /** Keep game window resolution. */
   resolution: { width: number; height: number } | null;
 
+  // --- server ---
+  serverRamMb: number;
+  serverViewDistance: number;
+  serverMaxPlayers: number;
+  serverMotd: string;
+  /** Auto-start the Playit.gg tunnel when the server is running. */
+  serverUseTunnel: boolean;
+
   // --- admin / distribution (configured in-app, no code editing) ---
   /** Marks this machine as the pack admin (shows publish tools). */
   adminMode: boolean;

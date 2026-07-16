@@ -26,7 +26,7 @@ export function PlayScreen({ state }: { state: LauncherStateHook }): JSX.Element
     <div className="relative flex h-full flex-col">
       {/* Hero */}
       <div className="relative flex-1 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-andesite-800/40 via-andesite-900/70 to-andesite-900" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-andesite-900/30 to-andesite-900/70" />
         <div className="relative flex h-full flex-col justify-end p-10">
           <div className="mb-1 text-xs font-semibold uppercase tracking-[0.2em] text-copper-400">
             Приватная сборка
@@ -42,7 +42,7 @@ export function PlayScreen({ state }: { state: LauncherStateHook }): JSX.Element
       </div>
 
       {/* Launch bar */}
-      <div className="border-t border-andesite-600 bg-andesite-850/95 px-8 py-5">
+      <div className="border-t border-andesite-600/60 bg-andesite-900/80 px-8 py-5 backdrop-blur-sm">
         <div className="flex items-center gap-6">
           <button
             className="btn-primary h-14 min-w-[190px] text-lg"

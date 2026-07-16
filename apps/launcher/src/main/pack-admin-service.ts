@@ -6,6 +6,8 @@ import {
   ensureDir,
   ensureParent,
   sha1File,
+  getProject,
+  getProjects,
   getProjectVersions,
   getVersionsByHashes,
   pickBestVersion,
@@ -19,6 +21,7 @@ import {
   putBinaryFile,
   checkRepoWritable,
   type MasterEntry,
+  type ModrinthProject,
   type ModrinthProjectType,
   type Side,
 } from '@balumba/core';
@@ -86,18 +89,20 @@ export class PackAdminService {
     if (!best) throw new Error('Нет совместимой версии для 1.21.1 / NeoForge.');
     const f = primaryFile(best);
     if (!f) throw new Error('У версии нет файла.');
+    const project = await getProject(projectId).catch(() => null);
 
     const entry: MasterEntry = {
       type,
       source: 'modrinth',
       projectId,
       versionId: best.id,
-      title: best.name || projectId,
+      title: project?.title || best.name || projectId,
       filename: f.filename,
       url: f.url,
       sha1: f.hashes.sha1,
       size: f.size,
       side: type === 'mod' ? classifyModByFilename(f.filename) : 'client',
+      icon: project?.icon_url ?? null,
     };
 
     const master = await this.load();
@@ -134,6 +139,9 @@ export class PackAdminService {
       hashToName.set(h, name);
     }
     const resolved = await getVersionsByHashes([...hashToName.keys()]);
+    // Bulk-fetch project titles/icons for nicer display.
+    const projIds = Array.from(new Set(Object.values(resolved).map((v) => v.project_id)));
+    const projects: Record<string, ModrinthProject> = await getProjects(projIds).catch(() => ({}));
 
     const master = await this.load();
     const existing = new Set(master.entries.map((e) => e.projectId));
@@ -147,17 +155,19 @@ export class PackAdminService {
       if (version) {
         if (existing.has(version.project_id)) continue;
         const f = version.files.find((x) => x.hashes.sha1 === hash) ?? version.files[0];
+        const proj = projects[version.project_id];
         master.entries.push({
           type: 'mod',
           source: 'modrinth',
           projectId: version.project_id,
           versionId: version.id,
-          title: version.name || name,
+          title: proj?.title || name.replace(/\.jar$/i, ''),
           filename: f.filename,
           url: f.url,
           sha1: f.hashes.sha1,
           size: f.size,
           side: classifyModByFilename(f.filename),
+          icon: proj?.icon_url ?? null,
         });
         existing.add(version.project_id);
         added++;
@@ -173,7 +183,7 @@ export class PackAdminService {
           source: 'github',
           projectId: localId,
           versionId: hash,
-          title: name,
+          title: name.replace(/\.jar$/i, ''),
           filename: name,
           url: '',
           sha1: hash,

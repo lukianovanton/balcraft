@@ -31,6 +31,13 @@ export default {
           500: '#4b3c2e',
           400: '#6b5642',
         },
+        // Create's kinetic/patina accent (teal-green).
+        patina: {
+          300: '#6fd6c4',
+          400: '#3fbfa8',
+          500: '#2aa08b',
+          600: '#1f7d6d',
+        },
       },
       fontFamily: {
         display: ['"Segoe UI Semibold"', 'system-ui', 'sans-serif'],

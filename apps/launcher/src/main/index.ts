@@ -16,10 +16,10 @@ let mainWindow: BrowserWindow | null = null;
 
 function createWindow(): void {
   mainWindow = new BrowserWindow({
-    width: 1100,
-    height: 720,
-    minWidth: 940,
-    minHeight: 620,
+    width: 1320,
+    height: 860,
+    minWidth: 1120,
+    minHeight: 740,
     show: false,
     autoHideMenuBar: true,
     backgroundColor: '#1a1410',

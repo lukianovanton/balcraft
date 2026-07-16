@@ -31,7 +31,7 @@ interface Props {
 export function Sidebar({ active, onNavigate, account, serverStatus, appVersion, adminMode }: Props): JSX.Element {
   const items = ITEMS.filter((i) => !i.adminOnly || adminMode);
   return (
-    <aside className="flex w-56 flex-col border-r border-andesite-600 bg-andesite-850/90">
+    <aside className="flex w-56 flex-col border-r border-andesite-600/60 bg-andesite-900/75 backdrop-blur-sm">
       <div className="flex items-center gap-2 px-5 py-5">
         <div className="grid h-9 w-9 place-items-center rounded-lg bg-brass-500 text-lg font-black text-andesite-900 shadow-glow">
           B

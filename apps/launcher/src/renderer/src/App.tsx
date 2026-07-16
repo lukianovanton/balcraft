@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import bgImage from './assets/bg.png';
 import { Sidebar, type NavKey } from './components/Sidebar.js';
 import { Onboarding } from './components/Onboarding.js';
 import { PlayScreen } from './screens/PlayScreen.js';
@@ -16,19 +17,27 @@ export default function App(): JSX.Element {
   // First-run: no accounts yet → guide the user before showing the launcher.
   if (state.accounts.length === 0) {
     return (
-      <Onboarding
-        onDone={() => void state.refreshAccounts()}
-        microsoftEnabled={state.systemInfo?.microsoftEnabled ?? false}
-      />
+      <div
+        className="app-backdrop relative h-full w-full"
+        style={{ backgroundImage: `url(${bgImage})` }}
+      >
+        <Onboarding
+          onDone={() => void state.refreshAccounts()}
+          microsoftEnabled={state.systemInfo?.microsoftEnabled ?? false}
+        />
+      </div>
     );
   }
 
   const upd = state.launcherUpdate;
 
   return (
-    <div className="flex h-full w-full flex-col bg-gears">
+    <div
+      className="app-backdrop relative flex h-full w-full flex-col"
+      style={{ backgroundImage: `url(${bgImage})` }}
+    >
       {upd.phase !== 'idle' && upd.phase !== 'error' && (
-        <div className="flex items-center justify-center gap-3 bg-brass-500/15 px-4 py-1.5 text-xs text-brass-100 ring-1 ring-brass-600/30">
+        <div className="relative z-10 flex items-center justify-center gap-3 bg-brass-500/15 px-4 py-1.5 text-xs text-brass-100 ring-1 ring-brass-600/30">
           {upd.phase === 'checking' && <span>Проверка обновлений лаунчера…</span>}
           {upd.phase === 'available' && <span>Найдено обновление лаунчера {upd.version} — загружается…</span>}
           {upd.phase === 'downloading' && (
@@ -47,7 +56,7 @@ export default function App(): JSX.Element {
           )}
         </div>
       )}
-      <div className="flex min-h-0 flex-1">
+      <div className="relative z-10 flex min-h-0 flex-1">
         <Sidebar
           active={nav}
           onNavigate={setNav}

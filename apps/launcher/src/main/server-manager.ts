@@ -88,7 +88,13 @@ export class ServerManager extends EventEmitter {
 
       // config
       await writeEula(this.serverDir);
-      await writeServerProperties(this.serverDir, { whitelist: true });
+      await writeServerProperties(this.serverDir, {
+        whitelist: true,
+        motd: settings.serverMotd,
+        maxPlayers: settings.serverMaxPlayers,
+        viewDistance: settings.serverViewDistance,
+        simulationDistance: settings.serverViewDistance,
+      });
       await writeWhitelist(this.serverDir, this.state.whitelist);
 
       // sync server-side mods
@@ -105,8 +111,8 @@ export class ServerManager extends EventEmitter {
         this.log('[launcher] GitHub-сборка не настроена — серверные моды не синхронизированы.');
       }
 
-      // launch
-      const args = buildServerArgs(install.argsFile, settings.maxRamMb, settings.minRamMb);
+      // launch (uses the server-specific RAM setting)
+      const args = buildServerArgs(install.argsFile, settings.serverRamMb, settings.minRamMb);
       this.log('[launcher] Запуск сервера…');
       const proc = spawn(java.javaPath.replace(/javaw\.exe$/i, 'java.exe'), args, {
         cwd: this.serverDir,
@@ -164,7 +170,7 @@ export class ServerManager extends EventEmitter {
 
       if (/Done \([\d.]+s\)! For help/.test(l)) {
         this.update({ status: 'running' });
-        void this.startTunnel();
+        if (this.store.getSettings().serverUseTunnel) void this.startTunnel();
       }
       const joined = l.match(/: ([A-Za-z0-9_]{1,16}) joined the game/);
       if (joined) this.addPlayer(joined[1]);

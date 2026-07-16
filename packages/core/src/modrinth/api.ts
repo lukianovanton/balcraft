@@ -28,6 +28,14 @@ export interface ModrinthSearchResult {
   total_hits: number;
 }
 
+export interface ModrinthProject {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  icon_url: string | null;
+}
+
 export interface ModrinthFile {
   url: string;
   filename: string;
@@ -92,6 +100,22 @@ export async function searchModrinth(
     facets: JSON.stringify(facets),
   });
   return get<ModrinthSearchResult>(`/search?${q.toString()}`, signal);
+}
+
+/** Fetch a single project's metadata (title, icon, …). */
+export function getProject(projectId: string, signal?: AbortSignal): Promise<ModrinthProject> {
+  return get<ModrinthProject>(`/project/${projectId}`, signal);
+}
+
+/** Fetch metadata for many projects at once (title/icon lookup). */
+export async function getProjects(
+  ids: string[],
+  signal?: AbortSignal,
+): Promise<Record<string, ModrinthProject>> {
+  if (ids.length === 0) return {};
+  const q = new URLSearchParams({ ids: JSON.stringify(ids) });
+  const list = await get<ModrinthProject[]>(`/projects?${q.toString()}`, signal);
+  return Object.fromEntries(list.map((p) => [p.id, p]));
 }
 
 /** List versions of a project, optionally filtered by loader + game version. */

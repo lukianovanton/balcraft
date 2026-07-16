@@ -64,6 +64,80 @@ export function ServerScreen({ state }: { state: LauncherStateHook }): JSX.Eleme
         </div>
       </div>
 
+      {state.settings && (
+        <details className="panel px-4 py-2 text-sm" open={server.status === 'stopped'}>
+          <summary className="cursor-pointer select-none text-xs font-semibold uppercase tracking-wide text-andesite-400">
+            Настройки сервера{' '}
+            <span className="ml-1 text-andesite-500">
+              (ОЗУ {Math.round(state.settings.serverRamMb / 1024)} ГБ · дистанция{' '}
+              {state.settings.serverViewDistance} · слотов {state.settings.serverMaxPlayers})
+            </span>
+          </summary>
+          <div className="mt-3 grid grid-cols-4 gap-3">
+            <label className="col-span-2 text-xs text-andesite-400">
+              Память сервера: {Math.round(state.settings.serverRamMb / 1024)} ГБ
+              <input
+                type="range"
+                min={2}
+                max={Math.max(4, Math.floor((state.systemInfo?.totalRamMb ?? 8192) / 1024))}
+                value={Math.round(state.settings.serverRamMb / 1024)}
+                disabled={server.status !== 'stopped'}
+                className="mt-1 w-full accent-brass-500"
+                onChange={(e) => state.saveSettings({ serverRamMb: Number(e.target.value) * 1024 })}
+              />
+            </label>
+            <label className="text-xs text-andesite-400">
+              Дистанция прогрузки
+              <input
+                type="number"
+                min={4}
+                max={32}
+                value={state.settings.serverViewDistance}
+                disabled={server.status !== 'stopped'}
+                className="input mt-1"
+                onChange={(e) => state.saveSettings({ serverViewDistance: Number(e.target.value) })}
+              />
+            </label>
+            <label className="text-xs text-andesite-400">
+              Макс. игроков
+              <input
+                type="number"
+                min={1}
+                max={100}
+                value={state.settings.serverMaxPlayers}
+                disabled={server.status !== 'stopped'}
+                className="input mt-1"
+                onChange={(e) => state.saveSettings({ serverMaxPlayers: Number(e.target.value) })}
+              />
+            </label>
+            <label className="col-span-3 text-xs text-andesite-400">
+              Описание (MOTD)
+              <input
+                className="input mt-1"
+                defaultValue={state.settings.serverMotd}
+                disabled={server.status !== 'stopped'}
+                onBlur={(e) => state.saveSettings({ serverMotd: e.target.value })}
+              />
+            </label>
+            <label className="flex items-end gap-2 text-xs text-andesite-300">
+              <input
+                type="checkbox"
+                className="h-4 w-4 accent-brass-500"
+                checked={state.settings.serverUseTunnel}
+                disabled={server.status !== 'stopped'}
+                onChange={(e) => state.saveSettings({ serverUseTunnel: e.target.checked })}
+              />
+              Туннель Playit.gg
+            </label>
+          </div>
+          {server.status !== 'stopped' && (
+            <p className="mt-2 text-[11px] text-andesite-500">
+              Настройки применятся при следующем запуске сервера.
+            </p>
+          )}
+        </details>
+      )}
+
       <div className="grid flex-1 grid-cols-3 gap-4 overflow-hidden">
         {/* Console */}
         <div className="panel col-span-2 flex flex-col overflow-hidden">
@@ -72,7 +146,7 @@ export function ServerScreen({ state }: { state: LauncherStateHook }): JSX.Eleme
           </div>
           <div
             ref={logRef}
-            className="flex-1 overflow-y-auto whitespace-pre-wrap p-3 font-mono text-[12px] leading-relaxed text-andesite-200"
+            className="selectable flex-1 overflow-y-auto whitespace-pre-wrap p-3 font-mono text-[12px] leading-relaxed text-andesite-200"
           >
             {serverLog.length === 0 ? (
               <span className="text-andesite-500">Лог сервера появится здесь…</span>
