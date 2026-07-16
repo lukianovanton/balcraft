@@ -24,6 +24,7 @@ const DEFAULT_SETTINGS: LauncherSettings = {
   githubRepo: '',
   githubToken: '',
   azureClientId: '',
+  anthropicApiKey: '',
 };
 
 interface PersistedState {
@@ -53,6 +54,7 @@ export class Store {
       const parsed = JSON.parse(raw) as PersistedState;
       const settings = { ...DEFAULT_SETTINGS, ...parsed.settings };
       settings.githubToken = this.decStr(settings.githubToken) ?? '';
+      settings.anthropicApiKey = this.decStr(settings.anthropicApiKey) ?? '';
       this.state = {
         settings,
         accounts: (parsed.accounts ?? []).map((a) => this.decryptAccount(a)),
@@ -67,7 +69,11 @@ export class Store {
   private async persist(): Promise<void> {
     await ensureDir(app.getPath('userData'));
     const toSave: PersistedState = {
-      settings: { ...this.state.settings, githubToken: this.encStr(this.state.settings.githubToken) ?? '' },
+      settings: {
+        ...this.state.settings,
+        githubToken: this.encStr(this.state.settings.githubToken) ?? '',
+        anthropicApiKey: this.encStr(this.state.settings.anthropicApiKey) ?? '',
+      },
       accounts: this.state.accounts.map((a) => this.encryptAccount(a)),
       selectedAccountId: this.state.selectedAccountId,
     };
@@ -100,10 +106,10 @@ export class Store {
     return this.state.settings;
   }
 
-  /** Settings for the renderer, with the raw token replaced by a boolean. */
+  /** Settings for the renderer, with secrets replaced by booleans. */
   getSafeSettings(): SafeSettings {
-    const { githubToken, ...rest } = this.state.settings;
-    return { ...rest, hasGithubToken: !!githubToken };
+    const { githubToken, anthropicApiKey, ...rest } = this.state.settings;
+    return { ...rest, hasGithubToken: !!githubToken, hasAnthropicKey: !!anthropicApiKey };
   }
 
   async saveSettings(patch: Partial<LauncherSettings>): Promise<SafeSettings> {

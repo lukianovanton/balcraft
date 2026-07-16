@@ -6,6 +6,7 @@ import { ServerManager } from './server-manager.js';
 import { AuthService } from './auth-service.js';
 import { ContentService } from './content-service.js';
 import { PackAdminService } from './pack-admin-service.js';
+import { ChickenBrain } from './chicken-brain.js';
 import { registerIpc } from './ipc.js';
 import { GameService } from './game-service.js';
 import { initSelfUpdate } from './updater.js';
@@ -62,6 +63,9 @@ async function bootstrap(): Promise<void> {
   const game = new GameService(store, auth, launch);
   const content = new ContentService();
   const packAdmin = new PackAdminService(store);
+
+  // Local "brain" for the in-game AI admin-chicken mod.
+  new ChickenBrain(store).start();
 
   registerIpc({ store, auth, launch, server, content, game, packAdmin, getWindow: () => mainWindow });
 

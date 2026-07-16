@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { LauncherStateHook } from '../hooks/useLauncherState';
 import { PageHeader } from '../components/PageHeader.js';
 
-type Section = 'game' | 'publish' | 'about';
+type Section = 'game' | 'publish' | 'chicken' | 'about';
 
 export function SettingsScreen({ state }: { state: LauncherStateHook }): JSX.Element {
   const { settings, systemInfo, saveSettings } = state;
@@ -24,6 +24,7 @@ export function SettingsScreen({ state }: { state: LauncherStateHook }): JSX.Ele
   const NAV: { key: Section; label: string }[] = [
     { key: 'game', label: 'Игра' },
     { key: 'publish', label: 'Публикация (админ)' },
+    { key: 'chicken', label: 'Курица-ИИ' },
     { key: 'about', label: 'О программе' },
   ];
 
@@ -186,6 +187,48 @@ export function SettingsScreen({ state }: { state: LauncherStateHook }): JSX.Ele
                     </div>
                   </div>
                 )}
+              </div>
+            )}
+
+            {section === 'chicken' && (
+              <div className="panel space-y-4 p-5">
+                <div>
+                  <div className="text-sm font-semibold text-brass-100">Курица-Админ (ИИ)</div>
+                  <p className="mt-1 text-xs text-andesite-400">
+                    Бессмертная ИИ-курица в игре: пиши в чат — она отвечает с характером и может
+                    выполнять команды (подойти, следовать, заклевать игрока). Мозг работает, пока
+                    открыт Gearhaven.
+                  </p>
+                </div>
+                <div>
+                  <label className="text-xs text-andesite-400">
+                    Ключ Anthropic API{' '}
+                    {settings.hasAnthropicKey && <span className="text-brass-400">✓ сохранён</span>}
+                  </label>
+                  <input
+                    type="password"
+                    className="input mt-1 font-mono"
+                    placeholder={settings.hasAnthropicKey ? '•••••••• (новый — заменить)' : 'sk-ant-…'}
+                    onBlur={(e) => {
+                      if (e.target.value.trim()) {
+                        saveSettings({ anthropicApiKey: e.target.value.trim() });
+                        e.target.value = '';
+                      }
+                    }}
+                  />
+                  <span className="mt-1 block text-[11px] text-andesite-500">
+                    Хранится зашифрованно на этом ПК. Модель Haiku — стоит копейки за сообщение.
+                  </span>
+                </div>
+                <div className="border-t border-white/5 pt-3 text-[11px] leading-relaxed text-andesite-400">
+                  <div className="mb-1 font-semibold text-brass-200">Как включить в игре:</div>
+                  1. Положи мод <span className="font-mono text-brass-300">gearhaven-chicken.jar</span> в
+                  папку модов (клиент и сервер).<br />
+                  2. Впиши ключ выше, запусти сервер.<br />
+                  3. В игре: команда <span className="font-mono text-brass-300">/chicken</span> — призвать
+                  курицу к себе.<br />
+                  4. Пиши в чат — она ответит. Скажи «заклюй Васю» — пойдёт и клюнет.
+                </div>
               </div>
             )}
 

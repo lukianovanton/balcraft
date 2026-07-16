@@ -45,3 +45,8 @@ tools/pack-publisher/.cache/
 # Runtime game data captured during dev
 apps/launcher/.runtime/
 temp
+
+# Mod build
+.tools/
+chicken-mod/.gradle/
+chicken-mod/build/

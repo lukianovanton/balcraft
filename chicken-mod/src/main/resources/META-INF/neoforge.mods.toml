@@ -1,0 +1,24 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+license = "MIT"
+
+[[mods]]
+modId = "gearhavenchicken"
+version = "0.1.0"
+displayName = "Gearhaven Chicken"
+description = "An immortal AI admin-chicken you can chat with and command."
+authors = "Gearhaven"
+
+[[dependencies.gearhavenchicken]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.gearhavenchicken]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1,1.22)"
+ordering = "NONE"
+side = "BOTH"

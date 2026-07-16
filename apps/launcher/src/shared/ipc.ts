@@ -54,11 +54,14 @@ export interface LauncherSettings {
   githubToken: string;
   /** Azure application (client) id for Microsoft login (optional). */
   azureClientId: string;
+  /** Anthropic API key for the AI admin-chicken (encrypted at rest). */
+  anthropicApiKey: string;
 }
 
-/** Settings safe to expose to the renderer (token redacted to a boolean). */
-export interface SafeSettings extends Omit<LauncherSettings, 'githubToken'> {
+/** Settings safe to expose to the renderer (secrets redacted to booleans). */
+export interface SafeSettings extends Omit<LauncherSettings, 'githubToken' | 'anthropicApiKey'> {
   hasGithubToken: boolean;
+  hasAnthropicKey: boolean;
 }
 
 export type LaunchStage =
