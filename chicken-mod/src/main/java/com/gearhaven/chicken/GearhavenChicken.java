@@ -74,18 +74,22 @@ public class GearhavenChicken {
         MinecraftServer server = event.getServer();
         ServerLevel overworld = server.overworld();
 
-        if (CURRENT == null || !CURRENT.isAlive() || CURRENT.isRemoved()) {
-            CURRENT = findExisting(overworld);
-        }
-        if (CURRENT == null) {
+        // The chicken force-loads its own chunk, so it's always among the loaded
+        // entities here — making discovery + dedup reliable.
+        List<AdminChicken> all = overworld.getEntitiesOfClass(
+                AdminChicken.class, new AABB(BlockPos.ZERO).inflate(3.0E7));
+
+        if (!all.isEmpty()) {
+            // Keep exactly one; remove any duplicates (e.g. from older builds).
+            AdminChicken keep = (CURRENT != null && CURRENT.isAlive() && all.contains(CURRENT))
+                    ? CURRENT : all.get(0);
+            for (AdminChicken c : all) {
+                if (c != keep) c.discard();
+            }
+            CURRENT = keep;
+        } else if (CURRENT == null || !CURRENT.isAlive() || CURRENT.isRemoved()) {
             spawnAtSpawn(overworld, server);
         }
-    }
-
-    private AdminChicken findExisting(ServerLevel level) {
-        List<AdminChicken> found = level.getEntitiesOfClass(
-                AdminChicken.class, new AABB(BlockPos.ZERO).inflate(3.0E7));
-        return found.isEmpty() ? null : found.get(0);
     }
 
     private void spawnAtSpawn(ServerLevel level, MinecraftServer server) {
