@@ -193,22 +193,19 @@ export class ServerManager extends EventEmitter {
     const name = username.trim();
     if (!name || this.state.whitelist.includes(name)) return;
     const list = [...this.state.whitelist, name];
+    // Write whitelist.json ourselves with the correct OFFLINE uuid, then just
+    // reload. We must NOT use `whitelist add`, which on an offline server does a
+    // Mojang lookup and stores the wrong (online) uuid -> player can't join.
     await writeWhitelist(this.serverDir, list);
     this.update({ whitelist: list });
-    if (this.state.status === 'running') {
-      this.sendRaw(`whitelist add ${name}`);
-      this.sendRaw('whitelist reload');
-    }
+    if (this.state.status === 'running') this.sendRaw('whitelist reload');
   }
 
   async removeFromWhitelist(username: string): Promise<void> {
     const list = this.state.whitelist.filter((u) => u !== username);
     await writeWhitelist(this.serverDir, list);
     this.update({ whitelist: list });
-    if (this.state.status === 'running') {
-      this.sendRaw(`whitelist remove ${username}`);
-      this.sendRaw('whitelist reload');
-    }
+    if (this.state.status === 'running') this.sendRaw('whitelist reload');
   }
 }
 
