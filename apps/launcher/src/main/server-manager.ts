@@ -89,7 +89,7 @@ export class ServerManager extends EventEmitter {
       // config
       await writeEula(this.serverDir);
       await writeServerProperties(this.serverDir, {
-        whitelist: true,
+        whitelist: settings.serverWhitelist,
         motd: settings.serverMotd,
         maxPlayers: settings.serverMaxPlayers,
         viewDistance: settings.serverViewDistance,

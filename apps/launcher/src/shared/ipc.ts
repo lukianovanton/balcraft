@@ -39,6 +39,8 @@ export interface LauncherSettings {
   serverViewDistance: number;
   serverMaxPlayers: number;
   serverMotd: string;
+  /** Whether the server enforces the whitelist. */
+  serverWhitelist: boolean;
   /** Public server address friends connect to (your white IP or domain). */
   serverPublicAddress: string;
 

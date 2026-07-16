@@ -17,6 +17,7 @@ const DEFAULT_SETTINGS: LauncherSettings = {
   serverViewDistance: 10,
   serverMaxPlayers: 10,
   serverMotd: 'Gearhaven — Create',
+  serverWhitelist: true,
   serverPublicAddress: '',
   adminMode: false,
   githubOwner: '',

@@ -133,6 +133,23 @@ export function ServerScreen({ state }: { state: LauncherStateHook }): JSX.Eleme
                     onBlur={(e) => state.saveSettings({ serverMotd: e.target.value })}
                   />
                 </label>
+                <label className="col-span-2 flex items-center gap-3 pt-1">
+                  <input
+                    type="checkbox"
+                    className="h-4 w-4 accent-brass-500"
+                    checked={settings.serverWhitelist}
+                    disabled={!stopped}
+                    onChange={(e) => state.saveSettings({ serverWhitelist: e.target.checked })}
+                  />
+                  <span className="text-sm text-brass-100">
+                    Вайтлист (пускать только из списка)
+                  </span>
+                  {!settings.serverWhitelist && (
+                    <span className="text-[11px] text-copper-400">
+                      выключен — зайти сможет любой с адресом
+                    </span>
+                  )}
+                </label>
               </div>
               {!stopped && (
                 <p className="mt-3 text-[11px] text-andesite-500">
