@@ -43,7 +43,7 @@ export class GameService {
 
   /** Current pack update status for the UI. */
   getPackStatus(): Promise<PackStatus> {
-    return getPackStatus(this.paths);
+    return getPackStatus(this.paths, this.store.getSettings());
   }
 
   private report(
@@ -98,10 +98,10 @@ export class GameService {
     // 4) Pack sync (mods) from GitHub. Soft-fails if the repo isn't configured
     //    yet or the manifest is unreachable, so local testing still works.
     const instanceDir = this.paths.instanceDir(APP_CONFIG.instanceId);
-    if (isGithubConfigured()) {
+    if (isGithubConfigured(settings)) {
       try {
         this.report(report, 'syncing-pack');
-        const manifest = await fetchManifest(manifestUrl(), signal);
+        const manifest = await fetchManifest(manifestUrl(settings), signal);
         const result = await syncPack({
           manifest,
           instanceDir,

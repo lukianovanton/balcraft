@@ -2,6 +2,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { LauncherPaths, ensureParent, fetchManifest } from '@balumba/core';
 import { APP_CONFIG, isGithubConfigured, manifestUrl } from './config.js';
+import type { LauncherSettings } from '../shared/ipc.js';
 
 export interface PackStatus {
   /** Whether the pack repo is configured (else sync/updates are inert). */
@@ -37,14 +38,17 @@ async function readInstalledPackVersion(paths: LauncherPaths): Promise<string | 
 }
 
 /** Compute the current pack update status (installed vs latest published). */
-export async function getPackStatus(paths: LauncherPaths): Promise<PackStatus> {
+export async function getPackStatus(
+  paths: LauncherPaths,
+  settings: LauncherSettings,
+): Promise<PackStatus> {
   const installedVersion = await readInstalledPackVersion(paths);
-  if (!isGithubConfigured()) {
+  if (!isGithubConfigured(settings)) {
     return { configured: false, installedVersion, latestVersion: null, updateAvailable: false };
   }
   let latestVersion: string | null = null;
   try {
-    latestVersion = (await fetchManifest(manifestUrl())).version;
+    latestVersion = (await fetchManifest(manifestUrl(settings))).version;
   } catch {
     latestVersion = null;
   }

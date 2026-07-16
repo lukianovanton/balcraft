@@ -112,6 +112,25 @@ export function getVersion(versionId: string, signal?: AbortSignal): Promise<Mod
   return get<ModrinthVersion>(`/version/${versionId}`, signal);
 }
 
+/**
+ * Resolve many local files to their Modrinth versions by sha1 hash in one call.
+ * Returns a map of sha1 -> version (only for files found on Modrinth).
+ */
+export async function getVersionsByHashes(
+  sha1Hashes: string[],
+  signal?: AbortSignal,
+): Promise<Record<string, ModrinthVersion>> {
+  if (sha1Hashes.length === 0) return {};
+  const res = await fetch(`${BASE}/version_files`, {
+    method: 'POST',
+    headers: { 'User-Agent': UA, 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({ hashes: sha1Hashes, algorithm: 'sha1' }),
+    signal,
+  });
+  if (!res.ok) throw new Error(`Modrinth ${res.status}: version_files`);
+  return (await res.json()) as Record<string, ModrinthVersion>;
+}
+
 /** The primary (or first) downloadable file of a version. */
 export function primaryFile(version: ModrinthVersion): ModrinthFile | null {
   return version.files.find((f) => f.primary) ?? version.files[0] ?? null;

@@ -92,10 +92,10 @@ export class ServerManager extends EventEmitter {
       await writeWhitelist(this.serverDir, this.state.whitelist);
 
       // sync server-side mods
-      if (isGithubConfigured()) {
+      if (isGithubConfigured(settings)) {
         this.log('[launcher] Синхронизация серверных модов…');
         try {
-          const manifest = await fetchManifest(manifestUrl());
+          const manifest = await fetchManifest(manifestUrl(settings));
           const r = await syncPack({ manifest, instanceDir: this.serverDir, side: 'server' });
           this.log(`[sync] обновлено ${r.downloaded}, удалено ${r.removed}, актуально ${r.upToDate}`);
         } catch (err) {

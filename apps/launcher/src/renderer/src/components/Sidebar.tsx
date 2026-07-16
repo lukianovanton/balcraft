@@ -1,11 +1,12 @@
 import type { Account } from '@balumba/core';
 import type { ServerStatus } from '../../../shared/ipc';
 
-export type NavKey = 'play' | 'content' | 'server' | 'accounts' | 'settings';
+export type NavKey = 'play' | 'content' | 'admin' | 'server' | 'accounts' | 'settings';
 
-const ITEMS: { key: NavKey; label: string; icon: string }[] = [
+const ITEMS: { key: NavKey; label: string; icon: string; adminOnly?: boolean }[] = [
   { key: 'play', label: 'Играть', icon: '▶' },
   { key: 'content', label: 'Моды', icon: '🧩' },
+  { key: 'admin', label: 'Сборка', icon: '📦', adminOnly: true },
   { key: 'server', label: 'Сервер', icon: '🛠' },
   { key: 'accounts', label: 'Аккаунты', icon: '👤' },
   { key: 'settings', label: 'Настройки', icon: '⚙' },
@@ -24,9 +25,11 @@ interface Props {
   account: Account | null;
   serverStatus: ServerStatus;
   appVersion: string;
+  adminMode: boolean;
 }
 
-export function Sidebar({ active, onNavigate, account, serverStatus, appVersion }: Props): JSX.Element {
+export function Sidebar({ active, onNavigate, account, serverStatus, appVersion, adminMode }: Props): JSX.Element {
+  const items = ITEMS.filter((i) => !i.adminOnly || adminMode);
   return (
     <aside className="flex w-56 flex-col border-r border-andesite-600 bg-andesite-850/90">
       <div className="flex items-center gap-2 px-5 py-5">
@@ -40,7 +43,7 @@ export function Sidebar({ active, onNavigate, account, serverStatus, appVersion 
       </div>
 
       <nav className="mt-2 flex-1 space-y-1 px-3">
-        {ITEMS.map((item) => (
+        {items.map((item) => (
           <button
             key={item.key}
             onClick={() => onNavigate(item.key)}

@@ -12,34 +12,62 @@ export const APP_CONFIG = {
   /** NeoForge version for MC 1.21.1 (matches the Modrinth "Сборка" profile). */
   neoforgeVersion: '21.1.232',
 
-  /** Public GitHub repo hosting the pack manifest + files (Phase 4). */
-  github: {
-    owner: 'CHANGE_ME',
-    repo: 'balumbacraft-pack',
-    /** Release tag or "latest" that the launcher reads the manifest from. */
-    manifestAsset: 'manifest.json',
-  },
+  /** File name of the manifest committed to the pack repo's main branch. */
+  manifestFile: 'manifest.json',
 
-  /** Azure AD application (public client) for Microsoft login (Phase 5). */
-  azureClientId: 'CHANGE_ME',
+  /**
+   * Default pack repo baked into the distributed launcher so every friend knows
+   * where to read the manifest. The admin can override in settings; friends use
+   * these. Create this PUBLIC repo before publishing.
+   */
+  defaultGithubOwner: 'lukianovanton',
+  defaultGithubRepo: 'balcraft-pack',
+
+  /** Default Azure AD application id (can be overridden in settings). */
+  defaultAzureClientId: '',
 
   /** Defaults. */
   defaultRamMb: 6144,
   minRamFloorMb: 2048,
 } as const;
 
-/** URL to the latest published pack manifest on GitHub Releases. */
-export function manifestUrl(): string {
-  const { owner, repo, manifestAsset } = APP_CONFIG.github;
-  return `https://github.com/${owner}/${repo}/releases/latest/download/${manifestAsset}`;
+/** Minimal shape of settings this module needs (avoids importing the full type). */
+interface GithubSettings {
+  githubOwner: string;
+  githubRepo: string;
+  azureClientId: string;
 }
 
-/** True once the pack's GitHub repo has been configured (not the placeholder). */
-export function isGithubConfigured(): boolean {
-  return APP_CONFIG.github.owner !== 'CHANGE_ME';
+/** Effective pack repo: per-machine settings override the baked-in default. */
+export function effectiveRepo(s: GithubSettings): { owner: string; repo: string } {
+  return {
+    owner: s.githubOwner || APP_CONFIG.defaultGithubOwner,
+    repo: s.githubRepo || APP_CONFIG.defaultGithubRepo,
+  };
 }
 
-/** True once an Azure Client ID is set, enabling Microsoft login. */
-export function isMicrosoftConfigured(): boolean {
-  return APP_CONFIG.azureClientId !== 'CHANGE_ME';
+/** True once a pack repo is known (default or configured). */
+export function isGithubConfigured(s: GithubSettings): boolean {
+  const { owner, repo } = effectiveRepo(s);
+  return !!owner && !!repo;
+}
+
+/**
+ * URL the launcher reads the pack manifest from — a plain file on the repo's
+ * main branch (mods are hosted on Modrinth's CDN, so only this small file lives
+ * in GitHub).
+ */
+export function manifestUrl(s: GithubSettings): string {
+  const { owner, repo } = effectiveRepo(s);
+  return `https://raw.githubusercontent.com/${owner}/${repo}/main/${APP_CONFIG.manifestFile}`;
+}
+
+/** Effective Azure client id (settings override the built-in default). */
+export function azureClientId(s: GithubSettings): string {
+  return s.azureClientId || APP_CONFIG.defaultAzureClientId;
+}
+
+/** True once an Azure Client ID is available, enabling Microsoft login. */
+export function isMicrosoftConfigured(s: GithubSettings): boolean {
+  return !!azureClientId(s);
 }

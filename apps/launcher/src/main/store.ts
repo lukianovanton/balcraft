@@ -3,7 +3,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import type { Account } from '@balumba/core';
 import { ensureDir } from '@balumba/core';
-import type { LauncherSettings } from '../shared/ipc.js';
+import type { LauncherSettings, SafeSettings } from '../shared/ipc.js';
 import { APP_CONFIG } from './config.js';
 
 const DEFAULT_SETTINGS: LauncherSettings = {
@@ -13,6 +13,11 @@ const DEFAULT_SETTINGS: LauncherSettings = {
   javaPathOverride: '',
   closeOnLaunch: false,
   resolution: null,
+  adminMode: false,
+  githubOwner: '',
+  githubRepo: '',
+  githubToken: '',
+  azureClientId: '',
 };
 
 interface PersistedState {
@@ -40,8 +45,10 @@ export class Store {
     try {
       const raw = await readFile(this.file, 'utf8');
       const parsed = JSON.parse(raw) as PersistedState;
+      const settings = { ...DEFAULT_SETTINGS, ...parsed.settings };
+      settings.githubToken = this.decStr(settings.githubToken) ?? '';
       this.state = {
-        settings: { ...DEFAULT_SETTINGS, ...parsed.settings },
+        settings,
         accounts: (parsed.accounts ?? []).map((a) => this.decryptAccount(a)),
         selectedAccountId: parsed.selectedAccountId ?? null,
       };
@@ -54,27 +61,32 @@ export class Store {
   private async persist(): Promise<void> {
     await ensureDir(app.getPath('userData'));
     const toSave: PersistedState = {
-      ...this.state,
+      settings: { ...this.state.settings, githubToken: this.encStr(this.state.settings.githubToken) ?? '' },
       accounts: this.state.accounts.map((a) => this.encryptAccount(a)),
+      selectedAccountId: this.state.selectedAccountId,
     };
     await writeFile(this.file, JSON.stringify(toSave, null, 2), 'utf8');
   }
 
   // --- token encryption helpers ---
+  private encStr(v?: string): string | undefined {
+    if (!v || v.startsWith('enc:') || !safeStorage.isEncryptionAvailable()) return v;
+    return `enc:${safeStorage.encryptString(v).toString('base64')}`;
+  }
+
+  private decStr(v?: string): string | undefined {
+    if (!v || !v.startsWith('enc:') || !safeStorage.isEncryptionAvailable()) return v;
+    return safeStorage.decryptString(Buffer.from(v.slice(4), 'base64'));
+  }
+
   private encryptAccount(a: Account): Account {
-    if (a.type !== 'microsoft' || !safeStorage.isEncryptionAvailable()) return a;
-    const enc = (v?: string) =>
-      v ? `enc:${safeStorage.encryptString(v).toString('base64')}` : v;
-    return { ...a, accessToken: enc(a.accessToken), refreshToken: enc(a.refreshToken) };
+    if (a.type !== 'microsoft') return a;
+    return { ...a, accessToken: this.encStr(a.accessToken), refreshToken: this.encStr(a.refreshToken) };
   }
 
   private decryptAccount(a: Account): Account {
-    if (a.type !== 'microsoft' || !safeStorage.isEncryptionAvailable()) return a;
-    const dec = (v?: string) =>
-      v && v.startsWith('enc:')
-        ? safeStorage.decryptString(Buffer.from(v.slice(4), 'base64'))
-        : v;
-    return { ...a, accessToken: dec(a.accessToken), refreshToken: dec(a.refreshToken) };
+    if (a.type !== 'microsoft') return a;
+    return { ...a, accessToken: this.decStr(a.accessToken), refreshToken: this.decStr(a.refreshToken) };
   }
 
   // --- settings ---
@@ -82,10 +94,16 @@ export class Store {
     return this.state.settings;
   }
 
-  async saveSettings(patch: Partial<LauncherSettings>): Promise<LauncherSettings> {
+  /** Settings for the renderer, with the raw token replaced by a boolean. */
+  getSafeSettings(): SafeSettings {
+    const { githubToken, ...rest } = this.state.settings;
+    return { ...rest, hasGithubToken: !!githubToken };
+  }
+
+  async saveSettings(patch: Partial<LauncherSettings>): Promise<SafeSettings> {
     this.state.settings = { ...this.state.settings, ...patch };
     await this.persist();
-    return this.state.settings;
+    return this.getSafeSettings();
   }
 
   // --- accounts ---

@@ -34,6 +34,15 @@ const api: BalumbaApi = {
   cancelLaunch: () => ipcRenderer.invoke(IPC.cancelLaunch),
   getLaunchState: () => ipcRenderer.invoke(IPC.getLaunchState),
 
+  // admin: shared pack
+  listPackEntries: () => ipcRenderer.invoke(IPC.listPackEntries),
+  addPackProject: (projectId, type) => ipcRenderer.invoke(IPC.addPackProject, projectId, type),
+  removePackProject: (projectId) => ipcRenderer.invoke(IPC.removePackProject, projectId),
+  setPackSide: (projectId, side) => ipcRenderer.invoke(IPC.setPackSide, projectId, side),
+  importPackFolder: () => ipcRenderer.invoke(IPC.importPackFolder),
+  publishPack: () => ipcRenderer.invoke(IPC.publishPack),
+  checkAdminAccess: () => ipcRenderer.invoke(IPC.checkAdminAccess),
+
   // updates
   getPackStatus: () => ipcRenderer.invoke(IPC.getPackStatus),
   installLauncherUpdate: () => ipcRenderer.invoke(IPC.installLauncherUpdate),

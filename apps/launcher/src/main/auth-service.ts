@@ -6,7 +6,7 @@ import {
   type Account,
   type DeviceCodeInfo,
 } from '@balumba/core';
-import { APP_CONFIG } from './config.js';
+import { azureClientId, isMicrosoftConfigured } from './config.js';
 import type { Store } from './store.js';
 
 /**
@@ -23,7 +23,7 @@ export class AuthService {
   ) {}
 
   get microsoftConfigured(): boolean {
-    return APP_CONFIG.azureClientId !== 'CHANGE_ME';
+    return isMicrosoftConfigured(this.store.getSettings());
   }
 
   async addOffline(username: string): Promise<Account> {
@@ -45,8 +45,9 @@ export class AuthService {
    */
   async beginMicrosoft(): Promise<{ userCode: string; verificationUri: string; message: string }> {
     if (!this.microsoftConfigured) {
-      throw new Error('Azure Client ID не настроен (см. SETUP.md, Фаза 5).');
+      throw new Error('Azure Client ID не настроен (Настройки → Microsoft-вход).');
     }
+    const clientId = azureClientId(this.store.getSettings());
     this.msAbort?.abort();
     this.msAbort = new AbortController();
     const signal = this.msAbort.signal;
@@ -62,7 +63,7 @@ export class AuthService {
         });
       };
 
-      loginMicrosoftDeviceCode(APP_CONFIG.azureClientId, onCode, signal)
+      loginMicrosoftDeviceCode(clientId, onCode, signal)
         .then(async (account) => {
           await this.store.upsertAccount(account);
           this.onComplete(account);
@@ -85,7 +86,7 @@ export class AuthService {
   /** Refresh a Microsoft account's token before launch; persists the update. */
   async ensureLaunchable(account: Account): Promise<Account> {
     if (account.type !== 'microsoft') return account;
-    const fresh = await ensureFreshMicrosoft(APP_CONFIG.azureClientId, account);
+    const fresh = await ensureFreshMicrosoft(azureClientId(this.store.getSettings()), account);
     if (fresh !== account) await this.store.upsertAccount(fresh);
     return fresh;
   }

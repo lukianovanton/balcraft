@@ -5,6 +5,7 @@ import type {
   LauncherSettings,
   LauncherUpdateState,
   PackStatus,
+  SafeSettings,
   ServerState,
 } from '../../../shared/ipc';
 
@@ -21,7 +22,7 @@ const IDLE_LAUNCH: LaunchState = { stage: 'idle', progress: null, error: null };
 export function useLauncherState() {
   const [accounts, setAccounts] = useState<Account[]>([]);
   const [selectedAccountId, setSelectedAccountId] = useState<string | null>(null);
-  const [settings, setSettings] = useState<LauncherSettings | null>(null);
+  const [settings, setSettings] = useState<SafeSettings | null>(null);
   const [systemInfo, setSystemInfo] = useState<SystemInfo | null>(null);
   const [launch, setLaunch] = useState<LaunchState>(IDLE_LAUNCH);
   const [server, setServer] = useState<ServerState>({

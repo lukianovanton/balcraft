@@ -8,7 +8,18 @@ import type {
   ModrinthHit,
   ModrinthProjectType,
   UserContentEntry,
+  MasterEntry,
+  Side,
 } from '@balumba/core';
+
+export interface PublishResult {
+  version: string;
+  fileCount: number;
+}
+export interface ImportResult {
+  added: number;
+  unresolved: string[];
+}
 
 /** Persisted user settings. */
 export interface LauncherSettings {
@@ -21,6 +32,22 @@ export interface LauncherSettings {
   closeOnLaunch: boolean;
   /** Keep game window resolution. */
   resolution: { width: number; height: number } | null;
+
+  // --- admin / distribution (configured in-app, no code editing) ---
+  /** Marks this machine as the pack admin (shows publish tools). */
+  adminMode: boolean;
+  /** GitHub repo hosting the pack manifest (public). */
+  githubOwner: string;
+  githubRepo: string;
+  /** GitHub token with repo write access (admin only; encrypted at rest). */
+  githubToken: string;
+  /** Azure application (client) id for Microsoft login (optional). */
+  azureClientId: string;
+}
+
+/** Settings safe to expose to the renderer (token redacted to a boolean). */
+export interface SafeSettings extends Omit<LauncherSettings, 'githubToken'> {
+  hasGithubToken: boolean;
 }
 
 export type LaunchStage =
@@ -83,8 +110,8 @@ export interface BalumbaApi {
   getSelectedAccountId(): Promise<string | null>;
 
   // --- settings ---
-  getSettings(): Promise<LauncherSettings>;
-  saveSettings(patch: Partial<LauncherSettings>): Promise<LauncherSettings>;
+  getSettings(): Promise<SafeSettings>;
+  saveSettings(patch: Partial<LauncherSettings>): Promise<SafeSettings>;
   getSystemInfo(): Promise<{
     totalRamMb: number;
     cpuCount: number;
@@ -104,6 +131,15 @@ export interface BalumbaApi {
   sendServerCommand(command: string): Promise<void>;
   addToWhitelist(username: string): Promise<void>;
   removeFromWhitelist(username: string): Promise<void>;
+
+  // --- admin: shared pack ---
+  listPackEntries(): Promise<MasterEntry[]>;
+  addPackProject(projectId: string, type: ModrinthProjectType): Promise<MasterEntry[]>;
+  removePackProject(projectId: string): Promise<MasterEntry[]>;
+  setPackSide(projectId: string, side: Side): Promise<MasterEntry[]>;
+  importPackFolder(): Promise<ImportResult | null>;
+  publishPack(): Promise<PublishResult>;
+  checkAdminAccess(): Promise<boolean>;
 
   // --- updates ---
   getPackStatus(): Promise<PackStatus>;
@@ -139,6 +175,14 @@ export const IPC = {
   play: 'play:start',
   cancelLaunch: 'play:cancel',
   getLaunchState: 'play:state',
+
+  listPackEntries: 'pack:list',
+  addPackProject: 'pack:add',
+  removePackProject: 'pack:remove',
+  setPackSide: 'pack:set-side',
+  importPackFolder: 'pack:import-folder',
+  publishPack: 'pack:publish',
+  checkAdminAccess: 'pack:check-admin',
 
   getPackStatus: 'update:pack-status',
   installLauncherUpdate: 'update:install-launcher',
