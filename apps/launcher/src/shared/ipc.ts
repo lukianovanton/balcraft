@@ -56,6 +56,8 @@ export interface LauncherSettings {
   azureClientId: string;
   /** Anthropic API key for the AI admin-chicken (encrypted at rest). */
   anthropicApiKey: string;
+  /** Custom personality/behaviour prompt for the chicken (empty = built-in default). */
+  chickenPrompt: string;
 }
 
 /** Settings safe to expose to the renderer (secrets redacted to booleans). */
@@ -131,6 +133,7 @@ export interface BalumbaApi {
     cpuCount: number;
     appVersion: string;
     microsoftEnabled: boolean;
+    defaultChickenPrompt: string;
   }>;
 
   // --- play ---

@@ -14,6 +14,7 @@ export interface SystemInfo {
   cpuCount: number;
   appVersion: string;
   microsoftEnabled: boolean;
+  defaultChickenPrompt: string;
 }
 
 const IDLE_LAUNCH: LaunchState = { stage: 'idle', progress: null, error: null };

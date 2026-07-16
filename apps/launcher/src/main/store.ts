@@ -25,6 +25,7 @@ const DEFAULT_SETTINGS: LauncherSettings = {
   githubToken: '',
   azureClientId: '',
   anthropicApiKey: '',
+  chickenPrompt: '',
 };
 
 interface PersistedState {

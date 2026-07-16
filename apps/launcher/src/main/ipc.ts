@@ -3,6 +3,7 @@ import os from 'node:os';
 import { app } from 'electron';
 import { IPC, type LauncherSettings } from '../shared/ipc.js';
 import { isMicrosoftConfigured } from './config.js';
+import { DEFAULT_CHICKEN_PROMPT } from './chicken-brain.js';
 import type { Store } from './store.js';
 import type { AuthService } from './auth-service.js';
 import type { LaunchController } from './launch-controller.js';
@@ -54,6 +55,7 @@ export function registerIpc(services: Services): void {
     cpuCount: os.cpus().length,
     appVersion: app.getVersion(),
     microsoftEnabled: isMicrosoftConfigured(store.getSettings()),
+    defaultChickenPrompt: DEFAULT_CHICKEN_PROMPT,
   }));
 
   // --- play ---

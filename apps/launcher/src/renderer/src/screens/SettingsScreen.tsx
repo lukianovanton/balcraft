@@ -24,7 +24,7 @@ export function SettingsScreen({ state }: { state: LauncherStateHook }): JSX.Ele
   const NAV: { key: Section; label: string }[] = [
     { key: 'game', label: 'Игра' },
     { key: 'publish', label: 'Публикация (админ)' },
-    { key: 'chicken', label: 'Курица-ИИ' },
+    { key: 'chicken', label: 'Петух (ИИ)' },
     { key: 'about', label: 'О программе' },
   ];
 
@@ -193,11 +193,12 @@ export function SettingsScreen({ state }: { state: LauncherStateHook }): JSX.Ele
             {section === 'chicken' && (
               <div className="panel space-y-4 p-5">
                 <div>
-                  <div className="text-sm font-semibold text-brass-100">Курица-Админ (ИИ)</div>
+                  <div className="text-sm font-semibold text-brass-100">Петух (ИИ)</div>
                   <p className="mt-1 text-xs text-andesite-400">
-                    Бессмертная ИИ-курица в игре: пиши в чат — она отвечает с характером и может
-                    выполнять команды (подойти, следовать, заклевать игрока). Мозг работает, пока
-                    открыт Gearhaven.
+                    Бессмертный ИИ-петух живёт на сервере: пиши в чат — отвечает с характером и
+                    реально действует (подойти, следовать, заклевать игрока или моба, охранять,
+                    выкопать ямку, гулять). Его можно бить — он реагирует, но не умирает. Характер и
+                    поведение можно переписать промптом ниже. Мозг работает, пока открыт Gearhaven.
                   </p>
                 </div>
                 <div>
@@ -220,14 +221,21 @@ export function SettingsScreen({ state }: { state: LauncherStateHook }): JSX.Ele
                     Хранится зашифрованно на этом ПК. Модель Haiku — стоит копейки за сообщение.
                   </span>
                 </div>
+                <ChickenPromptEditor
+                  value={settings.chickenPrompt ?? ''}
+                  fallback={systemInfo.defaultChickenPrompt}
+                  onSave={(v) => saveSettings({ chickenPrompt: v })}
+                />
                 <div className="border-t border-white/5 pt-3 text-[11px] leading-relaxed text-andesite-400">
                   <div className="mb-1 font-semibold text-brass-200">Как включить в игре:</div>
                   1. Положи мод <span className="font-mono text-brass-300">gearhaven-chicken.jar</span> в
                   папку модов (клиент и сервер).<br />
-                  2. Впиши ключ выше, запусти сервер.<br />
-                  3. В игре: команда <span className="font-mono text-brass-300">/chicken</span> — призвать
-                  курицу к себе.<br />
-                  4. Пиши в чат — она ответит. Скажи «заклюй Васю» — пойдёт и клюнет.
+                  2. Впиши ключ выше, запусти сервер — Петух уже там, живёт на сервере сам, висит в
+                  табе. Призывать не нужно.<br />
+                  3. Хочешь подозвать к себе —{' '}
+                  <span className="font-mono text-brass-300">/chicken</span> телепортнёт его к тебе.<br />
+                  4. Пиши в чат: «заклюй Васю», «убей скелета», «выкопай ямку», «охраняй меня»,
+                  «гуляй» — она поймёт и сделает.
                 </div>
               </div>
             )}
@@ -260,6 +268,51 @@ export function SettingsScreen({ state }: { state: LauncherStateHook }): JSX.Ele
           </div>
         </div>
       </div>
+    </div>
+  );
+}
+
+/** Editor for the chicken's personality/behaviour prompt. Empty = built-in default. */
+function ChickenPromptEditor({
+  value,
+  fallback,
+  onSave,
+}: {
+  value: string;
+  fallback: string;
+  onSave: (v: string) => void;
+}): JSX.Element {
+  const [text, setText] = useState(value);
+  const custom = text.trim().length > 0;
+  return (
+    <div className="border-t border-white/5 pt-3">
+      <div className="flex items-center justify-between">
+        <label className="text-xs font-semibold text-brass-200">
+          Промпт Петуха (характер и поведение)
+        </label>
+        <button
+          className="text-[11px] text-andesite-400 hover:text-brass-200 disabled:opacity-40"
+          disabled={!custom}
+          onClick={() => {
+            setText('');
+            onSave('');
+          }}
+        >
+          Сбросить к стандартному
+        </button>
+      </div>
+      <textarea
+        className="input mt-1 h-56 resize-y font-mono text-[11px] leading-relaxed"
+        placeholder={fallback}
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        onBlur={() => onSave(text.trim())}
+      />
+      <span className="mt-1 block text-[11px] text-andesite-500">
+        {custom
+          ? 'Используется твой промпт. Опиши характер и как реагировать — можно на любом языке.'
+          : 'Пусто — работает стандартный характер (показан серым как подсказка). Начни писать, чтобы переопределить.'}
+      </span>
     </div>
   );
 }

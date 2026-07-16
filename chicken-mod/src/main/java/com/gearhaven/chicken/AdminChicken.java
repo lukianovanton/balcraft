@@ -1,5 +1,6 @@
 package com.gearhaven.chicken;
 
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -36,15 +37,24 @@ public class AdminChicken extends Chicken {
         this.goalSelector.addGoal(1, new ControlGoal(this));
     }
 
-    // --- immortality ---
-    @Override
-    public boolean isInvulnerableTo(DamageSource source) {
-        return true;
-    }
-
+    // --- immortal, but hittable ---
+    // You CAN hit it (it flinches and gets knocked back), it just never dies.
     @Override
     public boolean hurt(DamageSource source, float amount) {
-        return false;
+        if (this.level().isClientSide) return false;
+        // Instant-kill / void / /kill bypass invulnerability — ignore those entirely
+        // so it can never be removed.
+        if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
+            return false;
+        }
+        // Cap damage so a single hit can never bring it to 0 (no death), while
+        // still triggering the vanilla hit reaction + knockback.
+        float safe = Math.min(amount, Math.max(0.0F, this.getHealth() - 1.0F));
+        boolean hit = super.hurt(source, safe);
+        // Keep it topped up so its HP is effectively infinite.
+        this.setHealth(this.getMaxHealth());
+        this.deathTime = 0;
+        return hit;
     }
 
     @Override
