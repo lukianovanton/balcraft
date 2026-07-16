@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "name": "Gearhaven",
-  "version": "2026.07.16-6",
+  "version": "2026.07.16-7",
   "minecraft": "1.21.1",
   "loader": "neoforge",
   "loaderVersion": "21.1.232",
@@ -1187,6 +1187,15 @@
       "side": "both"
     },
     {
+      "path": "mods/sable_player_ragdoll-1.21.1-0.7.5.jar",
+      "sha1": "114a953a830673ebfe2af154f5a1ce535fc4d90c",
+      "size": 1466748,
+      "url": [
+        "https://cdn.modrinth.com/data/I3mWDgfy/versions/CyKh8XSr/sable_player_ragdoll-1.21.1-0.7.5.jar"
+      ],
+      "side": "both"
+    },
+    {
       "path": "mods/sable-neoforge-1.21.1-1.2.2.jar",
       "sha1": "c5ecd3fcf60a31d84112c708abe29e341b2d1b73",
       "size": 12719293,
@@ -1570,5 +1579,5 @@
     "shaderpacks"
   ],
   "serverAddress": "134.249.137.220",
-  "generatedAt": "2026-07-16T10:55:59.263Z"
+  "generatedAt": "2026-07-16T11:17:48.977Z"
 }
