@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
-  "name": "BalumbaCraft",
-  "version": "2026.07.16-4",
+  "name": "Gearhaven",
+  "version": "2026.07.16-5",
   "minecraft": "1.21.1",
   "loader": "neoforge",
   "loaderVersion": "21.1.232",
@@ -58,6 +58,15 @@
       "size": 1143659,
       "url": [
         "https://cdn.modrinth.com/data/6iTJugQR/versions/8xf6Wpxs/amendments-1.21-2.0.15-neoforge.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/appliedenergistics2-19.2.17.jar",
+      "sha1": "49c18d6a4af487957d7e5a6ad5dcbf71090b8e14",
+      "size": 8230896,
+      "url": [
+        "https://cdn.modrinth.com/data/XxWD5pD3/versions/kfyIqgJ6/appliedenergistics2-19.2.17.jar"
       ],
       "side": "both"
     },
@@ -863,6 +872,15 @@
       "side": "client"
     },
     {
+      "path": "mods/guideme-21.1.17.jar",
+      "sha1": "060e374f578db694a0b8f3ad409bd424cae86359",
+      "size": 9309396,
+      "url": [
+        "https://cdn.modrinth.com/data/Ck4E7v7R/versions/rduAfwb7/guideme-21.1.17.jar"
+      ],
+      "side": "both"
+    },
+    {
       "path": "mods/handcrafted-neoforge-1.21.1-4.0.3.jar",
       "sha1": "8ecd27f1d66f9b742cfae3c8ffa773765f574b52",
       "size": 7132842,
@@ -1527,10 +1545,30 @@
         "https://cdn.modrinth.com/data/ZYgyPyfq/versions/N2EpMhR7/YungsExtras-1.21.1-NeoForge-5.1.1.jar"
       ],
       "side": "both"
+    },
+    {
+      "path": "shaderpacks/ComplementaryReimagined_r5.8.1.zip",
+      "sha1": "5a021081f0178ed91dd911194071465ab0a4348b",
+      "size": 546925,
+      "url": [
+        "https://cdn.modrinth.com/data/HVnmMxH1/versions/yCCduG44/ComplementaryReimagined_r5.8.1.zip"
+      ],
+      "side": "client"
+    },
+    {
+      "path": "shaderpacks/ComplementaryUnbound_r5.8.1.zip",
+      "sha1": "af656a33be2cbd217ea08986ad2cdd76f6bbfe1c",
+      "size": 546928,
+      "url": [
+        "https://cdn.modrinth.com/data/R6NEzAwj/versions/VMHXIk50/ComplementaryUnbound_r5.8.1.zip"
+      ],
+      "side": "client"
     }
   ],
   "managedRoots": [
-    "mods"
+    "mods",
+    "shaderpacks"
   ],
-  "generatedAt": "2026-07-16T07:39:52.071Z"
+  "serverAddress": "134.249.137.220",
+  "generatedAt": "2026-07-16T10:54:36.546Z"
 }
