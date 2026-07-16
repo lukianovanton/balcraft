@@ -1,0 +1,24 @@
+{
+  "name": "balumbacraft",
+  "version": "0.1.0",
+  "private": true,
+  "description": "BalumbaCraft — custom Minecraft launcher for a private Create modpack (NeoForge 1.21.1)",
+  "author": "BalumbaCraft",
+  "workspaces": [
+    "packages/*",
+    "apps/*",
+    "tools/*"
+  ],
+  "scripts": {
+    "core:build": "npm run build -w @balumba/core",
+    "dev": "npm run core:build && npm run dev -w @balumba/launcher",
+    "build": "npm run core:build && npm run build -w @balumba/launcher",
+    "build:win": "npm run core:build && npm run build:win -w @balumba/launcher",
+    "publish:pack": "npm run start -w @balumba/pack-publisher",
+    "typecheck": "npm run core:build && npm run typecheck --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

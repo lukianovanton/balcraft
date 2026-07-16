@@ -1,0 +1,34 @@
+appId: com.balumbacraft.launcher
+productName: BalumbaCraft
+copyright: BalumbaCraft
+# Pinned so electron-builder can resolve the version under npm workspaces
+# (electron is hoisted to the repo-root node_modules).
+electronVersion: 33.4.11
+directories:
+  output: release
+  buildResources: build
+files:
+  - out/**/*
+  - package.json
+# Bundle nothing from node_modules that isn't needed at runtime; electron-builder
+# resolves production deps automatically.
+asarUnpack:
+  - resources/**
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+  artifactName: ${productName}-Setup-${version}.exe
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: BalumbaCraft
+# Self-update feed (Phase 8): GitHub Releases of the launcher repo.
+publish:
+  provider: github
+  owner: CHANGE_ME
+  repo: balumbacraft-launcher

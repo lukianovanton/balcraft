@@ -1,0 +1,26 @@
+{
+  "name": "@balumba/pack-publisher",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Scans the pack/ source, builds manifest.json, classifies client/server mods, and prepares a GitHub release",
+  "type": "module",
+  "bin": {
+    "balumba-pack": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "cli": "npm run build && node dist/cli.js",
+    "import": "npm run build && node dist/cli.js import",
+    "publish:pack": "npm run build && node dist/cli.js publish",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@balumba/core": "*",
+    "adm-zip": "^0.5.16"
+  },
+  "devDependencies": {
+    "@types/adm-zip": "^0.5.7",
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.2"
+  }
+}

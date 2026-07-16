@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build output
+dist/
+out/
+release/
+*.tsbuildinfo
+
+# Electron-builder output
+apps/launcher/release/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Env & secrets
+.env
+.env.*
+!.env.example
+*.pem
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Local pack build artifacts — the actual mod jars + generated manifest are
+# large and published to the separate pack repo's Releases, not committed here.
+pack/mods/
+pack/config/
+pack/overrides/
+pack/manifest.json
+pack/.cache-sources.json
+pack/.cache/
+tools/pack-publisher/.cache/
+
+# Runtime game data captured during dev
+apps/launcher/.runtime/
+temp

@@ -1,0 +1,14 @@
+{
+  "name": "BalumbaCraft",
+  "version": "2026.07.16-1",
+  "minecraft": "1.21.1",
+  "loader": "neoforge",
+  "loaderVersion": "21.1.232",
+  "recommendedRamMb": 6144,
+  "github": {
+    "owner": "CHANGE_ME",
+    "repo": "balumbacraft-pack",
+    "tag": "pack"
+  },
+  "managedRoots": ["mods"]
+}
