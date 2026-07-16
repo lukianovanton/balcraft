@@ -11,9 +11,10 @@
   }
 
   body {
-    @apply bg-andesite-900 text-brass-50 antialiased;
-    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    /* Text is selectable by default; only chrome (nav/buttons) opts out. */
+    @apply bg-andesite-850 text-brass-50 antialiased;
+    font-family:
+      'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
     user-select: text;
     overflow: hidden;
   }
@@ -33,72 +34,76 @@
   }
   ::-webkit-scrollbar-thumb {
     @apply rounded-full;
-    background: rgba(120, 90, 55, 0.35);
+    background: rgba(255, 255, 255, 0.08);
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(184, 126, 47, 0.6);
+    background: rgba(27, 217, 106, 0.35);
   }
 }
 
 @layer components {
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold
-      transition-all disabled:cursor-not-allowed disabled:opacity-50;
+      transition-all duration-150 disabled:cursor-not-allowed disabled:opacity-50;
   }
+  /* Primary = Modrinth-style green */
   .btn-primary {
     @apply btn text-andesite-900;
-    background: linear-gradient(180deg, #e0c07a 0%, #c9a24a 45%, #b0812f 100%);
-    box-shadow:
-      0 1px 0 rgba(255, 240, 200, 0.4) inset,
-      0 6px 18px -8px rgba(201, 151, 69, 0.7);
+    background: #1bd96a;
+    box-shadow: 0 6px 18px -8px rgba(27, 217, 106, 0.65);
   }
   .btn-primary:hover:not(:disabled) {
-    background: linear-gradient(180deg, #ecce8b 0%, #d6ae57 45%, #bd8c36 100%);
+    background: #33e07d;
+  }
+  .btn-primary:active:not(:disabled) {
+    background: #15b658;
   }
   .btn-ghost {
     @apply btn text-brass-100;
-    background: rgba(58, 47, 36, 0.7);
-    border: 1px solid rgba(107, 86, 66, 0.5);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
   .btn-ghost:hover:not(:disabled) {
-    background: rgba(74, 60, 46, 0.85);
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.14);
   }
   .btn-danger {
-    @apply btn text-red-50;
-    background: rgba(140, 40, 40, 0.75);
-    border: 1px solid rgba(180, 70, 70, 0.4);
+    @apply btn text-red-100;
+    background: rgba(220, 60, 60, 0.14);
+    border: 1px solid rgba(220, 80, 80, 0.28);
   }
   .btn-danger:hover:not(:disabled) {
-    background: rgba(170, 55, 55, 0.9);
+    background: rgba(220, 60, 60, 0.24);
   }
 
-  /* Frosted panel that lets the gear backdrop show through subtly */
+  /* Card / panel — neutral surface with a hairline border */
   .panel {
     @apply rounded-xl;
-    background: rgba(28, 23, 18, 0.72);
-    border: 1px solid rgba(107, 86, 66, 0.28);
-    box-shadow:
-      0 1px 0 rgba(255, 235, 200, 0.05) inset,
-      0 12px 32px -16px rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(2px);
+    background: rgba(25, 28, 33, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow: 0 8px 30px -18px rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(6px);
   }
 
   .input {
     @apply w-full rounded-lg px-3 py-2 text-sm text-brass-50 outline-none placeholder:text-andesite-400;
-    background: rgba(18, 14, 10, 0.85);
-    border: 1px solid rgba(107, 86, 66, 0.4);
-    transition: border-color 0.15s;
+    background: rgba(15, 16, 19, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    transition:
+      border-color 0.15s,
+      box-shadow 0.15s;
   }
   .input:focus {
-    border-color: theme('colors.brass.500');
+    border-color: rgba(27, 217, 106, 0.6);
+    box-shadow: 0 0 0 3px rgba(27, 217, 106, 0.12);
   }
 
-  /* List row that highlights on hover (mod/pack tables) */
+  /* Interactive list row */
   .row {
     @apply flex items-center gap-3 rounded-lg px-3 py-2 transition-colors;
   }
   .row:hover {
-    background: rgba(58, 47, 36, 0.4);
+    background: rgba(255, 255, 255, 0.04);
   }
 
   .chip {
@@ -108,11 +113,36 @@
     user-select: text;
     cursor: text;
   }
+
+  /* Nav item */
+  .nav-item {
+    @apply relative flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium
+      text-andesite-400 transition-colors;
+  }
+  .nav-item:hover {
+    @apply text-brass-100;
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .nav-item-active {
+    @apply text-brass-50;
+    background: rgba(27, 217, 106, 0.1);
+  }
+  .nav-item-active::before {
+    content: '';
+    position: absolute;
+    left: -0.75rem;
+    top: 50%;
+    height: 1.1rem;
+    width: 3px;
+    transform: translateY(-50%);
+    border-radius: 999px;
+    background: #1bd96a;
+  }
 }
 
-/* App backdrop: the generated Create gear scene, fixed behind everything */
+/* App backdrop image, fixed behind everything */
 .app-backdrop {
-  background-color: #14110c;
+  background-color: #101114;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -121,6 +151,6 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(20, 16, 11, 0.2) 0%, rgba(15, 12, 8, 0.55) 100%);
+  background: linear-gradient(180deg, rgba(16, 17, 20, 0.35) 0%, rgba(15, 16, 19, 0.72) 100%);
   pointer-events: none;
 }
