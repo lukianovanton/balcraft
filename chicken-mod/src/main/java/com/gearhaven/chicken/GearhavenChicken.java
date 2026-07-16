@@ -16,6 +16,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.entity.EntityTypeTest;
 import net.minecraft.world.phys.AABB;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
@@ -74,10 +75,11 @@ public class GearhavenChicken {
         MinecraftServer server = event.getServer();
         ServerLevel overworld = server.overworld();
 
-        // The chicken force-loads its own chunk, so it's always among the loaded
-        // entities here — making discovery + dedup reliable.
-        List<AdminChicken> all = overworld.getEntitiesOfClass(
-                AdminChicken.class, new AABB(BlockPos.ZERO).inflate(3.0E7));
+        // Iterate the level's entity storage by type (NOT a giant-AABB query —
+        // entity-optimizer mods like Sable abort abnormally large AABBs, which
+        // silently broke discovery and caused the duplicate spawning).
+        List<? extends AdminChicken> all = overworld.getEntities(
+                EntityTypeTest.forClass(AdminChicken.class), e -> true);
 
         if (!all.isEmpty()) {
             // Keep exactly one; remove any duplicates (e.g. from older builds).

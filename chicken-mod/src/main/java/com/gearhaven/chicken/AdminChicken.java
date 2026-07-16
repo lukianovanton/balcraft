@@ -3,6 +3,7 @@ package com.gearhaven.chicken;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -72,8 +73,13 @@ public class AdminChicken extends Chicken {
     @Override
     public boolean hurt(DamageSource source, float amount) {
         if (this.level().isClientSide) return false;
-        // Instant-kill / void / /kill bypass invulnerability — ignore those entirely
-        // so it can never be removed.
+        // Admin `/kill` (generic kill) IS allowed, so ops can remove/clean up
+        // chickens on purpose (e.g. leftover duplicates).
+        if (source.is(DamageTypes.GENERIC_KILL)) {
+            return super.hurt(source, amount);
+        }
+        // Other invulnerability-bypassing sources (void, etc.) — ignore, so a
+        // regular player can never actually remove it.
         if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
             return false;
         }
