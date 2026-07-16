@@ -1,0 +1,38 @@
+name: Release launcher
+
+# Push a version tag (e.g. v0.2.0) to build the Windows installer and publish it
+# as a GitHub Release. Friends' launchers then auto-update via electron-updater.
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build core
+        run: npm run core:build
+
+      - name: Build renderer/main
+        run: npm run build -w @balumba/launcher
+
+      - name: Package and publish installer
+        working-directory: apps/launcher
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx electron-builder --win --publish always --config electron-builder.yml

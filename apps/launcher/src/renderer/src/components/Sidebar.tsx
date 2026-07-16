@@ -1,10 +1,11 @@
 import type { Account } from '@balumba/core';
 import type { ServerStatus } from '../../../shared/ipc';
 
-export type NavKey = 'play' | 'server' | 'accounts' | 'settings';
+export type NavKey = 'play' | 'content' | 'server' | 'accounts' | 'settings';
 
 const ITEMS: { key: NavKey; label: string; icon: string }[] = [
   { key: 'play', label: 'Играть', icon: '▶' },
+  { key: 'content', label: 'Моды', icon: '🧩' },
   { key: 'server', label: 'Сервер', icon: '🛠' },
   { key: 'accounts', label: 'Аккаунты', icon: '👤' },
   { key: 'settings', label: 'Настройки', icon: '⚙' },

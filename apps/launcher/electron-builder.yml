@@ -28,8 +28,9 @@ nsis:
   createDesktopShortcut: true
   createStartMenuShortcut: true
   shortcutName: BalumbaCraft
-# Self-update feed (Phase 8): GitHub Releases of the launcher repo.
+# Self-update feed: GitHub Releases of the launcher repo. electron-updater in the
+# app reads this to auto-download launcher updates.
 publish:
   provider: github
-  owner: CHANGE_ME
-  repo: balumbacraft-launcher
+  owner: lukianovanton
+  repo: balcraft

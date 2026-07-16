@@ -7,17 +7,19 @@ import type { Store } from './store.js';
 import type { AuthService } from './auth-service.js';
 import type { LaunchController } from './launch-controller.js';
 import type { ServerManager } from './server-manager.js';
+import type { ContentService } from './content-service.js';
 
 export interface Services {
   store: Store;
   auth: AuthService;
   launch: LaunchController;
   server: ServerManager;
+  content: ContentService;
   getWindow(): BrowserWindow | null;
 }
 
 export function registerIpc(services: Services): void {
-  const { store, auth, launch, server, getWindow } = services;
+  const { store, auth, launch, server, content, getWindow } = services;
 
   // Forward main-side events to the renderer.
   const send = (channel: string, payload: unknown) => {
@@ -52,6 +54,14 @@ export function registerIpc(services: Services): void {
   ipcMain.handle(IPC.play, () => launch.play());
   ipcMain.handle(IPC.cancelLaunch, () => launch.cancel());
   ipcMain.handle(IPC.getLaunchState, () => launch.getState());
+
+  // --- content manager ---
+  ipcMain.handle(IPC.searchContent, (_e, query: string, type) => content.search(query, type));
+  ipcMain.handle(IPC.listInstalledContent, () => content.listInstalled());
+  ipcMain.handle(IPC.installContent, (_e, projectId: string, type) =>
+    content.install(projectId, type),
+  );
+  ipcMain.handle(IPC.removeContent, (_e, projectId: string) => content.remove(projectId));
 
   // --- server ---
   ipcMain.handle(IPC.getServerState, () => server.getState());

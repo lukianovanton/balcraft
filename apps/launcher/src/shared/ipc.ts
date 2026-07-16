@@ -2,7 +2,13 @@
  * Shared IPC contract between the Electron main process and the renderer.
  * Keep this file free of Node/Electron imports — it is imported by both sides.
  */
-import type { Account, ProgressEvent } from '@balumba/core';
+import type {
+  Account,
+  ProgressEvent,
+  ModrinthHit,
+  ModrinthProjectType,
+  UserContentEntry,
+} from '@balumba/core';
 
 /** Persisted user settings. */
 export interface LauncherSettings {
@@ -78,6 +84,12 @@ export interface BalumbaApi {
   addToWhitelist(username: string): Promise<void>;
   removeFromWhitelist(username: string): Promise<void>;
 
+  // --- content manager (Modrinth) ---
+  searchContent(query: string, type: ModrinthProjectType): Promise<ModrinthHit[]>;
+  listInstalledContent(): Promise<UserContentEntry[]>;
+  installContent(projectId: string, type: ModrinthProjectType): Promise<UserContentEntry[]>;
+  removeContent(projectId: string): Promise<UserContentEntry[]>;
+
   // --- events (main -> renderer) ---
   onLaunchState(cb: (s: LaunchState) => void): () => void;
   onServerState(cb: (s: ServerState) => void): () => void;
@@ -101,6 +113,11 @@ export const IPC = {
   play: 'play:start',
   cancelLaunch: 'play:cancel',
   getLaunchState: 'play:state',
+
+  searchContent: 'content:search',
+  listInstalledContent: 'content:list',
+  installContent: 'content:install',
+  removeContent: 'content:remove',
 
   getServerState: 'server:state',
   startServer: 'server:start',

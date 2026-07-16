@@ -33,6 +33,12 @@ const api: BalumbaApi = {
   cancelLaunch: () => ipcRenderer.invoke(IPC.cancelLaunch),
   getLaunchState: () => ipcRenderer.invoke(IPC.getLaunchState),
 
+  // content manager
+  searchContent: (query, type) => ipcRenderer.invoke(IPC.searchContent, query, type),
+  listInstalledContent: () => ipcRenderer.invoke(IPC.listInstalledContent),
+  installContent: (projectId, type) => ipcRenderer.invoke(IPC.installContent, projectId, type),
+  removeContent: (projectId) => ipcRenderer.invoke(IPC.removeContent, projectId),
+
   // server
   getServerState: () => ipcRenderer.invoke(IPC.getServerState),
   startServer: () => ipcRenderer.invoke(IPC.startServer),

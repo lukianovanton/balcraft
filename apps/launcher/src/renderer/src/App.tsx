@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Sidebar, type NavKey } from './components/Sidebar.js';
 import { Onboarding } from './components/Onboarding.js';
 import { PlayScreen } from './screens/PlayScreen.js';
+import { ContentScreen } from './screens/ContentScreen.js';
 import { ServerScreen } from './screens/ServerScreen.js';
 import { AccountsScreen } from './screens/AccountsScreen.js';
 import { SettingsScreen } from './screens/SettingsScreen.js';
@@ -32,6 +33,7 @@ export default function App(): JSX.Element {
       />
       <main className="flex-1 overflow-y-auto">
         {nav === 'play' && <PlayScreen state={state} />}
+        {nav === 'content' && <ContentScreen />}
         {nav === 'server' && <ServerScreen state={state} />}
         {nav === 'accounts' && <AccountsScreen state={state} />}
         {nav === 'settings' && <SettingsScreen state={state} />}

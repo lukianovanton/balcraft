@@ -4,6 +4,7 @@ import { Store } from './store.js';
 import { LaunchController } from './launch-controller.js';
 import { ServerManager } from './server-manager.js';
 import { AuthService } from './auth-service.js';
+import { ContentService } from './content-service.js';
 import { registerIpc } from './ipc.js';
 import { GameService } from './game-service.js';
 import { initSelfUpdate } from './updater.js';
@@ -58,8 +59,9 @@ async function bootstrap(): Promise<void> {
 
   // Wires the install/launch pipeline into the controller.
   new GameService(store, auth, launch);
+  const content = new ContentService();
 
-  registerIpc({ store, auth, launch, server, getWindow: () => mainWindow });
+  registerIpc({ store, auth, launch, server, content, getWindow: () => mainWindow });
 
   createWindow();
   initSelfUpdate();
