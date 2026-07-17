@@ -49,6 +49,9 @@ public class GearhavenChicken {
     /** The single active admin-chicken (server side). */
     public static AdminChicken CURRENT;
 
+    /** When true, the chicken ignores chat entirely (no LLM calls). Toggled with /chicken mute. */
+    public static volatile boolean MUTED = false;
+
     private int tick = 0;
 
     public GearhavenChicken(IEventBus modBus) {
@@ -128,15 +131,26 @@ public class GearhavenChicken {
         }
     }
 
-    // --- /chicken: bring the (always-present) chicken to you ---
+    // --- /chicken: bring it to you; /chicken mute|unmute: silence toggle ---
     private void onRegisterCommands(RegisterCommandsEvent event) {
         event.getDispatcher().register(
-                Commands.literal("chicken").requires(s -> s.hasPermission(0)).executes(ctx -> {
-                    ServerPlayer p = ctx.getSource().getPlayer();
-                    if (p == null) return 0;
-                    bringToPlayer(p);
-                    return Command.SINGLE_SUCCESS;
-                }));
+                Commands.literal("chicken").requires(s -> s.hasPermission(0))
+                        .executes(ctx -> {
+                            ServerPlayer p = ctx.getSource().getPlayer();
+                            if (p == null) return 0;
+                            bringToPlayer(p);
+                            return Command.SINGLE_SUCCESS;
+                        })
+                        .then(Commands.literal("mute").executes(ctx -> {
+                            MUTED = true;
+                            say(ctx.getSource().getServer(), "Всё, молчу. Позовёшь — /chicken unmute.");
+                            return Command.SINGLE_SUCCESS;
+                        }))
+                        .then(Commands.literal("unmute").executes(ctx -> {
+                            MUTED = false;
+                            say(ctx.getSource().getServer(), "Опять на связи. Чё пропустил?");
+                            return Command.SINGLE_SUCCESS;
+                        })));
     }
 
     private void bringToPlayer(ServerPlayer p) {
@@ -158,8 +172,16 @@ public class GearhavenChicken {
         MinecraftServer server = speaker.server;
         AdminChicken chicken = CURRENT;
         if (chicken == null || !chicken.isAlive()) return;
+        if (MUTED) return;
 
         String message = event.getMessage().getString();
+
+        // Only react when actually addressed by name — otherwise it spams every
+        // message and burns tokens. Say "петух" (any form) to talk to it.
+        String lower = message.toLowerCase();
+        if (!lower.contains("петух") && !lower.contains("petuh") && !lower.contains("петя-админ")) {
+            return;
+        }
 
         JsonObject payload = new JsonObject();
         payload.addProperty("player", speaker.getGameProfile().getName());

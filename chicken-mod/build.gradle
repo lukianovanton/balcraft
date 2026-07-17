@@ -2,7 +2,7 @@ plugins {
     id 'net.neoforged.moddev' version '2.0.78'
 }
 
-version = '0.1.2'
+version = '0.1.3'
 group = 'com.gearhaven'
 base { archivesName = 'gearhaven-chicken' }
 
