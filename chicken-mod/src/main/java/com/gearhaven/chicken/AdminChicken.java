@@ -1,6 +1,5 @@
 package com.gearhaven.chicken;
 
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -9,7 +8,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.animal.Chicken;
-import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
 
 /**
@@ -20,38 +18,10 @@ import net.minecraft.world.level.Level;
 public class AdminChicken extends Chicken {
     public final Directive directive = new Directive();
 
-    /** The chunk we currently force-load so the chicken never unloads (which would
-     *  invalidate GearhavenChicken.CURRENT and spawn a duplicate). Follows the chicken. */
-    private ChunkPos forcedChunk = null;
-
     public AdminChicken(EntityType<? extends Chicken> type, Level level) {
         super(type, level);
         this.setPersistenceRequired();
         this.setNoAi(false);
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-        // Keep the chicken's own chunk force-loaded, and move that ticket with it.
-        if (this.level() instanceof ServerLevel sl && this.isAlive()) {
-            ChunkPos cp = new ChunkPos(this.blockPosition());
-            if (!cp.equals(forcedChunk)) {
-                if (forcedChunk != null) sl.setChunkForced(forcedChunk.x, forcedChunk.z, false);
-                sl.setChunkForced(cp.x, cp.z, true);
-                forcedChunk = cp;
-            }
-        }
-    }
-
-    @Override
-    public void remove(RemovalReason reason) {
-        // Release our forced chunk when we go away (dedup / dimension change).
-        if (forcedChunk != null && this.level() instanceof ServerLevel sl) {
-            sl.setChunkForced(forcedChunk.x, forcedChunk.z, false);
-            forcedChunk = null;
-        }
-        super.remove(reason);
     }
 
     public static AttributeSupplier.Builder createAttributes() {

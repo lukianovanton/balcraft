@@ -53,6 +53,7 @@ public class GearhavenChicken {
     public static volatile boolean MUTED = false;
 
     private int tick = 0;
+    private int emptyChecks = 0;
 
     public GearhavenChicken(IEventBus modBus) {
         ENTITIES.register(modBus);
@@ -85,6 +86,7 @@ public class GearhavenChicken {
                 EntityTypeTest.forClass(AdminChicken.class), e -> true);
 
         if (!all.isEmpty()) {
+            emptyChecks = 0;
             // Keep exactly one; remove any duplicates (e.g. from older builds).
             AdminChicken keep = (CURRENT != null && CURRENT.isAlive() && all.contains(CURRENT))
                     ? CURRENT : all.get(0);
@@ -92,8 +94,14 @@ public class GearhavenChicken {
                 if (c != keep) c.discard();
             }
             CURRENT = keep;
-        } else if (CURRENT == null || !CURRENT.isAlive() || CURRENT.isRemoved()) {
+        } else if (++emptyChecks >= 3
+                && (CURRENT == null || !CURRENT.isAlive() || CURRENT.isRemoved())) {
+            // Respawn ONLY after several consecutive empty checks. A single empty
+            // tick while the chicken teleports across chunks must not trigger a
+            // spawn — that spurious duplicate got the real chicken discarded and
+            // teleported it back to spawn.
             spawnAtSpawn(overworld, server);
+            emptyChecks = 0;
         }
     }
 
