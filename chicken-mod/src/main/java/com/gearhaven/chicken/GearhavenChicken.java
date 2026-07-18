@@ -36,6 +36,8 @@ import java.util.UUID;
 public class GearhavenChicken {
     public static final String MODID = "gearhavenchicken";
 
+    private static final org.slf4j.Logger LOGGER = com.mojang.logging.LogUtils.getLogger();
+
     public static final DeferredRegister<EntityType<?>> ENTITIES =
             DeferredRegister.create(Registries.ENTITY_TYPE, MODID);
 
@@ -162,14 +164,38 @@ public class GearhavenChicken {
     }
 
     private void bringToPlayer(ServerPlayer p) {
-        ServerLevel level = p.serverLevel();
-        if (CURRENT == null || !CURRENT.isAlive()) {
-            spawnAtSpawn(level, p.server);
-        }
-        if (CURRENT == null) return;
-        CURRENT.teleportTo(p.getX(), p.getY(), p.getZ());
-        CURRENT.directive.idle();
+        summonTo(p);
         say(p.server, "Тепнулся к тебе, ну чё, командуй.");
+    }
+
+    /**
+     * Bring the chicken to a player RELIABLY, straight from the server thread (no
+     * dependency on the entity ticking): teleport the current one if it's healthy
+     * and in the player's dimension, otherwise discard it and respawn a fresh one
+     * right at the player. This is what makes "come here" actually work even when
+     * the chicken sits in a non-ticking chunk or got stranded in a Sable sublevel.
+     */
+    private void summonTo(ServerPlayer p) {
+        ServerLevel level = p.serverLevel();
+        AdminChicken c = CURRENT;
+        if (c != null && c.isAlive() && !c.isRemoved() && c.level() == level) {
+            c.teleportTo(p.getX(), p.getY(), p.getZ());
+            LOGGER.info("[chicken] summon: teleported to {} in {}", p.blockPosition(),
+                    level.dimension().location());
+        } else {
+            LOGGER.info("[chicken] summon: current unusable (null/dead/removed/other-level={}), "
+                    + "respawning fresh at player", c == null ? "null" : c.level().dimension().location());
+            if (c != null) c.discard();
+            AdminChicken fresh = ADMIN_CHICKEN.get().create(level);
+            if (fresh == null) return;
+            fresh.moveTo(p.getX(), p.getY(), p.getZ(), p.getYRot(), 0);
+            fresh.setCustomName(Component.literal("§eПетух"));
+            fresh.setCustomNameVisible(true);
+            fresh.setPersistenceRequired();
+            level.addFreshEntity(fresh);
+            CURRENT = fresh;
+        }
+        CURRENT.directive.idle();
     }
 
     // ---------------------------------------------------------------------
@@ -231,11 +257,11 @@ public class GearhavenChicken {
 
         ChickenBrain.think(payload).thenAccept(resp -> {
             if (resp == null) return;
-            server.execute(() -> applyResponse(server, resp));
+            server.execute(() -> applyResponse(server, speaker, resp));
         });
     }
 
-    private void applyResponse(MinecraftServer server, ChickenBrain.Response resp) {
+    private void applyResponse(MinecraftServer server, ServerPlayer speaker, ChickenBrain.Response resp) {
         AdminChicken chicken = CURRENT;
         if (chicken == null || !chicken.isAlive()) return;
 
@@ -249,9 +275,13 @@ public class GearhavenChicken {
         switch (action) {
             case "attack" -> chicken.directive.setAttack(targetUuid, resp.hits);
             case "guard" -> chicken.directive.set(Directive.Type.GUARD, targetUuid);
-            case "goto" -> chicken.directive.set(Directive.Type.GOTO, targetUuid);
+            // COME/GOTO to a player: teleport straight there (reliable), don't rely
+            // on the entity ticking. Fall back to the speaker if no target resolved.
+            case "come", "goto" -> {
+                ServerPlayer tp = targetUuid != null ? server.getPlayerList().getPlayer(targetUuid) : null;
+                summonTo(tp != null ? tp : speaker);
+            }
             case "follow" -> chicken.directive.set(Directive.Type.FOLLOW, targetUuid);
-            case "come" -> chicken.directive.set(Directive.Type.COME, targetUuid);
             case "dig" -> chicken.directive.set(Directive.Type.DIG, null);
             case "wander" -> chicken.directive.set(Directive.Type.WANDER, null);
             default -> chicken.directive.idle();
