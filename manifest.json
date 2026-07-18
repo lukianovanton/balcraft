@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "name": "Gearhaven",
-  "version": "2026.07.18-1",
+  "version": "2026.07.18-2",
   "minecraft": "1.21.1",
   "loader": "neoforge",
   "loaderVersion": "21.1.232",
@@ -1067,7 +1067,7 @@
       "url": [
         "https://cdn.modrinth.com/data/nvQzSEkH/versions/yd8FKCmx/Jade-1.21.1-NeoForge-15.10.5.jar"
       ],
-      "side": "client"
+      "side": "both"
     },
     {
       "path": "mods/JadeAddons-1.21.1-NeoForge-6.1.0.jar",
@@ -1076,7 +1076,7 @@
       "url": [
         "https://cdn.modrinth.com/data/xuDOzCLy/versions/Z9s9lM56/JadeAddons-1.21.1-NeoForge-6.1.0.jar"
       ],
-      "side": "client"
+      "side": "both"
     },
     {
       "path": "mods/jei-1.21.1-neoforge-19.27.0.340.jar",
@@ -1768,5 +1768,5 @@
     "shaderpacks"
   ],
   "serverAddress": "134.249.137.220",
-  "generatedAt": "2026-07-18T06:23:32.856Z"
+  "generatedAt": "2026-07-18T12:28:57.494Z"
 }
