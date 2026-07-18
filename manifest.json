@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "name": "Gearhaven",
-  "version": "2026.07.17-2",
+  "version": "2026.07.18-1",
   "minecraft": "1.21.1",
   "loader": "neoforge",
   "loaderVersion": "21.1.232",
@@ -481,6 +481,15 @@
       "size": 439565,
       "url": [
         "https://cdn.modrinth.com/data/wPQ6GgFE/versions/MX6Eqw1t/create_power_loader-2.0.4-mc1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/create_radar-0.4.9.4-1.21.1.jar",
+      "sha1": "9726fced4bf86c9e2c0ea09b35bc39ed3ac007b6",
+      "size": 2990812,
+      "url": [
+        "https://cdn.modrinth.com/data/BLu2Yqfq/versions/AntNFNAx/create_radar-0.4.9.4-1.21.1.jar"
       ],
       "side": "both"
     },
@@ -1759,5 +1768,5 @@
     "shaderpacks"
   ],
   "serverAddress": "134.249.137.220",
-  "generatedAt": "2026-07-17T09:21:55.499Z"
+  "generatedAt": "2026-07-18T06:23:32.856Z"
 }
