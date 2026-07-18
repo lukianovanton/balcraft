@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "name": "Gearhaven",
-  "version": "2026.07.18-3",
+  "version": "2026.07.18-4",
   "minecraft": "1.21.1",
   "loader": "neoforge",
   "loaderVersion": "21.1.232",
@@ -1768,5 +1768,5 @@
     "shaderpacks"
   ],
   "serverAddress": "134.249.137.220",
-  "generatedAt": "2026-07-18T12:35:22.722Z"
+  "generatedAt": "2026-07-18T12:37:58.494Z"
 }
