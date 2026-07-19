@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "name": "Gearhaven",
-  "version": "2026.07.20-2",
+  "version": "2026.07.20-3",
   "minecraft": "1.21.1",
   "loader": "neoforge",
   "loaderVersion": "21.1.232",
@@ -868,6 +868,15 @@
       "size": 767884,
       "url": [
         "https://cdn.modrinth.com/data/HSfsxuTo/versions/CuBdAr31/Explorify%20v1.6.5.mod.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/ExtendedAE-1.21-2.2.29-neoforge.jar",
+      "sha1": "c8181dfc8fad5fc5dd4e119c8fbe269b5248815c",
+      "size": 5548206,
+      "url": [
+        "https://cdn.modrinth.com/data/JiOqfoFM/versions/4BXqcY77/ExtendedAE-1.21-2.2.29-neoforge.jar"
       ],
       "side": "both"
     },
@@ -1759,5 +1768,5 @@
     "shaderpacks"
   ],
   "serverAddress": "134.249.137.220",
-  "generatedAt": "2026-07-19T23:32:00.521Z"
+  "generatedAt": "2026-07-19T23:38:40.275Z"
 }
