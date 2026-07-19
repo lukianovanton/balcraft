@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "name": "Gearhaven",
-  "version": "2026.07.20-5",
+  "version": "2026.07.20-6",
   "minecraft": "1.21.1",
   "loader": "neoforge",
   "loaderVersion": "21.1.232",
@@ -1484,15 +1484,6 @@
       "side": "both"
     },
     {
-      "path": "mods/SSRD-1.8.3-1.21.1.jar",
-      "sha1": "67350a3b3871326103aee55b08838db0c087c9a8",
-      "size": 63520,
-      "url": [
-        "https://cdn.modrinth.com/data/fJ183v3D/versions/pcSV4GT1/SSRD-1.8.3-1.21.1.jar"
-      ],
-      "side": "both"
-    },
-    {
       "path": "mods/st_cdc-1.21.1-1.1.jar",
       "sha1": "1dc83075c078f7b6c3f0f04b9a84722d359804fa",
       "size": 38157,
@@ -1759,5 +1750,5 @@
     "shaderpacks"
   ],
   "serverAddress": "134.249.137.220",
-  "generatedAt": "2026-07-19T23:47:03.846Z"
+  "generatedAt": "2026-07-19T23:47:30.305Z"
 }
