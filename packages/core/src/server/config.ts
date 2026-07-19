@@ -16,6 +16,11 @@ export interface ServerProps {
   port: number;
   difficulty: string;
   whitelist: boolean;
+  /** How far entity updates are broadcast, in % of view distance. Lower = far less
+   *  packet traffic around busy bases (big win for players on weak connections). */
+  entityBroadcastRangePercentage: number;
+  /** Packets larger than this get compressed. Lower = less bandwidth, a bit more CPU. */
+  networkCompressionThreshold: number;
 }
 
 const DEFAULT_PROPS: ServerProps = {
@@ -26,6 +31,8 @@ const DEFAULT_PROPS: ServerProps = {
   port: 25565,
   difficulty: 'normal',
   whitelist: true,
+  entityBroadcastRangePercentage: 50,
+  networkCompressionThreshold: 64,
 };
 
 /** Write eula.txt accepting the Minecraft EULA (required to start the server). */
@@ -56,6 +63,10 @@ export async function writeServerProperties(
     'allow-flight=true', // Create jetpacks / aeronautics
     'spawn-protection=0',
     'sync-chunk-writes=false',
+    // Network tuning: cuts packet volume around dense bases so players on weak
+    // connections stay playable (MC would otherwise reset these to defaults).
+    `entity-broadcast-range-percentage=${p.entityBroadcastRangePercentage}`,
+    `network-compression-threshold=${p.networkCompressionThreshold}`,
     'level-name=world',
     'enable-command-block=true',
     'allow-nether=true',

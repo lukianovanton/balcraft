@@ -1,0 +1,157 @@
+SPARK PROFILE (converted to text)
+Platform: NeoForge 21.1.232 | Minecraft 1.21.1
+Duration: 67.9s | Ticks: 1356 | Sample interval: 4000us
+TPS: 1m=20.00 5m=20.00 | MSPT(1m): mean=7.54 max=26.92 min=4.35
+Heap: 2535MB used / 12288MB max
+Players online: 1
+
+Mods detected in profile: 220
+
+====================================================================================================
+THREAD: Server thread  (total sampled: 67804ms, 100%)
+====================================================================================================
+100.0%    67804ms  java.lang.Thread.run()
+  100.0%    67804ms  java.lang.Thread.runWith()
+    100.0%    67804ms  net.minecraft.server.MinecraftServer$$Lambda/0x000001fda2ea66a8.run()
+      100.0%    67804ms  net.minecraft.server.MinecraftServer.lambda$spin$2()
+        100.0%    67804ms  net.minecraft.server.MinecraftServer.runServer()
+           76.3%    51732ms  net.minecraft.server.MinecraftServer.waitUntilNextTick()
+             76.1%    51620ms  net.minecraft.server.MinecraftServer.wrapOperation$zbp000$modernfix$managedBlock()
+               76.1%    51620ms  net.minecraft.server.MinecraftServer$$Lambda/0x000001fda3017880.call()
+                 76.1%    51620ms  net.minecraft.server.MinecraftServer.mixinextras$bridge$managedBlock$290()
+                   76.1%    51620ms  net.minecraft.server.MinecraftServer.managedBlock()
+                     76.1%    51620ms  net.minecraft.util.thread.BlockableEventLoop.managedBlock()
+                       75.8%    51388ms  net.minecraft.server.MinecraftServer.waitForTasks()
+                         75.8%    51388ms  net.minecraft.server.MinecraftServer.wrapOperation$zbp000$modernfix$waitLongerForTasks()
+                           75.8%    51388ms  java.util.concurrent.locks.LockSupport.parkNanos()
+                             75.8%    51388ms  jdk.internal.misc.Unsafe.park()
+           23.6%    16028ms  net.minecraft.server.MinecraftServer.tickServer()
+             22.6%    15300ms  net.minecraft.server.dedicated.DedicatedServer.tickChildren()
+               22.6%    15300ms  net.minecraft.server.MinecraftServer.tickChildren()
+                 16.1%    10948ms  net.minecraft.server.level.ServerLevel.tick()
+                    6.2%     4204ms  net.minecraft.server.level.ServerChunkCache.tick()
+                      4.2%     2844ms  net.minecraft.server.level.ServerChunkCache.tickChunks()
+                        1.7%     1172ms  net.minecraft.world.level.NaturalSpawner.spawnForChunk()
+                          1.5%     1048ms  net.minecraft.world.level.NaturalSpawner.spawnCategoryForChunk()
+                            1.1%      716ms  net.minecraft.world.level.NaturalSpawner.spawnCategoryForPosition()
+                              0.8%      528ms  net.minecraft.world.level.NaturalSpawner.getRandomSpawnMobAt()
+                                0.5%      368ms  net.minecraft.world.level.LevelReader.getBiome()
+                                  0.5%      368ms  net.minecraft.world.level.biome.BiomeManager.getBiome()
+                                    0.5%      368ms  net.minecraft.world.level.LevelReader.getNoiseBiome()
+                        1.0%      684ms  net.minecraft.server.level.ServerLevel.tickChunk()
+                          0.6%      424ms  net.minecraft.world.level.material.FluidState.isRandomlyTicking()
+                              (3 smaller children, 0.4% combined)
+                        0.5%      336ms  net.minecraft.world.level.NaturalSpawner.createState()
+                            (5 smaller children, 0.4% combined)
+                      1.2%      808ms  net.minecraft.server.level.ChunkMap.tick()
+                        1.2%      808ms  net.minecraft.server.level.ChunkMap.processUnloads()
+                          0.9%      580ms  net.minecraft.server.level.ChunkMap.saveChunkIfNeeded()
+                      0.5%      316ms  net.minecraft.server.level.DistanceManager.purgeStaleTickets()
+                    4.3%     2888ms  net.minecraft.world.level.entity.EntityTickList.forEach()
+                      4.3%     2888ms  net.minecraft.server.level.ServerLevel$$Lambda/0x000001fda30aee20.accept()
+                        4.3%     2884ms  net.minecraft.server.level.ServerLevel.lambda$tick$2()
+                          4.2%     2828ms  net.minecraft.world.level.Level.guardEntityTick()
+                            4.2%     2820ms  net.minecraft.server.level.ServerLevel$$Lambda/0x000001fda310f7f8.accept()
+                              4.2%     2820ms  net.minecraft.server.level.ServerLevel.tickNonPassenger()
+                                1.8%     1200ms  net.minecraft.world.entity.Mob.tick()
+                                  1.8%     1200ms  net.minecraft.world.entity.LivingEntity.tick()
+                                    1.0%      672ms  net.minecraft.world.entity.animal.Sheep.aiStep()
+                                      1.0%      672ms  net.minecraft.world.entity.animal.Animal.aiStep()
+                                        1.0%      672ms  net.minecraft.world.entity.AgeableMob.aiStep()
+                                          1.0%      672ms  net.minecraft.world.entity.Mob.aiStep()
+                                            1.0%      672ms  net.minecraft.world.entity.LivingEntity.aiStep()
+                                              0.8%      556ms  net.minecraft.world.entity.LivingEntity.travel()
+                                                0.8%      516ms  net.minecraft.world.entity.LivingEntity.handleRelativeFrictionAndCalculateMovement()
+                                                  0.7%      504ms  net.minecraft.world.entity.Entity.move()
+                                                    0.5%      332ms  net.minecraft.world.entity.Entity.redirect$dde000$sable$collideRedirect()
+                                                      0.5%      328ms  net.minecraft.world.entity.Entity.collide()
+                                    0.4%      248ms  net.minecraft.world.entity.Entity.tick()
+                                        (7 smaller children, 0.4% combined)
+                                0.6%      412ms  net.minecraft.world.entity.monster.Creeper.tick()
+                                  0.6%      412ms  net.minecraft.world.entity.Mob.tick()
+                                    0.6%      412ms  net.minecraft.world.entity.LivingEntity.tick()
+                                      0.4%      304ms  net.minecraft.world.entity.monster.Monster.aiStep()
+                                        0.4%      284ms  net.minecraft.world.entity.Mob.aiStep()
+                                          0.4%      284ms  net.minecraft.world.entity.LivingEntity.aiStep()
+                                0.5%      344ms  net.minecraft.world.entity.monster.Zombie.tick()
+                                  0.5%      344ms  net.minecraft.world.entity.Mob.tick()
+                                    0.5%      344ms  net.minecraft.world.entity.LivingEntity.tick()
+                                      0.4%      284ms  net.minecraft.world.entity.monster.Zombie.aiStep()
+                                        0.4%      276ms  net.minecraft.world.entity.monster.Monster.aiStep()
+                                          0.4%      276ms  net.minecraft.world.entity.Mob.aiStep()
+                                            0.4%      276ms  net.minecraft.world.entity.LivingEntity.aiStep()
+                                    (14 smaller children, 1.3% combined)
+                    3.1%     2100ms  net.minecraft.server.level.ServerLevel.handler$dfb000$sable$tickPlotContainer()
+                      3.1%     2100ms  dev.ryanhcode.sable.api.sublevel.ServerSubLevelContainer.tick() [sable]
+                        3.1%     2092ms  dev.ryanhcode.sable.api.sublevel.SubLevelContainer.tick() [sable]
+                          3.1%     2092ms  it.unimi.dsi.fastutil.objects.ObjectArrayList.forEach()
+                            2.9%     1956ms  dev.ryanhcode.sable.api.sublevel.SubLevelContainer$$Lambda/0x000001fda30a2b60.accept() [sable]
+                              2.9%     1956ms  dev.ryanhcode.sable.api.sublevel.SubLevelContainer.lambda$tick$0() [sable]
+                                2.9%     1940ms  dev.ryanhcode.sable.sublevel.system.SubLevelPhysicsSystem.tick() [sable]
+                                  2.4%     1640ms  dev.ryanhcode.sable.sublevel.system.SubLevelPhysicsSystem.tickPipelinePhysics() [sable]
+                                    1.6%     1100ms  dev.ryanhcode.sable.physics.impl.rapier.RapierPhysicsPipeline.physicsTick() [sable]
+                                      1.3%      880ms  dev.ryanhcode.sable.physics.impl.rapier.Rapier3D.step() [sable]
+                                        (9 smaller children, 0.8% combined)
+                                  0.4%      260ms  dev.ryanhcode.sable.sublevel.system.ticket.PhysicsChunkTicketManager.update() [sable]
+                    2.6%     1740ms  net.minecraft.world.level.Level.tickBlockEntities()
+                      2.2%     1500ms  net.minecraft.world.level.chunk.LevelChunk$RebindableTickingBlockEntityWrapper.tick()
+                        2.2%     1500ms  net.minecraft.world.level.chunk.LevelChunk$BoundTickingBlockEntity.tick()
+                          1.4%      972ms  com.simibubi.create.foundation.blockEntity.SmartBlockEntityTicker.tick() [create]
+                                (23 smaller children, 1.4% combined)
+                          0.5%      320ms  net.minecraft.world.level.block.HopperBlock$$Lambda/0x000001fda30f3348.tick()
+                            0.5%      320ms  net.minecraft.world.level.block.entity.HopperBlockEntity.pushItemsTick()
+                              0.5%      312ms  net.minecraft.world.level.block.entity.HopperBlockEntity.tryMoveItems()
+                                0.4%      272ms  net.minecraft.world.level.block.entity.HopperBlockEntity.ejectItems()
+                                  0.4%      272ms  net.neoforged.neoforge.items.VanillaInventoryCodeHooks.insertHook() [neoforge]
+                                    0.4%      248ms  java.util.Optional.map()
+                                      0.4%      248ms  net.neoforged.neoforge.items.VanillaInventoryCodeHooks$$Lambda/0x000001fda3305048.apply() [neoforge]
+                                        0.4%      248ms  net.neoforged.neoforge.items.VanillaInventoryCodeHooks.lambda$insertHook$2() [neoforge]
+                  5.9%     4012ms  net.neoforged.neoforge.event.EventHooks.fireLevelTickPre() [neoforge]
+                    5.9%     4012ms  net.neoforged.bus.EventBus.post()
+                      5.9%     3988ms  net.neoforged.bus.EventBus.post()
+                        5.7%     3892ms  net.neoforged.bus.ConsumerEventHandler.invoke()
+                          5.6%     3796ms  org.antarcticgardens.cna.CreateNewAgeNeoForge$$Lambda/0x000001fda118fa88.accept() [create_new_age]
+                            5.6%     3796ms  org.antarcticgardens.cna.CreateNewAgeNeoForge.lambda$new$0() [create_new_age]
+                              5.6%     3796ms  org.antarcticgardens.cna.content.electricity.network.NetworkTicker.tickWorld() [create_new_age]
+                                5.6%     3780ms  org.antarcticgardens.cna.content.electricity.network.ElectricalNetwork.tick() [create_new_age]
+                                  5.0%     3408ms  org.antarcticgardens.cna.content.electricity.network.ElectricalNetwork.insert() [create_new_age]
+                                    5.0%     3372ms  org.antarcticgardens.cna.content.electricity.network.ElectricalNetwork.insertInto() [create_new_age]
+                                      3.5%     2392ms  org.antarcticgardens.cna.content.electricity.network.NetworkPathManager.findConductiblePath() [create_new_age]
+                                        0.8%      560ms  java.util.Collections$UnmodifiableCollection$1.next()
+                                          0.7%      468ms  java.util.HashMap$KeyIterator.next()
+                                            0.7%      468ms  java.util.HashMap$HashIterator.nextNode()
+                                        0.7%      500ms  java.util.Collections$UnmodifiableCollection.iterator()
+                                          0.7%      500ms  java.util.Collections$UnmodifiableCollection$1.<init>()
+                                            0.7%      480ms  java.util.HashMap$KeySet.iterator()
+                                              0.7%      480ms  java.util.HashMap$KeyIterator.<init>()
+                                                0.7%      480ms  java.util.HashMap$HashIterator.<init>()
+                                        0.7%      456ms  java.util.Collections$UnmodifiableCollection$1.hasNext()
+                                        0.7%      456ms  org.antarcticgardens.cna.content.electricity.network.NetworkPathManager.unwrapConductiblePath() [create_new_age]
+                                        0.5%      360ms  org.antarcticgardens.cna.content.electricity.network.NetworkPathConductivityContext.calculatePathConductivity() [create_new_age]
+                                      0.5%      308ms  net.minecraft.world.level.block.entity.BlockEntity.setChanged()
+                                        0.4%      300ms  net.minecraft.world.level.block.entity.BlockEntity.setChanged()
+                                      0.4%      288ms  org.antarcticgardens.cna.content.electricity.network.NetworkPathConductivityContext.calculatePathConductivity() [create_new_age]
+                                      0.4%      280ms  org.antarcticgardens.esl.neoforge.energy.F2EEnergyStorageAdapter.insert() [esl]
+                                      (5 smaller children, 0.5% combined)
+                      (6 smaller children, 0.5% combined)
+              1.0%      680ms  net.neoforged.neoforge.event.EventHooks.fireServerTickPre() [neoforge]
+                1.0%      680ms  net.neoforged.bus.EventBus.post()
+                  1.0%      664ms  net.neoforged.bus.EventBus.post()
+                    0.5%      356ms  net.neoforged.bus.EventListenerFactory$onServerTickEvent/0x000001fda2824000.invoke()
+                      0.5%      356ms  java.lang.invoke.LambdaForm$MH/0x000001fda0028000.invokeExact_MT()
+                        0.5%      356ms  java.lang.invoke.LambdaForm$MH/0x000001fda314e800.invoke()
+                          0.5%      356ms  java.lang.invoke.DirectMethodHandle$Holder.invokeVirtual()
+                            0.5%      356ms  journeymap.common.event.NeoForgeServerEvents.onServerTickEvent() [journeymap]
+                              0.5%      348ms  journeymap.common.events.ServerEventHandler.onServerTickEvent() [journeymap]
+
+====================================================================================================
+TIME BY MOD (self time attribution, Server thread)
+====================================================================================================
+ 94.23%      63892ms  minecraft/java
+  2.62%       1776ms  sable
+  0.64%        432ms  create
+  0.50%        336ms  create_new_age
+  0.45%        308ms  ae2
+  0.41%        280ms  lithium
+  0.35%        240ms  esl
+  0.32%        220ms  neoforge
