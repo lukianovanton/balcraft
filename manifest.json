@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "name": "Gearhaven",
-  "version": "2026.07.18-4",
+  "version": "2026.07.19-1",
   "minecraft": "1.21.1",
   "loader": "neoforge",
   "loaderVersion": "21.1.232",
@@ -760,6 +760,15 @@
       "size": 410690,
       "url": [
         "https://cdn.modrinth.com/data/vvuO3ImH/versions/yohfFbgD/curios-neoforge-9.5.1%2B1.21.1.jar"
+      ],
+      "side": "both"
+    },
+    {
+      "path": "mods/CustomPlayerModels-1.21-0.6.27a.jar",
+      "sha1": "34d57efcc56c043f89c61f169944d7b95c11f504",
+      "size": 2793136,
+      "url": [
+        "https://cdn.modrinth.com/data/h1E7sQNL/versions/YXfPij2E/CustomPlayerModels-1.21-0.6.27a.jar"
       ],
       "side": "both"
     },
@@ -1768,5 +1777,5 @@
     "shaderpacks"
   ],
   "serverAddress": "134.249.137.220",
-  "generatedAt": "2026-07-18T12:37:58.494Z"
+  "generatedAt": "2026-07-19T11:26:52.944Z"
 }
