@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "name": "Gearhaven",
-  "version": "2026.07.20-6",
+  "version": "2026.07.20-7",
   "minecraft": "1.21.1",
   "loader": "neoforge",
   "loaderVersion": "21.1.232",
@@ -780,6 +780,15 @@
         "https://cdn.modrinth.com/data/x49wilh8/versions/m6PCLHcp/Design-n-Decor-1.21.1-2.1.0.jar"
       ],
       "side": "both"
+    },
+    {
+      "path": "mods/DistantHorizons-3.0.3-b-1.21.1-fabric-neoforge.jar",
+      "sha1": "bc865b11c94581949384b6d5820b58aee8b7273c",
+      "size": 30113661,
+      "url": [
+        "https://cdn.modrinth.com/data/uCdwusMi/versions/oYXIfeus/DistantHorizons-3.0.3-b-1.21.1-fabric-neoforge.jar"
+      ],
+      "side": "client"
     },
     {
       "path": "mods/DnDesires-1.21.1-2.3a-BETA.jar",
@@ -1750,5 +1759,5 @@
     "shaderpacks"
   ],
   "serverAddress": "134.249.137.220",
-  "generatedAt": "2026-07-19T23:47:30.305Z"
+  "generatedAt": "2026-07-19T23:52:07.256Z"
 }
