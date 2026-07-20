@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "name": "Gearhaven",
-  "version": "2026.07.20-7",
+  "version": "2026.07.20-8",
   "minecraft": "1.21.1",
   "loader": "neoforge",
   "loaderVersion": "21.1.232",
@@ -258,15 +258,6 @@
         "https://cdn.modrinth.com/data/csA0cpEX/versions/YAxh0D9R/cfwinfo-1.6.0.jar"
       ],
       "side": "client"
-    },
-    {
-      "path": "mods/chunksending-1.21-2.9.jar",
-      "sha1": "636a121a3252028bb0ec14a3f39f9bbf723ddacd",
-      "size": 12100,
-      "url": [
-        "https://raw.githubusercontent.com/lukianovanton/balcraft/main/files/636a121a3252028bb0ec14a3f39f9bbf723ddacd.jar"
-      ],
-      "side": "both"
     },
     {
       "path": "mods/cloth-config-15.0.140-neoforge.jar",
@@ -1759,5 +1750,5 @@
     "shaderpacks"
   ],
   "serverAddress": "134.249.137.220",
-  "generatedAt": "2026-07-19T23:52:07.256Z"
+  "generatedAt": "2026-07-20T00:04:46.225Z"
 }
