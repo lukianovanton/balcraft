@@ -1,7 +1,7 @@
 {
   "formatVersion": 1,
   "name": "Gearhaven",
-  "version": "2026.07.22-3",
+  "version": "2026.07.23-1",
   "minecraft": "1.21.1",
   "loader": "neoforge",
   "loaderVersion": "21.1.232",
@@ -1232,6 +1232,15 @@
       "side": "client"
     },
     {
+      "path": "mods/nemos-inventory-sorting-NeoForge-1.21.1-1.8.2.1.jar",
+      "sha1": "7da5cfba7dc968ee0587b375328acb124f655776",
+      "size": 81559,
+      "url": [
+        "https://cdn.modrinth.com/data/JHgf35QL/versions/Foc0173y/nemos-inventory-sorting-NeoForge-1.21.1-1.8.2.1.jar"
+      ],
+      "side": "client"
+    },
+    {
       "path": "mods/notenoughanimations-neoforge-1.12.2-mc1.21.1.jar",
       "sha1": "a7713e65d5c5bbda51ef396275869db3f5d675a6",
       "size": 1933309,
@@ -1759,5 +1768,5 @@
     "shaderpacks"
   ],
   "serverAddress": "134.249.137.220",
-  "generatedAt": "2026-07-22T14:45:35.409Z"
+  "generatedAt": "2026-07-23T08:47:43.583Z"
 }
